@@ -1,0 +1,122 @@
+[
+  {
+    "question": "2002 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Brezilya",
+      "Almanya",
+      "Fransa",
+      "İtalya"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2010 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Hollanda",
+      "İspanya",
+      "Almanya",
+      "Arjantin"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "UEFA Şampiyonlar Ligi 2005 finalinde Liverpool hangi takımı yendi?",
+    "options": [
+      "Juventus",
+      "AC Milan",
+      "Chelsea",
+      "Bayern Münih"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası finalinde Almanya kime karşı oynadı?",
+    "options": [
+      "Brezilya",
+      "Hollanda",
+      "Arjantin",
+      "Fransa"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2022 FIFA Dünya Kupası şampiyonu kim oldu?",
+    "options": [
+      "Fransa",
+      "Arjantin",
+      "Hırvatistan",
+      "Fas"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2018 FIFA Dünya Kupası şampiyonu kim oldu?",
+    "options": [
+      "Fransa",
+      "Hırvatistan",
+      "Belçika",
+      "İngiltere"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası finalinde İtalya hangi ülkeyi yendi?",
+    "options": [
+      "Almanya",
+      "Fransa",
+      "Portekiz",
+      "Brezilya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2012 Avrupa Futbol Şampiyonası finalini kim kazandı?",
+    "options": [
+      "İtalya",
+      "Almanya",
+      "İspanya",
+      "Portekiz"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2004 Avrupa Futbol Şampiyonası şampiyonu kim oldu?",
+    "options": [
+      "Portekiz",
+      "Yunanistan",
+      "Çekya",
+      "Hollanda"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası şampiyonu kim oldu?",
+    "options": [
+      "Brezilya",
+      "İtalya",
+      "Fransa",
+      "Almanya"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2016 Avrupa Futbol Şampiyonası şampiyonu kim oldu?",
+    "options": [
+      "Fransa",
+      "Portekiz",
+      "Almanya",
+      "Galler"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2020 Avrupa Futbol Şampiyonası şampiyonu kim oldu?",
+    "options": [
+      "İngiltere",
+      "İspanya",
+      "İtalya",
+      "Danimarka"
+    ],
+    "correct": 2
+  }
+]
