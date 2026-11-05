@@ -1,11 +1,11 @@
 
 const $=id=>document.getElementById(id);let ws,myId,phase='waiting',mode='classic',solo=false,deadline=null,selected=-1,locked=false,turn=0,board=[],players=[],rows=[],cols=[],boardNames=[],ticker,selection=[],selectionDeadline=null,authToken=sessionStorage.getItem('gameToken')||'',authUser='',quizLocked=false;
 const send=o=>ws?.readyState===1&&ws.send(JSON.stringify(o));const notice=s=>$('notice').textContent=s;const hideSuggest=()=>$('suggestion').classList.add('hidden');const modeNames={classic:'Klasik 3-2-1',custom:'Takımları Sen Seç',tictactoe:'Tic Tac Toe',quiz:'Futbol Bilgi Yarışması'};
-document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));$('players').disabled=mode==='classic';if(mode==='classic')$('players').value='multi'});
+document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));$('players').disabled=false});
 const codeFromUrl=new URLSearchParams(location.search).get('room');if(codeFromUrl)$('codeInput').value=codeFromUrl.toUpperCase();
 function goalFx(){const el=$('goalFx');el.classList.remove('play');void el.offsetWidth;el.classList.add('play');setTimeout(()=>el.classList.remove('play'),1500)}
 function socket(){if(ws&&(ws.readyState===WebSocket.OPEN||ws.readyState===WebSocket.CONNECTING))return;ws=new WebSocket((location.protocol==='https:'?'wss://':'ws://')+location.host);ws.onmessage=e=>handle(JSON.parse(e.data));ws.onclose=()=>{$('authMsg').textContent='Sunucu bağlantısı kesildi. Sayfayı yenileyin.';notice('Bağlantı kesildi. Sayfayı yenileyip yeniden katıl.')};ws.onerror=()=>{$('authMsg').textContent='Sunucuya bağlanılamadı. Render servisinin Live olduğunu kontrol edin.';notice('Sunucu bağlantı hatası.')};ws.onopen=()=>{if(authToken)send({type:'resume',token:authToken})}}
-function connect(action){if(!authUser)return alert('Önce giriş yap.');if(ws?.readyState!==1)return alert('Sunucu bağlantısı kurulamadı. Sayfayı yenile.');send({type:action,code:$('codeInput').value,mode,solo:$('players').value==='solo',opponent:$('players').value==='bot'?'bot':'human',difficulty:difficultySelect.value})}
+function connect(action){if(!authUser)return alert('Önce giriş yap.');if(ws?.readyState!==1)return alert('Sunucu bağlantısı kurulamadı. Sayfayı yenile.');send({type:action,code:$('codeInput').value,mode,solo:$('players').value==='solo',opponent:$('players').value.startsWith('bot-')?'bot':'human',difficulty:$('players').value.startsWith('bot-')?$('players').value.slice(4):'medium'})}
 const historyPanel=document.createElement('aside');
 historyPanel.id='customHistory';
 historyPanel.style.cssText='display:none;max-width:380px;margin:8px 0 12px auto;padding:10px 12px;background:rgba(8,28,42,.82);border:1px solid rgba(255,255,255,.15);border-radius:12px;font-size:12px;overflow-x:auto';
@@ -25,17 +25,12 @@ function renderCustomHistory(items){
  historyPanel.append(table)
 }
 let previousCustomSelection=null;
-const difficultyLabel=document.createElement('label');difficultyLabel.textContent='Yapay zekâ zorluğu';difficultyLabel.id='aiDifficultyLabel';
-const difficultySelect=document.createElement('select');difficultySelect.id='aiDifficulty';
-for(const [value,name] of [['easy','Kolay · 3 turda 1 doğru'],['medium','Orta · 2 turda 1 doğru'],['hard','Zor · hızlı ve güçlü']]){
- const option=document.createElement('option');option.value=value;option.textContent=name;difficultySelect.append(option)
+const opponentSelect=$('players');
+for(const [value,name] of [['bot-easy','Kolay AI'],['bot-medium','Orta AI'],['bot-hard','Zor AI']]){
+ const option=document.createElement('option');option.value=value;option.textContent=name;opponentSelect.append(option)
 }
-difficultySelect.value='medium';
-$('players').insertAdjacentElement('afterend',difficultySelect);
-difficultySelect.insertAdjacentElement('beforebegin',difficultyLabel);
-function toggleDifficulty(){const visible=$('players').value==='bot';difficultyLabel.style.display=visible?'block':'none';difficultySelect.style.display=visible?'block':'none'}
-$('players').addEventListener('change',toggleDifficulty);
-const botOption=document.createElement('option');botOption.value='bot';botOption.textContent='Yapay zekaya karşı';$('players').append(botOption);toggleDifficulty();socket();let authWait=null;function submitAuth(action){const username=$('username').value.trim(),password=$('password').value;if(!username||!password){$('authMsg').textContent='Kullanıcı adı ve şifre girin.';return}if(!ws||ws.readyState!==WebSocket.OPEN){$('authMsg').textContent='Sunucu bağlantısı henüz hazır değil. Birkaç saniye bekleyip tekrar deneyin.';socket();return}clearTimeout(authWait);$('authMsg').textContent='Giriş kontrol ediliyor...';send({type:'auth',action,username,password});authWait=setTimeout(()=>{$('authMsg').textContent='Sunucu giriş isteğine yanıt vermiyor. Render Logs bölümünü kontrol edin.'},12000)}$('login').onclick=()=>submitAuth('login');$('register').onclick=()=>submitAuth('register');$('logout').onclick=()=>{sessionStorage.removeItem('gameToken');location.href='/'};
+opponentSelect.addEventListener('change',()=>{});
+socket();let authWait=null;function submitAuth(action){const username=$('username').value.trim(),password=$('password').value;if(!username||!password){$('authMsg').textContent='Kullanıcı adı ve şifre girin.';return}if(!ws||ws.readyState!==WebSocket.OPEN){$('authMsg').textContent='Sunucu bağlantısı henüz hazır değil. Birkaç saniye bekleyip tekrar deneyin.';socket();return}clearTimeout(authWait);$('authMsg').textContent='Giriş kontrol ediliyor...';send({type:'auth',action,username,password});authWait=setTimeout(()=>{$('authMsg').textContent='Sunucu giriş isteğine yanıt vermiyor. Render Logs bölümünü kontrol edin.'},12000)}$('login').onclick=()=>submitAuth('login');$('register').onclick=()=>submitAuth('register');$('logout').onclick=()=>{sessionStorage.removeItem('gameToken');location.href='/'};
 function handle(m){
 if(m.type==='authError'||m.type==='authenticated')clearTimeout(authWait);
 if(m.type==='authError'){$('authMsg').textContent=m.message;return}
@@ -53,4 +48,34 @@ function renderGrid(mine){$('gridTitle').textContent=modeNames[mode];let el=$('b
 let serverOffset=0;function tick(){clearInterval(ticker);let update=()=>{const now=Date.now()+serverOffset;const playing=phase==='playing'&&Number.isFinite(deadline);const n=playing?Math.max(0,Math.ceil((deadline-now)/1000)):null;const value=n===null?'—':String(n);$('timer').textContent=value;$('quizClock').textContent=value;$('gridClock').textContent=value;const setup=phase==='setup'&&Number.isFinite(selectionDeadline);$('selectionClock').textContent=setup?String(Math.max(0,Math.ceil((selectionDeadline-now)/1000))):'—';$('timer').classList.toggle('low',n!==null&&n<=5)};update();ticker=setInterval(update,200)}
 $('adminRefresh').onclick=()=>send({type:'adminStats'});$('backLobby').onclick=()=>{if(confirm('Odadan ayrılıp oda listesine dönmek istiyor musun?'))send({type:'leaveRoom'})};$('refreshRooms').onclick=()=>send({type:'listRooms'});$('create').onclick=()=>connect('create');$('join').onclick=()=>connect('join');$('copy').onclick=async()=>{let link=location.origin+'/?room='+$('roomCode').textContent;try{await navigator.clipboard.writeText(link);notice('Davet bağlantısı kopyalandı!')}catch{prompt('Bu linki kopyala:',link)}};
 $('answerForm').onsubmit=e=>{e.preventDefault();let a=$('answer').value.trim();if(a&&!locked){locked=true;$('send').disabled=true;send({type:'answer',answer:a})}};$('gridForm').onsubmit=e=>{e.preventDefault();let a=$('gridAnswer').value.trim();if(a&&selected>=0){send({type:'gridAnswer',idx:selected,answer:a});$('gridForm').classList.add('hidden');selected=-1}};
+document.addEventListener('keydown',e=>{
+ if(e.key!=='Enter'||e.isComposing||e.repeat||e.defaultPrevented||e.ctrlKey||e.altKey||e.metaKey)return;
+ const active=document.activeElement;
+ if(active?.tagName==='TEXTAREA'||active?.tagName==='SELECT')return;
+ if(active?.tagName==='BUTTON'){e.preventDefault();active.click();return}
+ if(!$('auth').classList.contains('hidden')){
+   if(active?.id==='username'||active?.id==='password'){e.preventDefault();$('login').click()}return
+ }
+ if(!$('lobby').classList.contains('hidden')){
+   if(active?.id==='codeInput'){e.preventDefault();$('join').click()}
+   else if(active?.tagName!=='INPUT'){e.preventDefault();$('create').click()}
+   return
+ }
+ if($('game').classList.contains('hidden'))return;
+ if(mode==='custom'&&phase==='setup'){
+   if(active?.id==='customOwn'||active?.id==='customHistory'||active===document.body){e.preventDefault();const suggested=$('teamHint').querySelector('button');if(suggested)suggested.click();else $('submitOwn').click()}return
+ }
+ if(phase==='finished'){e.preventDefault();$('rematch').click();return}
+ if(phase!=='playing')return;
+ if(mode==='quiz'){
+   const options=[...$('quizOptions').querySelectorAll('button:not(:disabled)')];
+   if(options.length===1){e.preventDefault();options[0].click()}return
+ }
+ if(mode==='tictactoe'&&!$('gridForm').classList.contains('hidden')){
+   e.preventDefault();$('gridForm').requestSubmit();return
+ }
+ if((mode==='classic'||mode==='custom')&&!locked){
+   e.preventDefault();$('answerForm').requestSubmit()
+ }
+});
 $('submitOwn').onclick=()=>{let value=$('customOwn').value.trim();if(value)send({type:'selectTeam',name:value})};$('yes').onclick=()=>{hideSuggest();send({type:'confirmSuggestion',accept:true})};$('no').onclick=()=>{hideSuggest();send({type:'confirmSuggestion',accept:false})};$('rematch').onclick=()=>{send({type:'rematch'});notice('Yeni maç hazırlanıyor...')};
