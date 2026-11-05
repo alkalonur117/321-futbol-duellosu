@@ -25,6 +25,25 @@ function authSession(token){let v=sessions.get(token);if(!v||v.expires<Date.now(
 
 const norm=s=>String(s||'').toLocaleLowerCase('tr').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ı/g,'i').replace(/[^a-z0-9]/g,'');
 const dist=(a,b)=>{let p=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let c=[i];for(let j=1;j<=b.length;j++)c[j]=Math.min(c[j-1]+1,p[j]+1,p[j-1]+(a[i-1]!==b[j-1]));p=c}return p[b.length]};
+// Expand verified club intersections using player memberships already present in curated questions.
+const playerClubs=new Map(),playerNames=new Map();
+for(const q of questions)for(const answer of q.answers||[]){
+ const key=norm(answer);if(!key)continue;
+ if(!playerClubs.has(key))playerClubs.set(key,new Set());
+ q.teams.forEach(team=>playerClubs.get(key).add(team));playerNames.set(key,answer)
+}
+const generatedPairs=new Map(),originalPairs=new Set(questions.map(q=>q.teams.slice().sort().join('|')));
+for(const [key,clubs] of playerClubs){
+ const arr=[...clubs];
+ for(let i=0;i<arr.length;i++)for(let j=i+1;j<arr.length;j++){
+   const teams=[arr[i],arr[j]].sort(),id=teams.join('|');
+   if(originalPairs.has(id))continue;
+   if(!generatedPairs.has(id))generatedPairs.set(id,{teams,answers:[]});
+   const entry=generatedPairs.get(id),name=playerNames.get(key);
+   if(!entry.answers.includes(name))entry.answers.push(name)
+ }
+}
+questions.push(...generatedPairs.values());
 const extraTeams=['Istanbul Basaksehir','Trabzonspor','Adana Demirspor','Samsunspor','Konyaspor','Antalyaspor','Kasimpasa','Goztepe','Besiktas','Galatasaray','Fenerbahce','Bursaspor','Celtic','Rangers','Feyenoord','PSV Eindhoven','Sporting CP','Braga','Napoli','Lazio','Fiorentina','Atalanta','Bologna','Torino','Villarreal','Real Betis','Real Sociedad','Athletic Bilbao','Valencia','Girona','Bayer Leverkusen','RB Leipzig','Eintracht Frankfurt','Stuttgart','Wolfsburg','Borussia Monchengladbach','Marseille','Lyon','Monaco','Lille','Nice','Lens','Newcastle United','Aston Villa','West Ham United','Everton','Brighton','Nottingham Forest','Leicester City','Leeds United','Wolverhampton Wanderers','Boca Juniors','River Plate','Flamengo','Palmeiras','Al Hilal','Al Nassr','Al Ittihad','Inter Miami'];const teamNames=[...new Set([...questions.flatMap(q=>q.teams),...extraTeams])].sort();
 const teamAlias={'gs':'Galatasaray','fb':'Fenerbahce','bjk':'Besiktas','manu':'Manchester United','manutd':'Manchester United','manunited':'Manchester United','mancity':'Manchester City','psg':'Paris Saint-Germain','paris':'Paris Saint-Germain','real':'Real Madrid','barca':'Barcelona','bayern':'Bayern Munich','bvb':'Borussia Dortmund','milan':'AC Milan','intermilan':'Inter','juve':'Juventus','basaksehir':'Istanbul Basaksehir','basak':'Istanbul Basaksehir','ibb':'Istanbul Basaksehir','galata':'Galatasaray','fener':'Fenerbahce','trabzon':'Trabzonspor','besik':'Besiktas','adana':'Adana Demirspor'};
 const playerAlias={'cr7':'Cristiano Ronaldo','ronaldo':'Cristiano Ronaldo','leo':'Lionel Messi','neymarjr':'Neymar','dimaria':'Angel Di Maria'};
