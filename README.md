@@ -1,15 +1,21 @@
-# 3-2-1 Futbol Oyunları V3
+# 3-2-1 Futbol Düellosu — V5
 
-5 mod: Klasik 3-2-1, Takımları Sen Seç, Tic Tac Toe, Bingo ve Futbol Bilgi Yarışması.
+## Yenilikler
+- 250 farklı dört seçenekli futbol sorusu (Dünya Kupası, futbol kuralları, tarih, rekorlar, finaller, önemli goller, Türkiye, kadın futbolu, Şampiyonlar Ligi). Aynı maçta 250 soru bitmeden soru tekrarı olmaz; her maçta karıştırılır.
+- Kullanıcı girişi sonrası **açık odalar** listesi; 1/2 kişilik açık odaya katılma ve oda koduyla katılma.
+- Tic Tac Toe'da 15 saniyelik tur, sıra bildirimi, kazanılan karede sadece futbolcunun adı ve oyuncunun rengi.
+- Takımları Sen Seç: her oyuncu kendi takımını 20 saniyede seçer; eşleşme doğrulanınca 15 saniye cevap. Eksik veya geçersiz eşleşmede puan/sıra değişmez, yeniden takım seçilir.
+- Wikidata'dan takım bazlı sorgu: yerel eşleşme bulunmazsa iki kulüp Wikidata'da aranır ve P54 (oynadığı takım) ilişkilerinden ortak futbolcular sorgulanır. Sonuçlar 7 gün bellekte önbelleğe alınır.
+- Futbol Bingo kaldırıldı; dört mod: Klasik, Takımları Sen Seç, Tic Tac Toe, Futbol Bilgi Yarışması.
 
 ## Kurulum
-`npm install` ve `npm start`
+`npm install` ardından `npm start`. Render mevcut GitHub deposuna bu ZIP'in içindeki dosyaları yükleyip son commit'i dağıtabilir. `DATABASE_URL` PostgreSQL bağlantısı tanımlanırsa kullanıcı hesapları kalıcı tutulur. Tanımlanmazsa `accounts.json` kullanılır; Render'ın geçici diski yeniden başlatmalarda veri kaybedebilir.
 
-## Render
-Build: `npm install`; Start: `npm start`; Node. `DATABASE_URL` ortam değişkenini kalıcı PostgreSQL bağlantısı olarak ayarlayın. **ÖNEMLİ:** DATABASE_URL yoksa hesaplar `accounts.json` dosyasına yazılır. Render'ın geçici diskinde bu dosya deploy/restart sonrası kaybolabilir; kalıcı hesaplar için PostgreSQL zorunludur. Oyun odaları da RAM'de tutulur; sunucu yeniden başlatıldığında odalar kapanır.
+## Wikidata kapsamı ve sınırlamalar
+**Bu sürüm bütün dünya futbolcularını önceden indirmez.** Seçilen kulüp çiftinde yerel cevap yoksa, maç başlatılırken canlı Wikidata sorgusu yapar. Wikidata eksik olabilir, her futbolcunun profesyonelliği ayrı doğrulanmaz; altyapı, millî takım, aynı adlı kulüp ve kulüp kimliği karışıklıkları mümkün. Kulüp araması ilk uygun Wikidata sonucunu seçebilir. Canlı bağlantı kesilirse yeniden takım seçimi istenir. Bir çiftte 250'den fazla ortak futbolcu varsa sorgu ilk 250 ile sınırlıdır. Render yeniden başlayınca önbellek sıfırlanır. Kapsamlı profesyonel futbolcu veri havuzu için Wikidata dökümlerinden kalıcı PostgreSQL aktarımı ve P54 beyanlarının niteliklerine göre doğrulama sonraki geliştirmedir.
 
-## Giriş
-Kullanıcı adı 3–20 harf/rakam/alt çizgi; şifre en az 8 karakter. Şifreler scrypt+salt ile saklanır. Tarayıcı sekmesi kapatılınca oturum tokeni silinir.
-
-## Veri
-Örnek takım havuzu ve 12 bilgi sorusu. Gerçek Transfermarkt API bağlantısı yoktur.
+## Bilinen sınırlamalar
+- Canlı Wikidata sorgusu 20 saniyeye kadar sürebilir ve zaman aşımına uğrayabilir; oyun saati ancak doğrulamadan sonra başlar.
+- Odalar sunucu belleğindedir; servis yeniden başlarsa odalar kapanır. Açık oda listesi oluşturma/katılma/ayrılmada güncellenir, solo odalar listelenmez.
+- Soru havuzu editoryal kontrolden geçirilmelidir; kaynakça her sorunun içine işlenmemiştir. Soruların doğruluğunu yayına almadan önce ayrıca denetleyin.
+- Wikidata yapılandırılmış verileri CC0 kapsamındadır; kulüp logoları ve futbolcu fotoğrafları bu lisansa otomatik olarak dahil değildir.

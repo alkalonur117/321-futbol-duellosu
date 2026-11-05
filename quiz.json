@@ -2,10 +2,20 @@
   {
     "question": "2002 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
     "options": [
+      "İtalya",
       "Brezilya",
       "Almanya",
+      "Fransa"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "İtalya",
       "Fransa",
-      "İtalya"
+      "Brezilya",
+      "Almanya"
     ],
     "correct": 0
   },
@@ -14,109 +24,2629 @@
     "options": [
       "Hollanda",
       "İspanya",
+      "Arjantin",
+      "Almanya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
       "Almanya",
+      "Brezilya",
+      "Arjantin",
+      "Hollanda"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2018 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Hırvatistan",
+      "Belçika",
+      "Fransa",
+      "İngiltere"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2022 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Fas",
+      "Arjantin",
+      "Fransa",
+      "Hırvatistan"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Fransa",
+      "Brezilya",
+      "Hırvatistan",
+      "İtalya"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1994 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Bulgaristan",
+      "İsveç",
+      "Brezilya",
+      "İtalya"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1990 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Batı Almanya",
+      "İtalya",
+      "İngiltere",
       "Arjantin"
     ],
-    "correct": 1
+    "correct": 0
   },
   {
-    "question": "UEFA Şampiyonlar Ligi 2005 finalinde Liverpool hangi takımı yendi?",
+    "question": "1986 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
     "options": [
-      "Juventus",
-      "AC Milan",
-      "Chelsea",
-      "Bayern Münih"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "2014 FIFA Dünya Kupası finalinde Almanya kime karşı oynadı?",
-    "options": [
-      "Brezilya",
-      "Hollanda",
+      "Belçika",
+      "Batı Almanya",
       "Arjantin",
       "Fransa"
     ],
     "correct": 2
   },
   {
-    "question": "2022 FIFA Dünya Kupası şampiyonu kim oldu?",
+    "question": "1982 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
     "options": [
-      "Fransa",
-      "Arjantin",
-      "Hırvatistan",
-      "Fas"
-    ],
-    "correct": 1
-  },
-  {
-    "question": "2018 FIFA Dünya Kupası şampiyonu kim oldu?",
-    "options": [
-      "Fransa",
-      "Hırvatistan",
-      "Belçika",
-      "İngiltere"
+      "İtalya",
+      "Batı Almanya",
+      "Polonya",
+      "Fransa"
     ],
     "correct": 0
   },
   {
-    "question": "2006 FIFA Dünya Kupası finalinde İtalya hangi ülkeyi yendi?",
+    "question": "1978 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Arjantin",
+      "İtalya",
+      "Brezilya",
+      "Hollanda"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1974 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Brezilya",
+      "Batı Almanya",
+      "Polonya",
+      "Hollanda"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1970 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Uruguay",
+      "İtalya",
+      "Brezilya",
+      "Batı Almanya"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1966 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Batı Almanya",
+      "İngiltere",
+      "Sovyetler Birliği",
+      "Portekiz"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1962 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Brezilya",
+      "Çekoslovakya",
+      "Yugoslavya",
+      "Şili"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1958 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Fransa",
+      "Brezilya",
+      "İsveç",
+      "Batı Almanya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1954 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Uruguay",
+      "Avusturya",
+      "Batı Almanya",
+      "Macaristan"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1950 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Uruguay",
+      "Brezilya",
+      "İsveç",
+      "İspanya"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1938 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "İsveç",
+      "Brezilya",
+      "Macaristan",
+      "İtalya"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "1934 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Avusturya",
+      "İtalya",
+      "Almanya",
+      "Çekoslovakya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1930 FIFA Dünya Kupası şampiyonu hangi ülkeydi?",
+    "options": [
+      "Yugoslavya",
+      "Arjantin",
+      "ABD",
+      "Uruguay"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2004 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Yunanistan",
+      "Portekiz",
+      "Çekya",
+      "Hollanda"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2008 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "İspanya",
+      "Rusya",
+      "Almanya",
+      "Türkiye"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2012 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Portekiz",
+      "İspanya",
+      "İtalya",
+      "Almanya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2016 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Portekiz",
+      "Fransa",
+      "Almanya",
+      "Galler"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2020 adıyla düzenlenen ve 2021’de oynanan EURO turnuvasının şampiyonu kimdi?",
+    "options": [
+      "İngiltere",
+      "Danimarka",
+      "İspanya",
+      "İtalya"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "EURO 2024 şampiyonu kimdi?",
+    "options": [
+      "İspanya",
+      "Hollanda",
+      "İngiltere",
+      "Fransa"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1996 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Çekya",
+      "İngiltere",
+      "Fransa",
+      "Almanya"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "1992 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "İsveç",
+      "Danimarka",
+      "Hollanda",
+      "Almanya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1988 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "İtalya",
+      "Sovyetler Birliği",
+      "Hollanda",
+      "Batı Almanya"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1984 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Portekiz",
+      "Danimarka",
+      "Fransa",
+      "İspanya"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1980 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Batı Almanya",
+      "İtalya",
+      "Belçika",
+      "Çekoslovakya"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1976 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Hollanda",
+      "Batı Almanya",
+      "Yugoslavya",
+      "Çekoslovakya"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "1972 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Macaristan",
+      "Belçika",
+      "Sovyetler Birliği",
+      "Batı Almanya"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "1968 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "İngiltere",
+      "İtalya",
+      "Yugoslavya",
+      "Sovyetler Birliği"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1964 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Danimarka",
+      "Macaristan",
+      "İspanya",
+      "Sovyetler Birliği"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1960 Avrupa Futbol Şampiyonası şampiyonu kimdi?",
+    "options": [
+      "Fransa",
+      "Çekoslovakya",
+      "Yugoslavya",
+      "Sovyetler Birliği"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2005 UEFA Şampiyonlar Ligi finalini hangi takım kazandı?",
+    "options": [
+      "Liverpool",
+      "Chelsea",
+      "AC Milan",
+      "Juventus"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2006 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "AC Milan",
+      "Barcelona",
+      "Arsenal",
+      "Liverpool"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2007 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Manchester United",
+      "Chelsea",
+      "AC Milan",
+      "Liverpool"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2008 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Barcelona",
+      "Manchester United",
+      "Liverpool",
+      "Chelsea"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2009 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Manchester United",
+      "Chelsea",
+      "Arsenal",
+      "Barcelona"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2010 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Bayern Munich",
+      "Real Madrid",
+      "Inter",
+      "Barcelona"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2011 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Manchester United",
+      "Barcelona",
+      "Real Madrid",
+      "Chelsea"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2012 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Barcelona",
+      "Chelsea",
+      "Real Madrid",
+      "Bayern Munich"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2013 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Bayern Munich",
+      "Barcelona",
+      "Real Madrid",
+      "Borussia Dortmund"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2014 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Real Madrid",
+      "Chelsea",
+      "Atletico Madrid",
+      "Bayern Munich"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2015 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Bayern Munich",
+      "Real Madrid",
+      "Juventus",
+      "Barcelona"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2016 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Real Madrid",
+      "Atletico Madrid",
+      "Manchester City",
+      "Bayern Munich"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2017 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Atletico Madrid",
+      "Monaco",
+      "Juventus",
+      "Real Madrid"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2018 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Roma",
+      "Bayern Munich",
+      "Real Madrid",
+      "Liverpool"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2019 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Tottenham Hotspur",
+      "Liverpool",
+      "Barcelona",
+      "Ajax"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2020 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Bayern Munich",
+      "RB Leipzig",
+      "Paris Saint-Germain",
+      "Lyon"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2021 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Chelsea",
+      "Real Madrid",
+      "Paris Saint-Germain",
+      "Manchester City"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2022 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Villarreal",
+      "Manchester City",
+      "Real Madrid",
+      "Liverpool"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2023 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Inter",
+      "AC Milan",
+      "Real Madrid",
+      "Manchester City"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2024 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Paris Saint-Germain",
+      "Bayern Munich",
+      "Borussia Dortmund",
+      "Real Madrid"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2025 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Paris Saint-Germain",
+      "Arsenal",
+      "Barcelona",
+      "Inter"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2000 UEFA Kupası şampiyonu hangi Türk takımıydı?",
+    "options": [
+      "Beşiktaş",
+      "Galatasaray",
+      "Trabzonspor",
+      "Fenerbahçe"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2000 UEFA Süper Kupa maçında Galatasaray hangi takımı yendi?",
+    "options": [
+      "Manchester United",
+      "AC Milan",
+      "Barcelona",
+      "Real Madrid"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası’nda Türkiye kaçıncı oldu?",
+    "options": [
+      "Dördüncü",
+      "Beşinci",
+      "Üçüncü",
+      "İkinci"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası’nda Türkiye’nin Güney Kore karşısındaki 11. saniye golünü kim attı?",
+    "options": [
+      "İlhan Mansız",
+      "Hasan Şaş",
+      "Hakan Şükür",
+      "Emre Belözoğlu"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası’nda Türkiye’nin teknik direktörü kimdi?",
+    "options": [
+      "Ersun Yanal",
+      "Şenol Güneş",
+      "Fatih Terim",
+      "Mustafa Denizli"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "EURO 2008’de Türkiye’yi yarı finale taşıyan teknik direktör kimdi?",
+    "options": [
+      "Şenol Güneş",
+      "Fatih Terim",
+      "Mustafa Denizli",
+      "Abdullah Avcı"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Türkiye 2002 Dünya Kupası yarı finalinde hangi ülkeye elendi?",
+    "options": [
+      "Güney Kore",
+      "Fransa",
+      "Almanya",
+      "Brezilya"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "EURO 2008 yarı finalinde Türkiye hangi ülkeye elendi?",
+    "options": [
+      "İspanya",
+      "Almanya",
+      "Portekiz",
+      "Rusya"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Galatasaray’ın 2000 UEFA Kupası finalindeki rakibi kimdi?",
+    "options": [
+      "Arsenal",
+      "Leeds United",
+      "Borussia Dortmund",
+      "Parma"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Galatasaray 2000 UEFA Kupası finalini hangi yöntemle kazandı?",
+    "options": [
+      "Uzatmada 2-1",
+      "Normal sürede 1-0",
+      "Uzatmada altın gol",
+      "Penaltı atışları"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Lionel Messi 2022 FIFA Dünya Kupası’nı hangi ülkeyle kazandı?",
+    "options": [
+      "İspanya",
+      "Brezilya",
+      "Arjantin",
+      "Portekiz"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Cristiano Ronaldo ilk Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2010",
+      "2012",
+      "2008",
+      "2006"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Lionel Messi ilk Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2007",
+      "2009",
+      "2011",
+      "2013"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Luka Modric Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2022",
+      "2018",
+      "2020",
+      "2016"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Karim Benzema Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2020",
+      "2019",
+      "2022",
+      "2023"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Kaka Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2009",
+      "2005",
+      "2011",
+      "2007"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "Ronaldinho Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2005",
+      "2009",
+      "2003",
+      "2007"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Andriy Shevchenko Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2006",
+      "2004",
+      "2008",
+      "2002"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Pavel Nedved Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2007",
+      "2005",
+      "2003",
+      "2001"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Ronaldo Nazario ilk Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "1995",
+      "1997",
+      "2001",
+      "1999"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Zinedine Zidane Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2000",
+      "1998",
+      "2002",
+      "1996"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "Fabio Cannavaro Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2006",
+      "2010",
+      "2004",
+      "2008"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "George Weah Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "1995",
+      "1997",
+      "1999",
+      "1993"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "Michael Owen Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "1999",
+      "2005",
+      "2001",
+      "2003"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "Luis Figo Ballon d’Or ödülünü hangi yıl kazandı?",
+    "options": [
+      "2002",
+      "2004",
+      "1998",
+      "2000"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası finalinde Almanya’nın golünü kim attı?",
+    "options": [
+      "Mesut Özil",
+      "Miroslav Klose",
+      "Mario Götze",
+      "Thomas Müller"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2010 FIFA Dünya Kupası finalinde İspanya’nın golünü kim attı?",
+    "options": [
+      "Xavi",
+      "Andrés Iniesta",
+      "Fernando Torres",
+      "David Villa"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası finalinde Zidane hangi ülkeye karşı oynadı?",
     "options": [
       "Almanya",
-      "Fransa",
+      "İtalya",
       "Portekiz",
       "Brezilya"
     ],
     "correct": 1
   },
   {
-    "question": "2012 Avrupa Futbol Şampiyonası finalini kim kazandı?",
+    "question": "2022 FIFA Dünya Kupası finalinde Arjantin’in rakibi kimdi?",
     "options": [
-      "İtalya",
-      "Almanya",
-      "İspanya",
-      "Portekiz"
-    ],
-    "correct": 2
-  },
-  {
-    "question": "2004 Avrupa Futbol Şampiyonası şampiyonu kim oldu?",
-    "options": [
-      "Portekiz",
-      "Yunanistan",
-      "Çekya",
-      "Hollanda"
+      "Fas",
+      "Fransa",
+      "Hollanda",
+      "Hırvatistan"
     ],
     "correct": 1
   },
   {
-    "question": "1998 FIFA Dünya Kupası şampiyonu kim oldu?",
+    "question": "2018 FIFA Dünya Kupası finalinde Fransa’nın rakibi kimdi?",
+    "options": [
+      "Uruguay",
+      "Belçika",
+      "İngiltere",
+      "Hırvatistan"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası finalinde Almanya’nın rakibi kimdi?",
+    "options": [
+      "Arjantin",
+      "Brezilya",
+      "Fransa",
+      "Hollanda"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2010 FIFA Dünya Kupası finalinde İspanya’nın rakibi kimdi?",
+    "options": [
+      "Almanya",
+      "Hollanda",
+      "Uruguay",
+      "Portekiz"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası finalinde Brezilya’nın rakibi kimdi?",
+    "options": [
+      "Güney Kore",
+      "İngiltere",
+      "Almanya",
+      "Türkiye"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası finalinde Fransa’nın rakibi kimdi?",
+    "options": [
+      "İtalya",
+      "Brezilya",
+      "Hollanda",
+      "Hırvatistan"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "1994 FIFA Dünya Kupası finalinde Brezilya’nın rakibi kimdi?",
+    "options": [
+      "Bulgaristan",
+      "İtalya",
+      "İspanya",
+      "İsveç"
+    ],
+    "correct": 1
+  },
+  {
+    "question": "UEFA Şampiyonlar Ligi tarihindeki ilk şampiyon (1992-93) kimdi?",
+    "options": [
+      "Marseille",
+      "Barcelona",
+      "Ajax",
+      "AC Milan"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "1999 UEFA Şampiyonlar Ligi finalinde Bayern Munich’i yenen takım kimdi?",
+    "options": [
+      "Juventus",
+      "Barcelona",
+      "Real Madrid",
+      "Manchester United"
+    ],
+    "correct": 3
+  },
+  {
+    "question": "2004 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Deportivo La Coruna",
+      "Chelsea",
+      "Porto",
+      "Monaco"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2003 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "AC Milan",
+      "Real Madrid",
+      "Inter",
+      "Juventus"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2002 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Bayer Leverkusen",
+      "Manchester United",
+      "Real Madrid",
+      "Barcelona"
+    ],
+    "correct": 2
+  },
+  {
+    "question": "2001 UEFA Şampiyonlar Ligi şampiyonu hangi takımdı?",
+    "options": [
+      "Bayern Munich",
+      "Valencia",
+      "Real Madrid",
+      "Manchester United"
+    ],
+    "correct": 0
+  },
+  {
+    "question": "2004 UEFA Şampiyonlar Ligi finalinde Porto–Monaco maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "2-0",
+      "1-0",
+      "2-1",
+      "3-0"
+    ],
+    "correct": 3,
+    "category": "şl-skor"
+  },
+  {
+    "question": "1974 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Grzegorz Lato",
+      "Paolo Rossi",
+      "Mario Kempes",
+      "Gary Lineker"
+    ],
+    "correct": 0,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2025-26 IFAB kurallarına göre kırmızı kart neyi ifade eder?",
+    "options": [
+      "İhtar",
+      "Oyundan ihraç",
+      "Ofsayt",
+      "Endirekt serbest vuruş"
+    ],
+    "correct": 1,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Meksika",
+      "İtalya",
+      "Almanya",
+      "Fransa"
+    ],
+    "correct": 2,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2022 UEFA Şampiyonlar Ligi finalinde Real Madrid–Liverpool maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "2-1",
+      "1-0",
+      "3-0",
+      "2-0"
+    ],
+    "correct": 1,
+    "category": "şl-skor"
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Fransa",
+      "Meksika",
+      "İtalya",
+      "Güney Kore ve Japonya"
+    ],
+    "correct": 3,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2002 Dünya Kupası finalinde Brezilya’nın iki golünü kim attı?",
+    "options": [
+      "Kaká",
+      "Ronaldinho",
+      "Rivaldo",
+      "Ronaldo Nazário"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2009 UEFA Şampiyonlar Ligi finalinde Barcelona hangi takımla karşılaştı?",
+    "options": [
+      "Manchester United",
+      "Inter",
+      "Borussia Dortmund",
+      "Chelsea"
+    ],
+    "correct": 0,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "Dünya Kupası tarihinde ilk sarı kart gören oyuncu kimdir?",
+    "options": [
+      "Garrincha",
+      "Bobby Moore",
+      "Kakhi Asatiani",
+      "Carlos Caszely"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "Dünya Kupası’nda sarı ve kırmızı kartlar ilk hangi turnuvada uygulandı?",
+    "options": [
+      "1974 Batı Almanya",
+      "1966 İngiltere",
+      "1970 Meksika",
+      "1978 Arjantin"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "Kalecinin takım arkadaşından ayakla gelen kasıtlı geri pası elle tutmasını yasaklayan kural hangi yılda geldi?",
+    "options": [
+      "1998",
+      "1992",
+      "1990",
+      "1982"
+    ],
+    "correct": 1,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1966 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Mario Kempes",
+      "Grzegorz Lato",
+      "Eusébio",
+      "Gerd Müller"
+    ],
+    "correct": 2,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1982 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "2-1",
+      "3-1",
+      "2-0",
+      "1-0"
+    ],
+    "correct": 1,
+    "category": "final-skor"
+  },
+  {
+    "question": "1954 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-2",
+      "1-0",
+      "3-1",
+      "2-1"
+    ],
+    "correct": 0,
+    "category": "final-skor"
+  },
+  {
+    "question": "2014 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "6",
+      "5",
+      "4",
+      "3"
+    ],
+    "correct": 0,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "1978 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Arjantin",
+      "İtalya",
+      "Meksika",
+      "Fransa"
+    ],
+    "correct": 0,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1966 FIFA Dünya Kupası finalinde İngiltere hangi takımı mağlup etti?",
+    "options": [
+      "Batı Almanya",
+      "Hollanda",
+      "Hırvatistan",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2018 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "6",
+      "4",
+      "3",
+      "5"
+    ],
+    "correct": 0,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2003 UEFA Şampiyonlar Ligi finalinde Milan hangi takımla karşılaştı?",
+    "options": [
+      "Bayer Leverkusen",
+      "Juventus",
+      "Monaco",
+      "Porto"
+    ],
+    "correct": 1,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1958 FIFA Dünya Kupası finalinde Brezilya hangi takımı mağlup etti?",
+    "options": [
+      "Fransa",
+      "Arjantin",
+      "İsveç",
+      "İtalya"
+    ],
+    "correct": 2,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1994 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "Meksika",
+      "ABD",
+      "Fransa"
+    ],
+    "correct": 2,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1998 Dünya Kupası finalinde Fransa adına iki gol atan oyuncu kimdi?",
+    "options": [
+      "David Trezeguet",
+      "Patrick Vieira",
+      "Thierry Henry",
+      "Zinedine Zidane"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "Bir Dünya Kupası maçında 5 gol atan futbolcu kimdir?",
+    "options": [
+      "Gary Lineker",
+      "Just Fontaine",
+      "Miroslav Klose",
+      "Oleg Salenko"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2014 UEFA Şampiyonlar Ligi finalinde Real Madrid hangi takımla karşılaştı?",
+    "options": [
+      "Milan",
+      "Atlético Madrid",
+      "Juventus",
+      "Bayer Leverkusen"
+    ],
+    "correct": 1,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1970 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "2-1",
+      "4-1"
+    ],
+    "correct": 3,
+    "category": "final-skor"
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "1-1",
+      "2-1"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "1970 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Mario Kempes",
+      "Gerd Müller",
+      "Grzegorz Lato",
+      "Paolo Rossi"
+    ],
+    "correct": 1,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1990 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "2-0",
+      "3-1",
+      "2-1",
+      "1-0"
+    ],
+    "correct": 3,
+    "category": "final-skor"
+  },
+  {
+    "question": "1958 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "İsveç",
+      "Fransa",
+      "Meksika"
+    ],
+    "correct": 1,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "Dünya Kupası tarihinin en genç golcüsü kimdir?",
+    "options": [
+      "Kylian Mbappé",
+      "Lionel Messi",
+      "Pelé",
+      "Michael Owen"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2010 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "2-0",
+      "2-1"
+    ],
+    "correct": 1,
+    "category": "final-skor"
+  },
+  {
+    "question": "2018 UEFA Şampiyonlar Ligi finalinde Real Madrid hangi takımla karşılaştı?",
+    "options": [
+      "Arsenal",
+      "Monaco",
+      "Barcelona",
+      "Liverpool"
+    ],
+    "correct": 3,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1990 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "Fransa",
+      "Meksika",
+      "İspanya"
+    ],
+    "correct": 0,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1978 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "2-1",
+      "1-0",
+      "3-1",
+      "2-0"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "2018 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "4-2",
+      "3-1",
+      "2-1",
+      "1-0"
+    ],
+    "correct": 0,
+    "category": "final-skor"
+  },
+  {
+    "question": "Dünya Kupası tarihinde ilk kırmızı kartı gören futbolcu kimdir?",
+    "options": [
+      "David Beckham",
+      "Kakhi Asatiani",
+      "Zinedine Zidane",
+      "Carlos Caszely"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1982 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Paolo Rossi",
+      "Gary Lineker",
+      "Oleg Salenko",
+      "Salvatore Schillaci"
+    ],
+    "correct": 0,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2012 UEFA Şampiyonlar Ligi finalinde Chelsea–Bayern Münih maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "1-1",
+      "2-1",
+      "1-0",
+      "2-0"
+    ],
+    "correct": 0,
+    "category": "şl-skor"
+  },
+  {
+    "question": "1982 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "5",
+      "3",
+      "4",
+      "6"
+    ],
+    "correct": 3,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2016 UEFA Şampiyonlar Ligi finalinde Real Madrid hangi takımla karşılaştı?",
+    "options": [
+      "Juventus",
+      "Monaco",
+      "Atlético Madrid",
+      "Porto"
+    ],
+    "correct": 2,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2015 UEFA Şampiyonlar Ligi finalinde Barcelona hangi takımla karşılaştı?",
+    "options": [
+      "Porto",
+      "Bayer Leverkusen",
+      "Milan",
+      "Juventus"
+    ],
+    "correct": 3,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2000 UEFA Şampiyonlar Ligi finalinde Real Madrid hangi takımla karşılaştı?",
+    "options": [
+      "Bayer Leverkusen",
+      "Bayern Münih",
+      "Valencia",
+      "Milan"
+    ],
+    "correct": 2,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1962 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "1-0",
+      "2-0",
+      "3-1",
+      "2-1"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Eusébio",
+      "Flórián Albert",
+      "Ronaldo Nazário",
+      "Gerd Müller"
+    ],
+    "correct": 2,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2010 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Fransa",
+      "Meksika",
+      "İtalya",
+      "Güney Afrika"
+    ],
+    "correct": 3,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2014 Dünya Kupası finalindeki tek golü kim attı?",
+    "options": [
+      "Mario Götze",
+      "Miroslav Klose",
+      "Toni Kroos",
+      "Thomas Müller"
+    ],
+    "correct": 0,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1990 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 3,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "2-1",
+      "2-0",
+      "1-0"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "2001 UEFA Şampiyonlar Ligi finalinde Bayern Münih hangi takımla karşılaştı?",
+    "options": [
+      "Valencia",
+      "Juventus",
+      "Milan",
+      "Bayer Leverkusen"
+    ],
+    "correct": 0,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1930 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "2-1",
+      "4-2"
+    ],
+    "correct": 3,
+    "category": "final-skor"
+  },
+  {
+    "question": "1978 FIFA Dünya Kupası finalinde Arjantin hangi takımı mağlup etti?",
+    "options": [
+      "Hollanda",
+      "Fransa",
+      "Almanya",
+      "İtalya"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası finalinde Fransa hangi takımı mağlup etti?",
     "options": [
       "Brezilya",
+      "Almanya",
+      "İspanya",
+      "İtalya"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1930 FIFA Dünya Kupası finalinde Uruguay hangi takımı mağlup etti?",
+    "options": [
       "İtalya",
+      "Arjantin",
+      "Fransa",
+      "Brezilya"
+    ],
+    "correct": 1,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1970 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "5",
+      "3",
+      "10",
+      "4"
+    ],
+    "correct": 2,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2008 UEFA Şampiyonlar Ligi finalinde Manchester United–Chelsea maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "1-1",
+      "2-0",
+      "2-1",
+      "1-0"
+    ],
+    "correct": 0,
+    "category": "şl-skor"
+  },
+  {
+    "question": "Ofsaytta hücumcunun sondan ikinci savunmacıyla aynı hizada olmasına izin veren değişiklik hangi yıl yapıldı?",
+    "options": [
+      "1970",
+      "2005",
+      "1986",
+      "1990"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1958 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Just Fontaine",
+      "Gerd Müller",
+      "Eusébio",
+      "Flórián Albert"
+    ],
+    "correct": 0,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1982 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İspanya",
+      "Fransa",
+      "İtalya",
+      "Meksika"
+    ],
+    "correct": 0,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1986 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 3,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "1930 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Fransa",
+      "Meksika",
+      "İtalya",
+      "Uruguay"
+    ],
+    "correct": 3,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1974 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Meksika",
+      "Batı Almanya",
+      "Fransa",
+      "İtalya"
+    ],
+    "correct": 1,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1954 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Fransa",
+      "İtalya",
+      "Meksika",
+      "İsviçre"
+    ],
+    "correct": 3,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2018 FIFA Dünya Kupası finalinde Fransa hangi takımı mağlup etti?",
+    "options": [
+      "Hırvatistan",
+      "İspanya",
+      "Almanya",
+      "İngiltere"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-0",
+      "3-1",
+      "1-0",
+      "2-1"
+    ],
+    "correct": 0,
+    "category": "final-skor"
+  },
+  {
+    "question": "1970 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İspanya",
+      "İtalya",
+      "Fransa",
+      "Meksika"
+    ],
+    "correct": 3,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2002 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "8",
+      "4",
+      "3",
+      "5"
+    ],
+    "correct": 0,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2000 UEFA Şampiyonlar Ligi finalinde Real Madrid–Valencia maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "3-0",
+      "2-0",
+      "1-0",
+      "2-1"
+    ],
+    "correct": 0,
+    "category": "şl-skor"
+  },
+  {
+    "question": "1938 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "2-1",
+      "4-2"
+    ],
+    "correct": 3,
+    "category": "final-skor"
+  },
+  {
+    "question": "Dünya Kupası tarihinde gol atan en yaşlı futbolcu kimdir?",
+    "options": [
+      "Roger Milla",
+      "Dino Zoff",
+      "Pepe",
+      "Gianluigi Buffon"
+    ],
+    "correct": 0,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2006 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "4",
+      "6",
+      "3",
+      "5"
+    ],
+    "correct": 3,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2024 UEFA Şampiyonlar Ligi finalinde Real Madrid–Borussia Dortmund maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "1-0",
+      "2-0",
+      "2-1",
+      "3-0"
+    ],
+    "correct": 1,
+    "category": "şl-skor"
+  },
+  {
+    "question": "1934 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Meksika",
+      "Fransa",
+      "İtalya",
+      "İspanya"
+    ],
+    "correct": 2,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Grzegorz Lato",
+      "Mario Kempes",
+      "Paolo Rossi",
+      "James Rodríguez"
+    ],
+    "correct": 3,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1986 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İspanya",
+      "Fransa",
+      "Meksika",
+      "İtalya"
+    ],
+    "correct": 2,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1934 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "2-0",
+      "1-0",
+      "2-1",
+      "3-1"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "2011 UEFA Şampiyonlar Ligi finalinde Barcelona hangi takımla karşılaştı?",
+    "options": [
+      "Real Madrid",
+      "Bayern Münih",
+      "Valencia",
+      "Manchester United"
+    ],
+    "correct": 3,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2020 UEFA Şampiyonlar Ligi finalinde Bayern Münih–Paris Saint-Germain maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "3-0",
+      "1-0",
+      "2-0",
+      "2-1"
+    ],
+    "correct": 1,
+    "category": "şl-skor"
+  },
+  {
+    "question": "1982 FIFA Dünya Kupası finalinde İtalya hangi takımı mağlup etti?",
+    "options": [
+      "Hollanda",
+      "İngiltere",
+      "İspanya",
+      "Batı Almanya"
+    ],
+    "correct": 3,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2022 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Salvatore Schillaci",
+      "Gary Lineker",
+      "Paolo Rossi",
+      "Kylian Mbappé"
+    ],
+    "correct": 3,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2018 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Paolo Rossi",
+      "Harry Kane",
+      "Mario Kempes",
+      "Gary Lineker"
+    ],
+    "correct": 1,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "Fransa",
+      "İspanya",
+      "Meksika"
+    ],
+    "correct": 1,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2019 UEFA Şampiyonlar Ligi finalinde Liverpool hangi takımla karşılaştı?",
+    "options": [
+      "Monaco",
+      "Tottenham",
+      "Barcelona",
+      "Arsenal"
+    ],
+    "correct": 1,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası finalinde Almanya hangi takımı mağlup etti?",
+    "options": [
+      "Fransa",
+      "Arjantin",
+      "İspanya",
+      "İtalya"
+    ],
+    "correct": 1,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2022 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "3-3",
+      "2-1",
+      "1-0"
+    ],
+    "correct": 1,
+    "category": "final-skor"
+  },
+  {
+    "question": "1938 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "Meksika",
+      "Fransa",
+      "İspanya"
+    ],
+    "correct": 2,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2013 UEFA Şampiyonlar Ligi finalinde Bayern Münih hangi takımla karşılaştı?",
+    "options": [
+      "Milan",
+      "Borussia Dortmund",
+      "Valencia",
+      "Bayer Leverkusen"
+    ],
+    "correct": 1,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1966 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "2-1",
+      "1-0",
+      "3-1",
+      "4-2"
+    ],
+    "correct": 3,
+    "category": "final-skor"
+  },
+  {
+    "question": "1978 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "3",
+      "4",
+      "5",
+      "6"
+    ],
+    "correct": 3,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "1966 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İngiltere",
+      "Fransa",
+      "Meksika",
+      "İtalya"
+    ],
+    "correct": 0,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1934 FIFA Dünya Kupası finalinde İtalya hangi takımı mağlup etti?",
+    "options": [
+      "İspanya",
+      "Çekoslovakya",
+      "Almanya",
+      "İngiltere"
+    ],
+    "correct": 1,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2014 UEFA Şampiyonlar Ligi finalinde Real Madrid–Atlético Madrid maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "2-1",
+      "4-1",
+      "1-0",
+      "2-0"
+    ],
+    "correct": 1,
+    "category": "şl-skor"
+  },
+  {
+    "question": "2022 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Katar",
+      "Meksika",
+      "İtalya",
+      "Fransa"
+    ],
+    "correct": 0,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1999 UEFA Şampiyonlar Ligi finalinde Manchester United hangi takımla karşılaştı?",
+    "options": [
+      "Bayer Leverkusen",
+      "Real Madrid",
+      "Bayern Münih",
+      "Valencia"
+    ],
+    "correct": 2,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1974 FIFA Dünya Kupası finalinde Batı Almanya hangi takımı mağlup etti?",
+    "options": [
+      "Arjantin",
+      "Fransa",
+      "Brezilya",
+      "Hollanda"
+    ],
+    "correct": 3,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "1-0",
+      "3-1",
+      "2-1",
+      "2-0"
+    ],
+    "correct": 0,
+    "category": "final-skor"
+  },
+  {
+    "question": "1986 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "2-1",
+      "3-1",
+      "3-2",
+      "1-0"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "1950 Dünya Kupası şampiyonunu belirleyen Brezilya–Uruguay maçının skoru neydi?",
+    "options": [
+      "1-1",
+      "0-1",
+      "1-2",
+      "2-1"
+    ],
+    "correct": 2,
+    "category": "tarihî-maç"
+  },
+  {
+    "question": "2002 UEFA Şampiyonlar Ligi finalinde Real Madrid hangi takımla karşılaştı?",
+    "options": [
+      "Bayer Leverkusen",
+      "Milan",
+      "Porto",
+      "Juventus"
+    ],
+    "correct": 0,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1966 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "3",
+      "5",
+      "9",
+      "4"
+    ],
+    "correct": 2,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "1974 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "4",
+      "7",
+      "5",
+      "3"
+    ],
+    "correct": 1,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2002 UEFA Şampiyonlar Ligi finalinde Real Madrid–Bayer Leverkusen maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "1-0",
+      "3-0",
+      "2-0",
+      "2-1"
+    ],
+    "correct": 3,
+    "category": "şl-skor"
+  },
+  {
+    "question": "2010 Dünya Kupası finalindeki tek golü kim attı?",
+    "options": [
+      "David Villa",
+      "Fernando Torres",
+      "Andrés Iniesta",
+      "Xavi"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1978 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Mario Kempes",
+      "Paolo Rossi",
+      "Salvatore Schillaci",
+      "Gary Lineker"
+    ],
+    "correct": 0,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2008 UEFA Şampiyonlar Ligi finalinde Manchester United hangi takımla karşılaştı?",
+    "options": [
+      "Barcelona",
+      "Inter",
+      "Chelsea",
+      "Arsenal"
+    ],
+    "correct": 2,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2002 FIFA Dünya Kupası finalinde Brezilya hangi takımı mağlup etti?",
+    "options": [
+      "Almanya",
+      "Hollanda",
+      "Uruguay",
+      "İngiltere"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1970 FIFA Dünya Kupası finalinde Brezilya hangi takımı mağlup etti?",
+    "options": [
+      "Çekoslovakya",
+      "İsveç",
+      "Macaristan",
+      "İtalya"
+    ],
+    "correct": 3,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2022 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "4",
+      "5",
+      "3",
+      "8"
+    ],
+    "correct": 3,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2014 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "Meksika",
+      "Brezilya",
+      "Fransa"
+    ],
+    "correct": 2,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1998 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Flórián Albert",
+      "Davor Šuker",
+      "Eusébio",
+      "Just Fontaine"
+    ],
+    "correct": 1,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1986 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Davor Šuker",
+      "Gary Lineker",
+      "Oleg Salenko",
+      "Salvatore Schillaci"
+    ],
+    "correct": 1,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2016 UEFA Şampiyonlar Ligi finalinde Real Madrid–Atlético Madrid maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "2-0",
+      "2-1",
+      "1-1",
+      "1-0"
+    ],
+    "correct": 2,
+    "category": "şl-skor"
+  },
+  {
+    "question": "1990 FIFA Dünya Kupası finalinde Batı Almanya hangi takımı mağlup etti?",
+    "options": [
+      "Çekoslovakya",
+      "Brezilya",
+      "Macaristan",
+      "Arjantin"
+    ],
+    "correct": 3,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2010 UEFA Şampiyonlar Ligi finalinde Inter hangi takımla karşılaştı?",
+    "options": [
+      "Atlético Madrid",
+      "Chelsea",
+      "Borussia Dortmund",
+      "Bayern Münih"
+    ],
+    "correct": 3,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "Ofsayt kuralında üç savunmacı şartı ikiye hangi yılda indirildi?",
+    "options": [
+      "1902",
+      "1990",
+      "1925",
+      "1866"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1974 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "2-1",
+      "2-0"
+    ],
+    "correct": 2,
+    "category": "final-skor"
+  },
+  {
+    "question": "1986 FIFA Dünya Kupası finalinde Arjantin hangi takımı mağlup etti?",
+    "options": [
+      "Uruguay",
+      "İsveç",
+      "Batı Almanya",
+      "Hırvatistan"
+    ],
+    "correct": 2,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Gerd Müller",
+      "Miroslav Klose",
+      "Eusébio",
+      "Grzegorz Lato"
+    ],
+    "correct": 1,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1958 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "3",
+      "13",
+      "4",
+      "5"
+    ],
+    "correct": 1,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "2005 UEFA Şampiyonlar Ligi finalinde Liverpool hangi takımla karşılaştı?",
+    "options": [
+      "Milan",
+      "Monaco",
+      "Barcelona",
+      "Porto"
+    ],
+    "correct": 0,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2012 UEFA Şampiyonlar Ligi finalinde Chelsea hangi takımla karşılaştı?",
+    "options": [
+      "Bayer Leverkusen",
+      "Real Madrid",
+      "Valencia",
+      "Bayern Münih"
+    ],
+    "correct": 3,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1998 Dünya Kupası gol kralı kaç gol attı?",
+    "options": [
+      "5",
+      "6",
+      "3",
+      "4"
+    ],
+    "correct": 1,
+    "category": "gol-sayısı"
+  },
+  {
+    "question": "1958 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "1-0",
+      "5-2",
+      "3-1",
+      "2-1"
+    ],
+    "correct": 1,
+    "category": "final-skor"
+  },
+  {
+    "question": "2006 UEFA Şampiyonlar Ligi finalinde Barcelona hangi takımla karşılaştı?",
+    "options": [
+      "Porto",
+      "Arsenal",
+      "Monaco",
+      "Liverpool"
+    ],
+    "correct": 1,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "Dünya Kupası tarihinin ilk golü hangi yıl atıldı?",
+    "options": [
+      "1928",
+      "1934",
+      "1938",
+      "1930"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2010 UEFA Şampiyonlar Ligi finalinde Inter–Bayern Münih maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "2-1",
+      "2-0",
+      "3-0",
+      "1-0"
+    ],
+    "correct": 1,
+    "category": "şl-skor"
+  },
+  {
+    "question": "2007 UEFA Şampiyonlar Ligi finalinde Milan hangi takımla karşılaştı?",
+    "options": [
+      "Liverpool",
+      "Chelsea",
+      "Barcelona",
+      "Arsenal"
+    ],
+    "correct": 0,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "1994 FIFA Dünya Kupası finalinin normal süre ve uzatmalar sonunda skoru neydi? (Şampiyonun golleri önce)",
+    "options": [
+      "3-1",
+      "1-0",
+      "2-1",
+      "0-0"
+    ],
+    "correct": 3,
+    "category": "final-skor"
+  },
+  {
+    "question": "1962 FIFA Dünya Kupası finalinde Brezilya hangi takımı mağlup etti?",
+    "options": [
+      "Almanya",
+      "İngiltere",
+      "Çekoslovakya",
+      "İspanya"
+    ],
+    "correct": 2,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2010 FIFA Dünya Kupası finalinde İspanya hangi takımı mağlup etti?",
+    "options": [
+      "Çekoslovakya",
+      "Brezilya",
+      "Batı Almanya",
+      "Hollanda"
+    ],
+    "correct": 3,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2017 UEFA Şampiyonlar Ligi finalinde Real Madrid hangi takımla karşılaştı?",
+    "options": [
+      "Liverpool",
+      "Barcelona",
+      "Monaco",
+      "Juventus"
+    ],
+    "correct": 3,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2025-26 IFAB kurallarına göre sarı kart neyi ifade eder?",
+    "options": [
+      "Oyundan ihraç",
+      "Penaltı kararı",
+      "İhtar",
+      "Oyuncu değişikliği"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1938 FIFA Dünya Kupası finalinde İtalya hangi takımı mağlup etti?",
+    "options": [
+      "Macaristan",
+      "Hollanda",
+      "İngiltere",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "2006 FIFA Dünya Kupası finalinde İtalya hangi takımı mağlup etti?",
+    "options": [
+      "Fransa",
+      "Macaristan",
+      "İsveç",
+      "Hırvatistan"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1962 Dünya Kupası gol krallığını paylaşan futbolculardan biri kimdi?",
+    "options": [
+      "Just Fontaine",
+      "Eusébio",
+      "Flórián Albert",
+      "Gerd Müller"
+    ],
+    "correct": 2,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "Futbolda penaltı vuruşu oyun kurallarına hangi yılda girdi?",
+    "options": [
+      "1891",
+      "1902",
+      "1863",
+      "1925"
+    ],
+    "correct": 0,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "1990 FIFA Dünya Kupası gol kralı kimdi?",
+    "options": [
+      "Ronaldo Nazário",
+      "Salvatore Schillaci",
+      "Oleg Salenko",
+      "Davor Šuker"
+    ],
+    "correct": 1,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "Modern futbolun ilk resmî oyun kuralları hangi yılda yayımlandı?",
+    "options": [
+      "1904",
+      "1857",
+      "1886",
+      "1863"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "FIFA Dünya Kupası tarihindeki ilk golü kim attı?",
+    "options": [
+      "Guillermo Stábile",
+      "Bert Patenaude",
+      "Héctor Castro",
+      "Lucien Laurent"
+    ],
+    "correct": 3,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2018 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "Meksika",
+      "Rusya",
+      "İtalya",
+      "Fransa"
+    ],
+    "correct": 1,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "2004 UEFA Şampiyonlar Ligi finalinde Porto hangi takımla karşılaştı?",
+    "options": [
+      "Juventus",
+      "Monaco",
+      "Milan",
+      "Liverpool"
+    ],
+    "correct": 1,
+    "category": "şl-rakip"
+  },
+  {
+    "question": "2018 UEFA Şampiyonlar Ligi finalinde Real Madrid–Liverpool maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "2-1",
+      "2-0",
+      "3-1",
+      "1-0"
+    ],
+    "correct": 2,
+    "category": "şl-skor"
+  },
+  {
+    "question": "Uluslararası Futbol Birliği Kurulu (IFAB) ilk kez hangi yılda toplandı?",
+    "options": [
+      "1904",
+      "1925",
+      "1886",
+      "1863"
+    ],
+    "correct": 2,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2022 FIFA Dünya Kupası finalinde Arjantin hangi takımı mağlup etti?",
+    "options": [
+      "Fransa",
+      "Hırvatistan",
+      "Hollanda",
+      "Uruguay"
+    ],
+    "correct": 0,
+    "category": "final-rakip"
+  },
+  {
+    "question": "1994 Dünya Kupası gol krallığını paylaşan futbolculardan biri kimdi?",
+    "options": [
+      "Oleg Salenko",
+      "Eusébio",
+      "Flórián Albert",
+      "Just Fontaine"
+    ],
+    "correct": 0,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "2010 Dünya Kupası gol krallığını paylaşan futbolculardan biri kimdi?",
+    "options": [
+      "Eusébio",
+      "Flórián Albert",
+      "Just Fontaine",
+      "Thomas Müller"
+    ],
+    "correct": 3,
+    "category": "gol-krallığı"
+  },
+  {
+    "question": "1962 FIFA Dünya Kupası hangi ülkede düzenlendi?",
+    "options": [
+      "İtalya",
+      "Meksika",
+      "Fransa",
+      "Şili"
+    ],
+    "correct": 3,
+    "category": "ev-sahibi"
+  },
+  {
+    "question": "1994 FIFA Dünya Kupası finalinde Brezilya hangi takımı mağlup etti?",
+    "options": [
+      "İtalya",
+      "Arjantin",
       "Fransa",
       "Almanya"
     ],
-    "correct": 2
+    "correct": 0,
+    "category": "final-rakip"
   },
   {
-    "question": "2016 Avrupa Futbol Şampiyonası şampiyonu kim oldu?",
+    "question": "1954 FIFA Dünya Kupası finalinde Batı Almanya hangi takımı mağlup etti?",
     "options": [
-      "Fransa",
-      "Portekiz",
-      "Almanya",
-      "Galler"
+      "Macaristan",
+      "Arjantin",
+      "Çekoslovakya",
+      "Brezilya"
     ],
-    "correct": 1
+    "correct": 0,
+    "category": "final-rakip"
   },
   {
-    "question": "2020 Avrupa Futbol Şampiyonası şampiyonu kim oldu?",
+    "question": "1958 Dünya Kupası’nda tek turnuvada 13 gol atan oyuncu kimdir?",
     "options": [
-      "İngiltere",
-      "İspanya",
-      "İtalya",
-      "Danimarka"
+      "Ronaldo Nazário",
+      "Just Fontaine",
+      "Pelé",
+      "Gerd Müller"
     ],
-    "correct": 2
+    "correct": 1,
+    "category": "tarih-kural-olay"
+  },
+  {
+    "question": "2006 UEFA Şampiyonlar Ligi finalinde Barcelona–Arsenal maçının uzatmalar dahil skoru neydi? (Şampiyon önce)",
+    "options": [
+      "3-0",
+      "1-0",
+      "2-0",
+      "2-1"
+    ],
+    "correct": 3,
+    "category": "şl-skor"
   }
 ]

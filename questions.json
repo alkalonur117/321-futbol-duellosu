@@ -655,5 +655,1904 @@
       "Wout Weghorst",
       "Eric Bailly"
     ]
+  },
+  {
+    "teams": [
+      "Tottenham Hotspur",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Gareth Bale"
+    ]
+  },
+  {
+    "teams": [
+      "Tottenham Hotspur",
+      "Inter"
+    ],
+    "answers": [
+      "Christian Eriksen"
+    ]
+  },
+  {
+    "teams": [
+      "Tottenham Hotspur",
+      "Manchester City"
+    ],
+    "answers": [
+      "Kyle Walker"
+    ]
+  },
+  {
+    "teams": [
+      "Tottenham Hotspur",
+      "Bayern Munich"
+    ],
+    "answers": [
+      "Harry Kane"
+    ]
+  },
+  {
+    "teams": [
+      "Tottenham Hotspur",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Lucas Moura"
+    ]
+  },
+  {
+    "teams": [
+      "Atletico Madrid",
+      "Barcelona"
+    ],
+    "answers": [
+      "Antoine Griezmann"
+    ]
+  },
+  {
+    "teams": [
+      "Atletico Madrid",
+      "Chelsea"
+    ],
+    "answers": [
+      "Diego Costa"
+    ]
+  },
+  {
+    "teams": [
+      "Atletico Madrid",
+      "Liverpool"
+    ],
+    "answers": [
+      "Fernando Torres"
+    ]
+  },
+  {
+    "teams": [
+      "Atletico Madrid",
+      "Manchester City"
+    ],
+    "answers": [
+      "Sergio Aguero"
+    ]
+  },
+  {
+    "teams": [
+      "Atletico Madrid",
+      "Juventus"
+    ],
+    "answers": [
+      "Alvaro Morata"
+    ]
+  },
+  {
+    "teams": [
+      "Roma",
+      "Liverpool"
+    ],
+    "answers": [
+      "Mohamed Salah"
+    ]
+  },
+  {
+    "teams": [
+      "Roma",
+      "Chelsea"
+    ],
+    "answers": [
+      "Mohamed Salah"
+    ]
+  },
+  {
+    "teams": [
+      "Roma",
+      "Arsenal"
+    ],
+    "answers": [
+      "Gervinho"
+    ]
+  },
+  {
+    "teams": [
+      "Roma",
+      "Juventus"
+    ],
+    "answers": [
+      "Miralem Pjanic"
+    ]
+  },
+  {
+    "teams": [
+      "Roma",
+      "Manchester City"
+    ],
+    "answers": [
+      "Edin Dzeko"
+    ]
+  },
+  {
+    "teams": [
+      "Lazio",
+      "Inter"
+    ],
+    "answers": [
+      "Antonio Candreva"
+    ]
+  },
+  {
+    "teams": [
+      "Lazio",
+      "Juventus"
+    ],
+    "answers": [
+      "Stephan Lichtsteiner"
+    ]
+  },
+  {
+    "teams": [
+      "Lazio",
+      "AC Milan"
+    ],
+    "answers": [
+      "Alessandro Nesta"
+    ]
+  },
+  {
+    "teams": [
+      "Fiorentina",
+      "Juventus"
+    ],
+    "answers": [
+      "Federico Chiesa"
+    ]
+  },
+  {
+    "teams": [
+      "Fiorentina",
+      "Chelsea"
+    ],
+    "answers": [
+      "Marcos Alonso"
+    ]
+  },
+  {
+    "teams": [
+      "Fiorentina",
+      "Roma"
+    ],
+    "answers": [
+      "Mohamed Salah"
+    ]
+  },
+  {
+    "teams": [
+      "Fiorentina",
+      "Manchester City"
+    ],
+    "answers": [
+      "Stevan Jovetic"
+    ]
+  },
+  {
+    "teams": [
+      "Atalanta",
+      "Manchester United"
+    ],
+    "answers": [
+      "Amad Diallo"
+    ]
+  },
+  {
+    "teams": [
+      "Atalanta",
+      "Juventus"
+    ],
+    "answers": [
+      "Dejan Kulusevski"
+    ]
+  },
+  {
+    "teams": [
+      "Atalanta",
+      "AC Milan"
+    ],
+    "answers": [
+      "Franck Kessie"
+    ]
+  },
+  {
+    "teams": [
+      "Atalanta",
+      "Inter"
+    ],
+    "answers": [
+      "Robin Gosens"
+    ]
+  },
+  {
+    "teams": [
+      "Sevilla",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Sergio Ramos"
+    ]
+  },
+  {
+    "teams": [
+      "Sevilla",
+      "Barcelona"
+    ],
+    "answers": [
+      "Ivan Rakitic"
+    ]
+  },
+  {
+    "teams": [
+      "Sevilla",
+      "Arsenal"
+    ],
+    "answers": [
+      "Jose Antonio Reyes"
+    ]
+  },
+  {
+    "teams": [
+      "Sevilla",
+      "Manchester City"
+    ],
+    "answers": [
+      "Jesus Navas"
+    ]
+  },
+  {
+    "teams": [
+      "Sevilla",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Pablo Sarabia"
+    ]
+  },
+  {
+    "teams": [
+      "Valencia",
+      "Barcelona"
+    ],
+    "answers": [
+      "David Villa"
+    ]
+  },
+  {
+    "teams": [
+      "Valencia",
+      "Manchester City"
+    ],
+    "answers": [
+      "David Silva"
+    ]
+  },
+  {
+    "teams": [
+      "Valencia",
+      "Arsenal"
+    ],
+    "answers": [
+      "Shkodran Mustafi"
+    ]
+  },
+  {
+    "teams": [
+      "Villarreal",
+      "Arsenal"
+    ],
+    "answers": [
+      "Santi Cazorla"
+    ]
+  },
+  {
+    "teams": [
+      "Villarreal",
+      "Manchester United"
+    ],
+    "answers": [
+      "Eric Bailly"
+    ]
+  },
+  {
+    "teams": [
+      "Villarreal",
+      "Barcelona"
+    ],
+    "answers": [
+      "Denis Suarez"
+    ]
+  },
+  {
+    "teams": [
+      "Villarreal",
+      "Liverpool"
+    ],
+    "answers": [
+      "Pepe Reina"
+    ]
+  },
+  {
+    "teams": [
+      "Real Sociedad",
+      "Arsenal"
+    ],
+    "answers": [
+      "Mikel Arteta"
+    ]
+  },
+  {
+    "teams": [
+      "Real Sociedad",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Martin Odegaard"
+    ]
+  },
+  {
+    "teams": [
+      "Real Sociedad",
+      "Atletico Madrid"
+    ],
+    "answers": [
+      "Antoine Griezmann"
+    ]
+  },
+  {
+    "teams": [
+      "Athletic Bilbao",
+      "Chelsea"
+    ],
+    "answers": [
+      "Kepa Arrizabalaga"
+    ]
+  },
+  {
+    "teams": [
+      "Athletic Bilbao",
+      "Manchester United"
+    ],
+    "answers": [
+      "Ander Herrera"
+    ]
+  },
+  {
+    "teams": [
+      "Athletic Bilbao",
+      "Manchester City"
+    ],
+    "answers": [
+      "Aymeric Laporte"
+    ]
+  },
+  {
+    "teams": [
+      "Real Betis",
+      "Barcelona"
+    ],
+    "answers": [
+      "Junior Firpo"
+    ]
+  },
+  {
+    "teams": [
+      "Real Betis",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Dani Ceballos"
+    ]
+  },
+  {
+    "teams": [
+      "Real Betis",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Giovani Lo Celso"
+    ]
+  },
+  {
+    "teams": [
+      "Celta Vigo",
+      "Liverpool"
+    ],
+    "answers": [
+      "Iago Aspas"
+    ]
+  },
+  {
+    "teams": [
+      "Celta Vigo",
+      "Manchester City"
+    ],
+    "answers": [
+      "Nolito"
+    ]
+  },
+  {
+    "teams": [
+      "Celta Vigo",
+      "Barcelona"
+    ],
+    "answers": [
+      "Denis Suarez"
+    ]
+  },
+  {
+    "teams": [
+      "Girona",
+      "Barcelona"
+    ],
+    "answers": [
+      "Eric Garcia"
+    ]
+  },
+  {
+    "teams": [
+      "Porto",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Pepe"
+    ]
+  },
+  {
+    "teams": [
+      "Porto",
+      "Manchester United"
+    ],
+    "answers": [
+      "Diogo Dalot"
+    ]
+  },
+  {
+    "teams": [
+      "Porto",
+      "Chelsea"
+    ],
+    "answers": [
+      "Ricardo Quaresma"
+    ]
+  },
+  {
+    "teams": [
+      "Porto",
+      "Liverpool"
+    ],
+    "answers": [
+      "Luis Diaz"
+    ]
+  },
+  {
+    "teams": [
+      "Porto",
+      "AC Milan"
+    ],
+    "answers": [
+      "Andre Silva"
+    ]
+  },
+  {
+    "teams": [
+      "Benfica",
+      "Manchester City"
+    ],
+    "answers": [
+      "Ruben Dias"
+    ]
+  },
+  {
+    "teams": [
+      "Benfica",
+      "Chelsea"
+    ],
+    "answers": [
+      "Enzo Fernandez"
+    ]
+  },
+  {
+    "teams": [
+      "Benfica",
+      "Liverpool"
+    ],
+    "answers": [
+      "Darwin Nunez"
+    ]
+  },
+  {
+    "teams": [
+      "Benfica",
+      "Atletico Madrid"
+    ],
+    "answers": [
+      "Joao Felix"
+    ]
+  },
+  {
+    "teams": [
+      "Benfica",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Angel Di Maria"
+    ]
+  },
+  {
+    "teams": [
+      "Sporting CP",
+      "Manchester United"
+    ],
+    "answers": [
+      "Bruno Fernandes"
+    ]
+  },
+  {
+    "teams": [
+      "Sporting CP",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Cristiano Ronaldo"
+    ]
+  },
+  {
+    "teams": [
+      "Sporting CP",
+      "Tottenham Hotspur"
+    ],
+    "answers": [
+      "Pedro Porro"
+    ]
+  },
+  {
+    "teams": [
+      "Sporting CP",
+      "Arsenal"
+    ],
+    "answers": [
+      "Cedric Soares"
+    ]
+  },
+  {
+    "teams": [
+      "Ajax",
+      "Barcelona"
+    ],
+    "answers": [
+      "Frenkie de Jong"
+    ]
+  },
+  {
+    "teams": [
+      "Ajax",
+      "Manchester United"
+    ],
+    "answers": [
+      "Lisandro Martinez"
+    ]
+  },
+  {
+    "teams": [
+      "Ajax",
+      "Juventus"
+    ],
+    "answers": [
+      "Matthijs de Ligt"
+    ]
+  },
+  {
+    "teams": [
+      "Ajax",
+      "Liverpool"
+    ],
+    "answers": [
+      "Ryan Gravenberch"
+    ]
+  },
+  {
+    "teams": [
+      "Ajax",
+      "Tottenham Hotspur"
+    ],
+    "answers": [
+      "Christian Eriksen"
+    ]
+  },
+  {
+    "teams": [
+      "PSV Eindhoven",
+      "Manchester United"
+    ],
+    "answers": [
+      "Memphis Depay"
+    ]
+  },
+  {
+    "teams": [
+      "PSV Eindhoven",
+      "Liverpool"
+    ],
+    "answers": [
+      "Cody Gakpo"
+    ]
+  },
+  {
+    "teams": [
+      "PSV Eindhoven",
+      "Barcelona"
+    ],
+    "answers": [
+      "Luuk de Jong"
+    ]
+  },
+  {
+    "teams": [
+      "PSV Eindhoven",
+      "Chelsea"
+    ],
+    "answers": [
+      "Arjen Robben"
+    ]
+  },
+  {
+    "teams": [
+      "Feyenoord",
+      "Arsenal"
+    ],
+    "answers": [
+      "Robin van Persie"
+    ]
+  },
+  {
+    "teams": [
+      "Feyenoord",
+      "Liverpool"
+    ],
+    "answers": [
+      "Dirk Kuyt"
+    ]
+  },
+  {
+    "teams": [
+      "Feyenoord",
+      "Manchester United"
+    ],
+    "answers": [
+      "Tyrell Malacia"
+    ]
+  },
+  {
+    "teams": [
+      "RB Leipzig",
+      "Chelsea"
+    ],
+    "answers": [
+      "Timo Werner"
+    ]
+  },
+  {
+    "teams": [
+      "RB Leipzig",
+      "Manchester City"
+    ],
+    "answers": [
+      "Josko Gvardiol"
+    ]
+  },
+  {
+    "teams": [
+      "RB Leipzig",
+      "Liverpool"
+    ],
+    "answers": [
+      "Dominik Szoboszlai"
+    ]
+  },
+  {
+    "teams": [
+      "RB Leipzig",
+      "Bayern Munich"
+    ],
+    "answers": [
+      "Dayot Upamecano"
+    ]
+  },
+  {
+    "teams": [
+      "Bayer Leverkusen",
+      "Chelsea"
+    ],
+    "answers": [
+      "Kai Havertz"
+    ]
+  },
+  {
+    "teams": [
+      "Bayer Leverkusen",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Toni Kroos"
+    ]
+  },
+  {
+    "teams": [
+      "Bayer Leverkusen",
+      "Arsenal"
+    ],
+    "answers": [
+      "Granit Xhaka"
+    ]
+  },
+  {
+    "teams": [
+      "Bayer Leverkusen",
+      "Tottenham Hotspur"
+    ],
+    "answers": [
+      "Son Heung-min"
+    ]
+  },
+  {
+    "teams": [
+      "Eintracht Frankfurt",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Randal Kolo Muani"
+    ]
+  },
+  {
+    "teams": [
+      "Eintracht Frankfurt",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Luka Jovic"
+    ]
+  },
+  {
+    "teams": [
+      "Eintracht Frankfurt",
+      "AC Milan"
+    ],
+    "answers": [
+      "Ante Rebic"
+    ]
+  },
+  {
+    "teams": [
+      "Eintracht Frankfurt",
+      "Napoli"
+    ],
+    "answers": [
+      "Jesper Lindstrom"
+    ]
+  },
+  {
+    "teams": [
+      "VfB Stuttgart",
+      "Bayern Munich"
+    ],
+    "answers": [
+      "Mario Gomez"
+    ]
+  },
+  {
+    "teams": [
+      "VfB Stuttgart",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Sami Khedira"
+    ]
+  },
+  {
+    "teams": [
+      "Wolfsburg",
+      "Manchester City"
+    ],
+    "answers": [
+      "Kevin De Bruyne"
+    ]
+  },
+  {
+    "teams": [
+      "Wolfsburg",
+      "Juventus"
+    ],
+    "answers": [
+      "Mario Mandzukic"
+    ]
+  },
+  {
+    "teams": [
+      "Wolfsburg",
+      "Arsenal"
+    ],
+    "answers": [
+      "Nicklas Bendtner"
+    ]
+  },
+  {
+    "teams": [
+      "Borussia Monchengladbach",
+      "Arsenal"
+    ],
+    "answers": [
+      "Granit Xhaka"
+    ]
+  },
+  {
+    "teams": [
+      "Borussia Monchengladbach",
+      "Barcelona"
+    ],
+    "answers": [
+      "Marc-Andre ter Stegen"
+    ]
+  },
+  {
+    "teams": [
+      "Borussia Monchengladbach",
+      "Inter"
+    ],
+    "answers": [
+      "Marcus Thuram"
+    ]
+  },
+  {
+    "teams": [
+      "Marseille",
+      "Chelsea"
+    ],
+    "answers": [
+      "Didier Drogba"
+    ]
+  },
+  {
+    "teams": [
+      "Marseille",
+      "Arsenal"
+    ],
+    "answers": [
+      "William Saliba"
+    ]
+  },
+  {
+    "teams": [
+      "Marseille",
+      "Barcelona"
+    ],
+    "answers": [
+      "Alexis Sanchez"
+    ]
+  },
+  {
+    "teams": [
+      "Marseille",
+      "Juventus"
+    ],
+    "answers": [
+      "Arkadiusz Milik"
+    ]
+  },
+  {
+    "teams": [
+      "Lyon",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Karim Benzema"
+    ]
+  },
+  {
+    "teams": [
+      "Lyon",
+      "Arsenal"
+    ],
+    "answers": [
+      "Alexandre Lacazette"
+    ]
+  },
+  {
+    "teams": [
+      "Lyon",
+      "Barcelona"
+    ],
+    "answers": [
+      "Samuel Umtiti"
+    ]
+  },
+  {
+    "teams": [
+      "Lyon",
+      "Manchester United"
+    ],
+    "answers": [
+      "Memphis Depay"
+    ]
+  },
+  {
+    "teams": [
+      "Monaco",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Aurelien Tchouameni"
+    ]
+  },
+  {
+    "teams": [
+      "Monaco",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Kylian Mbappe"
+    ]
+  },
+  {
+    "teams": [
+      "Monaco",
+      "Manchester City"
+    ],
+    "answers": [
+      "Bernardo Silva"
+    ]
+  },
+  {
+    "teams": [
+      "Monaco",
+      "Liverpool"
+    ],
+    "answers": [
+      "Fabinho"
+    ]
+  },
+  {
+    "teams": [
+      "Monaco",
+      "Arsenal"
+    ],
+    "answers": [
+      "Emmanuel Petit"
+    ]
+  },
+  {
+    "teams": [
+      "Lille",
+      "Chelsea"
+    ],
+    "answers": [
+      "Eden Hazard"
+    ]
+  },
+  {
+    "teams": [
+      "Lille",
+      "Arsenal"
+    ],
+    "answers": [
+      "Nicolas Pepe"
+    ]
+  },
+  {
+    "teams": [
+      "Lille",
+      "Napoli"
+    ],
+    "answers": [
+      "Victor Osimhen"
+    ]
+  },
+  {
+    "teams": [
+      "Lille",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Eden Hazard"
+    ]
+  },
+  {
+    "teams": [
+      "Nice",
+      "Barcelona"
+    ],
+    "answers": [
+      "Jean-Clair Todibo"
+    ]
+  },
+  {
+    "teams": [
+      "Nice",
+      "Juventus"
+    ],
+    "answers": [
+      "Mario Lemina"
+    ]
+  },
+  {
+    "teams": [
+      "Rennes",
+      "Barcelona"
+    ],
+    "answers": [
+      "Ousmane Dembele"
+    ]
+  },
+  {
+    "teams": [
+      "Rennes",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Eduardo Camavinga"
+    ]
+  },
+  {
+    "teams": [
+      "Rennes",
+      "Chelsea"
+    ],
+    "answers": [
+      "Edouard Mendy"
+    ]
+  },
+  {
+    "teams": [
+      "Celtic",
+      "Arsenal"
+    ],
+    "answers": [
+      "Kieran Tierney"
+    ]
+  },
+  {
+    "teams": [
+      "Celtic",
+      "Liverpool"
+    ],
+    "answers": [
+      "Virgil van Dijk"
+    ]
+  },
+  {
+    "teams": [
+      "Rangers",
+      "Arsenal"
+    ],
+    "answers": [
+      "Mikel Arteta"
+    ]
+  },
+  {
+    "teams": [
+      "Rangers",
+      "Liverpool"
+    ],
+    "answers": [
+      "Ryan Kent"
+    ]
+  },
+  {
+    "teams": [
+      "Rangers",
+      "Manchester United"
+    ],
+    "answers": [
+      "Amad Diallo"
+    ]
+  },
+  {
+    "teams": [
+      "Newcastle United",
+      "Liverpool"
+    ],
+    "answers": [
+      "Georginio Wijnaldum"
+    ]
+  },
+  {
+    "teams": [
+      "Newcastle United",
+      "Manchester United"
+    ],
+    "answers": [
+      "Michael Owen"
+    ]
+  },
+  {
+    "teams": [
+      "Newcastle United",
+      "Chelsea"
+    ],
+    "answers": [
+      "Demba Ba"
+    ]
+  },
+  {
+    "teams": [
+      "Newcastle United",
+      "Arsenal"
+    ],
+    "answers": [
+      "Joe Willock"
+    ]
+  },
+  {
+    "teams": [
+      "Aston Villa",
+      "Manchester City"
+    ],
+    "answers": [
+      "Jack Grealish"
+    ]
+  },
+  {
+    "teams": [
+      "Aston Villa",
+      "Liverpool"
+    ],
+    "answers": [
+      "Christian Benteke"
+    ]
+  },
+  {
+    "teams": [
+      "Aston Villa",
+      "Chelsea"
+    ],
+    "answers": [
+      "Carney Chukwuemeka"
+    ]
+  },
+  {
+    "teams": [
+      "Aston Villa",
+      "Arsenal"
+    ],
+    "answers": [
+      "Emiliano Martinez"
+    ]
+  },
+  {
+    "teams": [
+      "West Ham United",
+      "Arsenal"
+    ],
+    "answers": [
+      "Declan Rice"
+    ]
+  },
+  {
+    "teams": [
+      "West Ham United",
+      "Manchester United"
+    ],
+    "answers": [
+      "Carlos Tevez"
+    ]
+  },
+  {
+    "teams": [
+      "West Ham United",
+      "Chelsea"
+    ],
+    "answers": [
+      "Kurt Zouma"
+    ]
+  },
+  {
+    "teams": [
+      "West Ham United",
+      "Liverpool"
+    ],
+    "answers": [
+      "Andy Carroll"
+    ]
+  },
+  {
+    "teams": [
+      "Everton",
+      "Manchester United"
+    ],
+    "answers": [
+      "Wayne Rooney"
+    ]
+  },
+  {
+    "teams": [
+      "Everton",
+      "Chelsea"
+    ],
+    "answers": [
+      "Romelu Lukaku"
+    ]
+  },
+  {
+    "teams": [
+      "Everton",
+      "Arsenal"
+    ],
+    "answers": [
+      "Alex Iwobi"
+    ]
+  },
+  {
+    "teams": [
+      "Everton",
+      "Real Madrid"
+    ],
+    "answers": [
+      "James Rodriguez"
+    ]
+  },
+  {
+    "teams": [
+      "Brighton",
+      "Chelsea"
+    ],
+    "answers": [
+      "Moises Caicedo"
+    ]
+  },
+  {
+    "teams": [
+      "Brighton",
+      "Arsenal"
+    ],
+    "answers": [
+      "Leandro Trossard"
+    ]
+  },
+  {
+    "teams": [
+      "Brighton",
+      "Liverpool"
+    ],
+    "answers": [
+      "Alexis Mac Allister"
+    ]
+  },
+  {
+    "teams": [
+      "Brighton",
+      "Tottenham Hotspur"
+    ],
+    "answers": [
+      "Yves Bissouma"
+    ]
+  },
+  {
+    "teams": [
+      "Wolverhampton",
+      "Liverpool"
+    ],
+    "answers": [
+      "Diogo Jota"
+    ]
+  },
+  {
+    "teams": [
+      "Wolverhampton",
+      "Barcelona"
+    ],
+    "answers": [
+      "Nelson Semedo"
+    ]
+  },
+  {
+    "teams": [
+      "Wolverhampton",
+      "Manchester City"
+    ],
+    "answers": [
+      "Matheus Nunes"
+    ]
+  },
+  {
+    "teams": [
+      "Nottingham Forest",
+      "Manchester United"
+    ],
+    "answers": [
+      "Jesse Lingard"
+    ]
+  },
+  {
+    "teams": [
+      "Nottingham Forest",
+      "Arsenal"
+    ],
+    "answers": [
+      "Matt Turner"
+    ]
+  },
+  {
+    "teams": [
+      "Nottingham Forest",
+      "Chelsea"
+    ],
+    "answers": [
+      "Callum Hudson-Odoi"
+    ]
+  },
+  {
+    "teams": [
+      "Bologna",
+      "Arsenal"
+    ],
+    "answers": [
+      "Riccardo Calafiori"
+    ]
+  },
+  {
+    "teams": [
+      "Bologna",
+      "Manchester United"
+    ],
+    "answers": [
+      "Joshua Zirkzee"
+    ]
+  },
+  {
+    "teams": [
+      "Bologna",
+      "Inter"
+    ],
+    "answers": [
+      "Marko Arnautovic"
+    ]
+  },
+  {
+    "teams": [
+      "Torino",
+      "Juventus"
+    ],
+    "answers": [
+      "Gleison Bremer"
+    ]
+  },
+  {
+    "teams": [
+      "Torino",
+      "Manchester United"
+    ],
+    "answers": [
+      "Matteo Darmian"
+    ]
+  },
+  {
+    "teams": [
+      "Torino",
+      "Inter"
+    ],
+    "answers": [
+      "Raoul Bellanova"
+    ]
+  },
+  {
+    "teams": [
+      "Sampdoria",
+      "Juventus"
+    ],
+    "answers": [
+      "Fabio Quagliarella"
+    ]
+  },
+  {
+    "teams": [
+      "Sampdoria",
+      "Inter"
+    ],
+    "answers": [
+      "Mauro Icardi"
+    ]
+  },
+  {
+    "teams": [
+      "Sampdoria",
+      "Roma"
+    ],
+    "answers": [
+      "Patrik Schick"
+    ]
+  },
+  {
+    "teams": [
+      "Boca Juniors",
+      "Manchester City"
+    ],
+    "answers": [
+      "Carlos Tevez"
+    ]
+  },
+  {
+    "teams": [
+      "Boca Juniors",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Leandro Paredes"
+    ]
+  },
+  {
+    "teams": [
+      "Boca Juniors",
+      "Juventus"
+    ],
+    "answers": [
+      "Carlos Tevez"
+    ]
+  },
+  {
+    "teams": [
+      "River Plate",
+      "Manchester City"
+    ],
+    "answers": [
+      "Julian Alvarez"
+    ]
+  },
+  {
+    "teams": [
+      "River Plate",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Gonzalo Higuain"
+    ]
+  },
+  {
+    "teams": [
+      "River Plate",
+      "Benfica"
+    ],
+    "answers": [
+      "Enzo Fernandez"
+    ]
+  },
+  {
+    "teams": [
+      "Flamengo",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Vinicius Junior"
+    ]
+  },
+  {
+    "teams": [
+      "Flamengo",
+      "AC Milan"
+    ],
+    "answers": [
+      "Ronaldinho"
+    ]
+  },
+  {
+    "teams": [
+      "Flamengo",
+      "Inter"
+    ],
+    "answers": [
+      "Gabriel Barbosa"
+    ]
+  },
+  {
+    "teams": [
+      "Santos",
+      "Barcelona"
+    ],
+    "answers": [
+      "Neymar"
+    ]
+  },
+  {
+    "teams": [
+      "Santos",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Rodrygo"
+    ]
+  },
+  {
+    "teams": [
+      "Santos",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Neymar"
+    ]
+  },
+  {
+    "teams": [
+      "Palmeiras",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Endrick"
+    ]
+  },
+  {
+    "teams": [
+      "Palmeiras",
+      "Manchester City"
+    ],
+    "answers": [
+      "Gabriel Jesus"
+    ]
+  },
+  {
+    "teams": [
+      "Palmeiras",
+      "Barcelona"
+    ],
+    "answers": [
+      "Yerry Mina"
+    ]
+  },
+  {
+    "teams": [
+      "Al Hilal",
+      "Paris Saint-Germain"
+    ],
+    "answers": [
+      "Neymar"
+    ]
+  },
+  {
+    "teams": [
+      "Al Hilal",
+      "Wolverhampton"
+    ],
+    "answers": [
+      "Ruben Neves"
+    ]
+  },
+  {
+    "teams": [
+      "Al Hilal",
+      "Chelsea"
+    ],
+    "answers": [
+      "Kalidou Koulibaly"
+    ]
+  },
+  {
+    "teams": [
+      "Al Nassr",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Cristiano Ronaldo"
+    ]
+  },
+  {
+    "teams": [
+      "Al Nassr",
+      "Manchester United"
+    ],
+    "answers": [
+      "Cristiano Ronaldo"
+    ]
+  },
+  {
+    "teams": [
+      "Al Nassr",
+      "Bayern Munich"
+    ],
+    "answers": [
+      "Sadio Mane"
+    ]
+  },
+  {
+    "teams": [
+      "Al Ittihad",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Karim Benzema"
+    ]
+  },
+  {
+    "teams": [
+      "Al Ittihad",
+      "Chelsea"
+    ],
+    "answers": [
+      "N Golo Kante"
+    ]
+  },
+  {
+    "teams": [
+      "Al Ittihad",
+      "Liverpool"
+    ],
+    "answers": [
+      "Fabinho"
+    ]
+  },
+  {
+    "teams": [
+      "Al Ahli Saudi",
+      "Manchester City"
+    ],
+    "answers": [
+      "Riyad Mahrez"
+    ]
+  },
+  {
+    "teams": [
+      "Al Ahli Saudi",
+      "Chelsea"
+    ],
+    "answers": [
+      "Edouard Mendy"
+    ]
+  },
+  {
+    "teams": [
+      "Al Ahli Saudi",
+      "Liverpool"
+    ],
+    "answers": [
+      "Roberto Firmino"
+    ]
+  },
+  {
+    "teams": [
+      "Trabzonspor",
+      "Liverpool"
+    ],
+    "answers": [
+      "Daniel Sturridge"
+    ]
+  },
+  {
+    "teams": [
+      "Trabzonspor",
+      "Napoli"
+    ],
+    "answers": [
+      "Marek Hamsik"
+    ]
+  },
+  {
+    "teams": [
+      "Basaksehir",
+      "Arsenal"
+    ],
+    "answers": [
+      "Mesut Ozil"
+    ]
+  },
+  {
+    "teams": [
+      "Basaksehir",
+      "Barcelona"
+    ],
+    "answers": [
+      "Arda Turan"
+    ]
+  },
+  {
+    "teams": [
+      "Basaksehir",
+      "Manchester City"
+    ],
+    "answers": [
+      "Emmanuel Adebayor"
+    ]
+  },
+  {
+    "teams": [
+      "Olympiacos",
+      "Real Madrid"
+    ],
+    "answers": [
+      "Marcelo"
+    ]
+  },
+  {
+    "teams": [
+      "Olympiacos",
+      "Arsenal"
+    ],
+    "answers": [
+      "Sokratis Papastathopoulos"
+    ]
+  },
+  {
+    "teams": [
+      "Olympiacos",
+      "Nottingham Forest"
+    ],
+    "answers": [
+      "Joao Carvalho"
+    ]
+  },
+  {
+    "teams": [
+      "Panathinaikos",
+      "Manchester United"
+    ],
+    "answers": [
+      "Facundo Pellistri"
+    ]
+  },
+  {
+    "teams": [
+      "Shakhtar Donetsk",
+      "Arsenal"
+    ],
+    "answers": [
+      "Eduardo da Silva"
+    ]
+  },
+  {
+    "teams": [
+      "Shakhtar Donetsk",
+      "Manchester United"
+    ],
+    "answers": [
+      "Fred"
+    ]
+  },
+  {
+    "teams": [
+      "Shakhtar Donetsk",
+      "Chelsea"
+    ],
+    "answers": [
+      "Willian"
+    ]
+  },
+  {
+    "teams": [
+      "Dynamo Kyiv",
+      "Chelsea"
+    ],
+    "answers": [
+      "Andriy Shevchenko"
+    ]
+  },
+  {
+    "teams": [
+      "Dynamo Kyiv",
+      "AC Milan"
+    ],
+    "answers": [
+      "Andriy Shevchenko"
+    ]
+  },
+  {
+    "teams": [
+      "Dynamo Kyiv",
+      "Everton"
+    ],
+    "answers": [
+      "Vitaliy Mykolenko"
+    ]
+  },
+  {
+    "teams": [
+      "Red Bull Salzburg",
+      "Liverpool"
+    ],
+    "answers": [
+      "Sadio Mane"
+    ]
+  },
+  {
+    "teams": [
+      "Red Bull Salzburg",
+      "Manchester City"
+    ],
+    "answers": [
+      "Erling Haaland"
+    ]
+  },
+  {
+    "teams": [
+      "Red Bull Salzburg",
+      "RB Leipzig"
+    ],
+    "answers": [
+      "Dominik Szoboszlai"
+    ]
+  },
+  {
+    "teams": [
+      "Club Brugge",
+      "AC Milan"
+    ],
+    "answers": [
+      "Charles De Ketelaere"
+    ]
+  },
+  {
+    "teams": [
+      "Club Brugge",
+      "Liverpool"
+    ],
+    "answers": [
+      "Simon Mignolet"
+    ]
+  },
+  {
+    "teams": [
+      "Anderlecht",
+      "Chelsea"
+    ],
+    "answers": [
+      "Romelu Lukaku"
+    ]
+  },
+  {
+    "teams": [
+      "Anderlecht",
+      "Manchester City"
+    ],
+    "answers": [
+      "Vincent Kompany"
+    ]
+  },
+  {
+    "teams": [
+      "Anderlecht",
+      "Leicester City"
+    ],
+    "answers": [
+      "Youri Tielemans"
+    ]
+  },
+  {
+    "teams": [
+      "Leicester City",
+      "Chelsea"
+    ],
+    "answers": [
+      "N Golo Kante"
+    ]
+  },
+  {
+    "teams": [
+      "Leicester City",
+      "Manchester City"
+    ],
+    "answers": [
+      "Riyad Mahrez"
+    ]
   }
 ]
