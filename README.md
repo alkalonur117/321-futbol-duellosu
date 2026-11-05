@@ -19,3 +19,12 @@
 - Odalar sunucu belleğindedir; servis yeniden başlarsa odalar kapanır. Açık oda listesi oluşturma/katılma/ayrılmada güncellenir, solo odalar listelenmez.
 - Soru havuzu editoryal kontrolden geçirilmelidir; kaynakça her sorunun içine işlenmemiştir. Soruların doğruluğunu yayına almadan önce ayrıca denetleyin.
 - Wikidata yapılandırılmış verileri CC0 kapsamındadır; kulüp logoları ve futbolcu fotoğrafları bu lisansa otomatik olarak dahil değildir.
+
+## V6 değişiklikleri
+- Takımları Sen Seç modunda her turda iki oyuncu yeniden takım seçer (20 saniye); futbolcu cevabı 15 saniye.
+- Oyun ekranından oda listesine dönüş ve odadan ayrılma.
+- Doğru cevapta yarı saydam gol animasyonu.
+- Ayrı yönetici girişi: `ADMIN_USERNAME` (varsayılan `admin321`) ve zorunlu `ADMIN_PASSWORD` Render Environment üzerinden ayarlanır. Yönetici hesabı normal kayıt ekranından oluşturulamaz. Güçlü ve benzersiz bir şifre kullanın; repoya yazmayın.
+- Yönetici panelinde aktif odalar, bağlı kullanıcı sayısı ve oda kapatma.
+
+**Not:** Kullanıcı hesaplarının kalıcı olması için `DATABASE_URL` ile PostgreSQL bağlanması gerekir. Render ücretsiz diskine yazılan `accounts.json` kalıcı değildir. Oturumlar sunucu belleğinde tutulduğu için yeniden dağıtımda oturum açmak gerekebilir.
