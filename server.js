@@ -141,7 +141,7 @@ if(m.type==='selectTeam'&&r.mode==='custom'&&r.phase==='setup'&&Date.now()<=r.se
    const candidates=teamNames.map(name=>({name,key:norm(name)})).filter(x=>x.key.startsWith(input)&&input.length>=3);
    if(candidates.length===1)result={kind:'suggest',name:candidates[0].name};
  }
- if(result.kind==='correct'&&norm(typed)!==norm(result.name)&&!Object.entries(teamAlias).some(([alias,target])=>norm(alias)===norm(typed)&&target===result.name))result={kind:'suggest',name:result.name};
+ if(result.kind==='correct'&&norm(typed)!==norm(result.name))result={kind:'suggest',name:result.name};
  if(result.kind!=='correct')return send(ws,{type:'teamSelectionResult',result});
  r.selection[slot]=result.name;r.selectionMisses[slot]=0;
  send(ws,{type:'teamSelectionResult',result:{kind:'correct',name:result.name}});
