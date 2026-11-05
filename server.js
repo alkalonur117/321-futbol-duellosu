@@ -55,6 +55,10 @@ const grids=[];const coreTeams=['AC Milan','Arsenal','Barcelona','Bayern Munich'
 for(const a of coreTeams)for(const b of coreTeams)for(const c of coreTeams){if(!(a<b&&b<c))continue;let rows=[a,b,c],available=coreTeams.filter(t=>!rows.includes(t)&&rows.every(r=>pair(r,t)));for(let i=0;i<available.length;i++)for(let j=i+1;j<available.length;j++)for(let k=j+1;k<available.length;k++){if(grids.length<5000)grids.push({rows,cols:[available[i],available[j],available[k]]})}}
 if(!grids.length)throw new Error('No 3x3 board available');
 const send=(ws,obj)=>{if(ws&&ws.readyState===1)ws.send(JSON.stringify(obj))};const broadcast=(r,obj)=>r.players.forEach(p=>send(p.ws,obj));const stop=r=>{clearTimeout(r.timer);r.timer=null};
+function showAttempt(r,p,answer,correct,extra={}){
+ const name=String(answer||'').trim().slice(0,100);
+ broadcast(r,{type:'opponentAttempt',playerId:p.id,playerName:p.name,answer:name||'—',correct:!!correct,round:r.round,mode:r.mode,...extra});
+}
 function scheduleBot(r){
  if(!r.bot)return;
  clearTimeout(r.botTimer);
@@ -85,14 +89,14 @@ function scheduleBot(r){
    const bot=r.bot;
    if(r.mode==='quiz'){
      if(bot.attempted)return;bot.attempted=true;
-     if(willKnow)quizEnd(r,bot,bot.name+' doğru bildi!');
-     else if(r.players.every(p=>p.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');
+     if(willKnow){showAttempt(r,bot,r.quizQuestion.options[r.quizQuestion.correct],true);quizEnd(r,bot,bot.name+' doğru bildi!')}
+     else{const wrong=r.quizQuestion.options.find((_,i)=>i!==r.quizQuestion.correct)||'Bilmiyorum';showAttempt(r,bot,wrong,false);if(r.players.every(p=>p.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');}
    }else if(r.mode==='classic'||r.mode==='custom'){
      if(bot.attempted)return;bot.attempted=true;
      if(willKnow&&r.question?.answers?.length){
        bot.lastAnswer=r.question.answers[crypto.randomInt(r.question.answers.length)];
-       endRound(r,bot,bot.name+' doğru cevap verdi!');
-     }else if(r.players.every(p=>p.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.');
+       showAttempt(r,bot,bot.lastAnswer,true);endRound(r,bot,bot.name+' doğru cevap verdi!');
+     }else{showAttempt(r,bot,'Bilmiyorum',false);if(r.players.every(p=>p.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.');}
    }else if(r.mode==='tictactoe'&&r.turn===1){
      const open=r.board.map((v,i)=>v?-1:i).filter(i=>i>=0);
      if(!open.length)return;
@@ -102,8 +106,8 @@ function scheduleBot(r){
      if(difficulty==='hard'&&Math.random()<0.65)idx=open.find(winning)??open.find(blocking);
      if(idx===undefined)idx=open[crypto.randomInt(open.length)];
      const q=pair(r.grid.rows[Math.floor(idx/3)],r.grid.cols[idx%3]);
-     if(willKnow&&q?.answers?.length)claim(r,bot,idx,q.answers[crypto.randomInt(q.answers.length)]);
-     else{r.turn=0;startGridTurn(r)}
+     if(willKnow&&q?.answers?.length){const answer=q.answers[crypto.randomInt(q.answers.length)];showAttempt(r,bot,answer,true,{cell:idx});claim(r,bot,idx,answer)}
+     else{showAttempt(r,bot,'Bilmiyorum',false,{cell:idx});r.turn=0;startGridTurn(r)}
    }
  },delay);
 }
@@ -115,7 +119,7 @@ function endRound(r,winner,reason){if(r.phase!=='playing')return;stop(r);r.phase
 function quizEnd(r,winner,reason){if(r.phase!=='playing')return;stop(r);r.phase='result';r.deadline=null;if(winner)winner.score++;let finished=!!winner&&winner.score>=3;broadcast(r,{type:'quizResult',reason,correct:r.quizQuestion.options[r.quizQuestion.correct],finished});state(r);r.timer=setTimeout(()=>{if(finished){r.phase='finished';state(r);broadcast(r,{type:'gameOver',winnerId:winner.id})}else begin(r)},finished?2400:3500)}
 function boardWinner(b){const lines=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];return lines.find(l=>b[l[0]]&&b[l[0]]===b[l[1]]&&b[l[1]]===b[l[2]])}
 function startGridTurn(r){stop(r);if(r.phase!=='playing')return;r.deadline=Date.now()+15000;state(r);r.timer=setTimeout(()=>{if(r.phase!=='playing')return;broadcast(r,{type:'notice',message:'15 saniye doldu! Sıra değişti.'});if(!r.solo)r.turn=1-r.turn;startGridTurn(r)},15000)}
-function gridSubmit(r,p,idx,answer){if(r.phase!=='playing'||Date.now()>r.deadline||!Number.isInteger(idx)||idx<0||idx>8||r.board[idx])return;if(!r.solo&&r.players[r.turn]!==p)return;let q=pair(r.grid.rows[Math.floor(idx/3)],r.grid.cols[idx%3]);let result=resolve(answer,q.answers,'player');if(result.kind==='suggest'){p.suggestion={name:result.name,idx};send(p.ws,{type:'suggestion',name:result.name});return}if(result.kind==='ambiguous'){send(p.ws,{type:'notice',message:'İsim birden fazla oyuncuyla eşleşiyor. Tam adı yazın.'});return}if(result.kind!=='correct'){send(p.ws,{type:'notice',message:'Yanlış cevap. Sıra değişti.'});if(!r.solo)r.turn=1-r.turn;startGridTurn(r);return}claim(r,p,idx,result.name)}
+function gridSubmit(r,p,idx,answer){if(r.phase!=='playing'||Date.now()>r.deadline||!Number.isInteger(idx)||idx<0||idx>8||r.board[idx])return;if(!r.solo&&r.players[r.turn]!==p)return;let q=pair(r.grid.rows[Math.floor(idx/3)],r.grid.cols[idx%3]);let result=resolve(answer,q.answers,'player');if(result.kind!=='suggest'&&result.kind!=='ambiguous')showAttempt(r,p,answer,result.kind==='correct',{cell:idx});if(result.kind==='suggest'){p.suggestion={name:result.name,idx};send(p.ws,{type:'suggestion',name:result.name});return}if(result.kind==='ambiguous'){send(p.ws,{type:'notice',message:'İsim birden fazla oyuncuyla eşleşiyor. Tam adı yazın.'});return}if(result.kind!=='correct'){send(p.ws,{type:'notice',message:'Yanlış cevap. Sıra değişti.'});if(!r.solo)r.turn=1-r.turn;startGridTurn(r);return}claim(r,p,idx,result.name)}
 function claim(r,p,idx,name){if(r.phase!=='playing'||Date.now()>r.deadline||r.board[idx])return;r.board[idx]=p.id;r.boardNames[idx]=name;p.score++;broadcast(r,{type:'notice',message:p.name+' kareyi aldı: '+name});let win=boardWinner(r.board);let full=r.board.every(Boolean);if(win||full){stop(r);r.phase='finished';r.deadline=null;let victor=win?r.board[win[0]]:(r.players.length===2?r.players.slice().sort((a,b)=>b.score-a.score)[0]?.id:p.id);broadcast(r,{type:'gameOver',winnerId:victor,reason:'Bulmaca tamamlandı.'});state(r)}else{if(!r.solo)r.turn=1-r.turn;startGridTurn(r)}}
 function beginCustomSelection(r){stop(r);clearTimeout(r.botTimer);r.phase='setup';r.question=null;r.deadline=null;r.customTeams=null;r.customQuestion=null;r.selection=Array(r.solo?1:2).fill(null);r.selectionDeadline=Date.now()+20000;r.deadline=r.selectionDeadline;state(r);r.timer=setTimeout(()=>{if(r.phase!=='setup')return;if(r.solo){if(!r.selection[0]){broadcast(r,{type:'notice',message:'20 saniyede takım seçilmedi. Yeniden seçin.'});beginCustomSelection(r);return}const options=questions.filter(q=>q.teams.includes(r.selection[0]));if(!options.length){broadcast(r,{type:'notice',message:'Tek kişilik modda seçilen takımla yerel havuzda eşleşme yok.'});beginCustomSelection(r);return}let q=options[crypto.randomInt(options.length)];r.selection=[r.selection[0],q.teams.find(t=>t!==r.selection[0])];finalizeCustom(r);return}if(!r.selection.every(Boolean)){
  const missing=r.players.map((p,i)=>!r.selection[i]&&p!==r.bot?i:-1).filter(i=>i>=0);
@@ -167,9 +171,9 @@ if(m.type==='selectTeam'&&r.mode==='custom'&&r.phase==='setup'&&Date.now()<=r.se
  broadcast(r,{type:'notice',message:p.name+' kendi takımını seçti.'});
  state(r);if(r.solo||r.selection.every(Boolean))finalizeCustom(r);return
 }
-if(m.type==='quizAnswer'&&r.mode==='quiz'&&r.phase==='playing'&&Date.now()<=r.deadline&&!p.attempted){p.attempted=true;let correct=Number(m.index)===r.quizQuestion.correct;send(ws,{type:'attempt',correct});if(correct)quizEnd(r,p,p.name+' doğru bildi!');else if(r.players.every(x=>x.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');else send(ws,{type:'notice',message:'Yanlış cevap. Bu tur hakkın bitti.'});return}
-if(m.type==='answer'&&r.phase==='playing'&&(r.mode==='classic'||r.mode==='custom')&&!p.attempted&&Date.now()<=r.deadline){let result=resolve(m.answer,r.question.answers,'player');if(result.kind==='suggest'){p.suggestion={name:result.name};send(ws,{type:'suggestion',name:result.name})}else if(result.kind==='ambiguous'){send(ws,{type:'notice',message:'Bu isim birden fazla oyuncuya ait. Tam adı yazın.'})}else{p.attempted=true;send(ws,{type:'attempt',correct:result.kind==='correct'});if(result.kind==='correct'){p.lastAnswer=result.name;endRound(r,p,p.name+' doğru cevap verdi!')}else{send(ws,{type:'notice',message:'Yanlış cevap. Bu turda hakkın bitti.'});if(r.players.every(x=>x.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.')}}return}
+if(m.type==='quizAnswer'&&r.mode==='quiz'&&r.phase==='playing'&&Date.now()<=r.deadline&&!p.attempted){p.attempted=true;let correct=Number(m.index)===r.quizQuestion.correct;showAttempt(r,p,r.quizQuestion.options[Number(m.index)]||'Geçersiz seçenek',correct);send(ws,{type:'attempt',correct});if(correct)quizEnd(r,p,p.name+' doğru bildi!');else if(r.players.every(x=>x.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');else send(ws,{type:'notice',message:'Yanlış cevap. Bu tur hakkın bitti.'});return}
+if(m.type==='answer'&&r.phase==='playing'&&(r.mode==='classic'||r.mode==='custom')&&!p.attempted&&Date.now()<=r.deadline){let result=resolve(m.answer,r.question.answers,'player');if(result.kind==='suggest'){p.suggestion={name:result.name};send(ws,{type:'suggestion',name:result.name})}else if(result.kind==='ambiguous'){send(ws,{type:'notice',message:'Bu isim birden fazla oyuncuya ait. Tam adı yazın.'})}else{p.attempted=true;showAttempt(r,p,m.answer,result.kind==='correct');send(ws,{type:'attempt',correct:result.kind==='correct'});if(result.kind==='correct'){p.lastAnswer=result.name;endRound(r,p,p.name+' doğru cevap verdi!')}else{send(ws,{type:'notice',message:'Yanlış cevap. Bu turda hakkın bitti.'});if(r.players.every(x=>x.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.')}}return}
 if(m.type==='gridAnswer'&&r.mode==='tictactoe'){gridSubmit(r,p,Number(m.idx),m.answer);return}
-if(m.type==='confirmSuggestion'&&r.phase==='playing'&&p.suggestion){let s=p.suggestion;p.suggestion=null;if(m.accept){if(r.mode==='classic'||r.mode==='custom'){if(Date.now()<=r.deadline&&!p.attempted){p.attempted=true;p.lastAnswer=s.name;endRound(r,p,p.name+' öneriyi onayladı!')}}else if(Date.now()<=r.deadline&&!r.board[s.idx]&&(r.solo||r.players[r.turn]===p))claim(r,p,s.idx,s.name)}else send(ws,{type:'suggestionDismissed'});return}
+if(m.type==='confirmSuggestion'&&r.phase==='playing'&&p.suggestion){let s=p.suggestion;p.suggestion=null;if(m.accept){if(r.mode==='classic'||r.mode==='custom'){if(Date.now()<=r.deadline&&!p.attempted){p.attempted=true;p.lastAnswer=s.name;showAttempt(r,p,s.name,true);endRound(r,p,p.name+' öneriyi onayladı!')}}else if(Date.now()<=r.deadline&&!r.board[s.idx]&&(r.solo||r.players[r.turn]===p)){showAttempt(r,p,s.name,true,{cell:s.idx});claim(r,p,s.idx,s.name)}}else send(ws,{type:'suggestionDismissed'});return}
 if(m.type==='rematch'&&r.phase==='finished'){p.rematch=true;if(r.solo||r.bot||r.players.every(x=>x.rematch))reset(r);else send(ws,{type:'notice',message:'Rakibin rövanş isteği bekleniyor.'})}
 });ws.on('close',()=>{let r=ws.room;if(!r)return;stop(r);r.players=r.players.filter(p=>p.ws!==ws);if(!r.players.length||r.bot){clearTimeout(r.botTimer);rooms.delete(r.code);roomsUpdate();return}r.phase='waiting';r.deadline=null;roomsUpdate();broadcast(r,{type:'notice',message:'Rakip ayrıldı. Yeni maç için sayfayı yenileyin.'});state(r)})});server.listen(PORT,()=>console.log('Listening on '+PORT));
