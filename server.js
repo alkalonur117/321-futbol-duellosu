@@ -37,54 +37,56 @@ for(const a of coreTeams)for(const b of coreTeams)for(const c of coreTeams){if(!
 if(!grids.length)throw new Error('No 3x3 board available');
 const send=(ws,obj)=>{if(ws&&ws.readyState===1)ws.send(JSON.stringify(obj))};const broadcast=(r,obj)=>r.players.forEach(p=>send(p.ws,obj));const stop=r=>{clearTimeout(r.timer);r.timer=null};
 function scheduleBot(r){
-  if(!r.bot)return;
-  clearTimeout(r.botTimer);
-  const phase=r.phase,deadline=phase==='setup'?r.selectionDeadline:r.deadline;
-  if(!deadline||!['setup','playing'].includes(phase))return;
-  if(phase==='setup'){
-    if(r.selection?.[1])return;
-    r.botTimer=setTimeout(()=>{
-      if(r.phase!=='setup'||r.selection?.[1])return;
-      const human=r.selection?.[0];
-      if(!human){scheduleBot(r);return}
-      const options=questions.filter(q=>q.teams.includes(human));
-      const chosen=options.length?options[crypto.randomInt(options.length)].teams.find(t=>t!==human):teamNames[crypto.randomInt(teamNames.length)];
-      r.selection[1]=chosen;state(r);finalizeCustom(r);
-    },1200);
-    return;
-  }
-  if(r.mode==='tictactoe'&&r.turn!==1)return;
-  if(r.mode!=='tictactoe'&&r.bot.attempted)return;
-  const delay=3500+crypto.randomInt(5500);
-  if(Date.now()+delay>=deadline)return;
-  r.botTimer=setTimeout(()=>{
-    if(r.phase!=='playing'||Date.now()>r.deadline)return;
-    const bot=r.bot;
-    if(r.mode==='quiz'){
-      if(bot.attempted)return;
-      bot.attempted=true;
-      const correct=Math.random()<0.58;
-      if(correct)quizEnd(r,bot,bot.name+' doğru bildi!');
-      else if(r.players.every(p=>p.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');
-    }else if(r.mode==='classic'||r.mode==='custom'){
-      if(bot.attempted)return;
-      bot.attempted=true;
-      const correct=Math.random()<0.58;
-      if(correct&&r.question?.answers?.length){bot.lastAnswer=r.question.answers[crypto.randomInt(r.question.answers.length)];endRound(r,bot,bot.name+' doğru cevap verdi!')}
-      else if(r.players.every(p=>p.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.');
-    }else if(r.mode==='tictactoe'&&r.turn===1){
-      const open=r.board.map((v,i)=>v?-1:i).filter(i=>i>=0);
-      if(!open.length)return;
-      const winning=idx=>{const b=r.board.slice();b[idx]=bot.id;return !!boardWinner(b)};
-      const blocking=idx=>{const b=r.board.slice();b[idx]=r.players[0].id;return !!boardWinner(b)};
-      let idx;
-      if(Math.random()<0.65)idx=open.find(winning)??open.find(blocking);
-      if(idx===undefined)idx=open[crypto.randomInt(open.length)];
-      const q=pair(r.grid.rows[Math.floor(idx/3)],r.grid.cols[idx%3]);
-      if(q?.answers?.length&&Math.random()<0.65)claim(r,bot,idx,q.answers[crypto.randomInt(q.answers.length)]);
-      else{r.turn=0;startGridTurn(r)}
-    }
-  },delay);
+ if(!r.bot)return;
+ clearTimeout(r.botTimer);
+ const phase=r.phase,deadline=phase==='setup'?r.selectionDeadline:r.deadline;
+ if(!deadline||!['setup','playing'].includes(phase))return;
+ if(phase==='setup'){
+   if(r.selection?.[1]||!r.selection?.[0])return;
+   r.botTimer=setTimeout(()=>{
+     if(r.phase!=='setup'||r.selection?.[1])return;
+     const human=r.selection[0];
+     const options=questions.filter(q=>q.teams.includes(human));
+     const chosen=options.length?options[crypto.randomInt(options.length)].teams.find(t=>t!==human):teamNames[crypto.randomInt(teamNames.length)];
+     r.selection[1]=chosen;state(r);finalizeCustom(r);
+   },1200);return;
+ }
+ if(r.mode==='tictactoe'&&r.turn!==1)return;
+ if(r.mode!=='tictactoe'&&r.bot.attempted)return;
+ const difficulty=r.botDifficulty||'hard';
+ const interval=difficulty==='easy'?3:difficulty==='medium'?2:1;
+ const turnKey=r.mode==='tictactoe'?'grid-'+r.deadline:'round-'+r.round;
+ if(r.botLastTurnKey!==turnKey){r.botLastTurnKey=turnKey;r.botTurnCount=(r.botTurnCount||0)+1}
+ const willKnow=difficulty==='hard'?Math.random()<0.58:r.botTurnCount%interval===0;
+ const remaining=deadline-Date.now();
+ const delay=difficulty==='hard'?3500+crypto.randomInt(5500):Math.max(0,remaining-950);
+ if(delay>=remaining-100)return;
+ r.botTimer=setTimeout(()=>{
+   if(r.phase!=='playing'||Date.now()>r.deadline)return;
+   const bot=r.bot;
+   if(r.mode==='quiz'){
+     if(bot.attempted)return;bot.attempted=true;
+     if(willKnow)quizEnd(r,bot,bot.name+' doğru bildi!');
+     else if(r.players.every(p=>p.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');
+   }else if(r.mode==='classic'||r.mode==='custom'){
+     if(bot.attempted)return;bot.attempted=true;
+     if(willKnow&&r.question?.answers?.length){
+       bot.lastAnswer=r.question.answers[crypto.randomInt(r.question.answers.length)];
+       endRound(r,bot,bot.name+' doğru cevap verdi!');
+     }else if(r.players.every(p=>p.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.');
+   }else if(r.mode==='tictactoe'&&r.turn===1){
+     const open=r.board.map((v,i)=>v?-1:i).filter(i=>i>=0);
+     if(!open.length)return;
+     const winning=idx=>{const board=r.board.slice();board[idx]=bot.id;return !!boardWinner(board)};
+     const blocking=idx=>{const board=r.board.slice();board[idx]=r.players[0].id;return !!boardWinner(board)};
+     let idx;
+     if(difficulty==='hard'&&Math.random()<0.65)idx=open.find(winning)??open.find(blocking);
+     if(idx===undefined)idx=open[crypto.randomInt(open.length)];
+     const q=pair(r.grid.rows[Math.floor(idx/3)],r.grid.cols[idx%3]);
+     if(willKnow&&q?.answers?.length)claim(r,bot,idx,q.answers[crypto.randomInt(q.answers.length)]);
+     else{r.turn=0;startGridTurn(r)}
+   }
+ },delay);
 }
 
 function state(r){broadcast(r,{type:'state',code:r.code,mode:r.mode,solo:r.solo,players:r.players.map(p=>({id:p.id,name:p.name,score:p.score})),phase:r.phase,round:r.round,teams:r.question?.teams||null,rows:r.grid?.rows||null,cols:r.grid?.cols||null,board:r.board,boardNames:r.boardNames,turn:r.turn,deadline:r.deadline,serverTime:Date.now(),customTeams:r.customTeams,selection:r.selection,selectionDeadline:r.selectionDeadline,winningScore:3,history:r.history||[],teamOptions:teamNames,quiz:r.mode==='quiz'&&r.phase==='playing'?{question:r.quizQuestion.question,options:r.quizQuestion.options}:null});scheduleBot(r)}
@@ -115,7 +117,7 @@ function beginCustomSelection(r){stop(r);clearTimeout(r.botTimer);r.phase='setup
  beginCustomSelection(r);return
 }finalizeCustom(r)},20000)}
 async function finalizeCustom(r){if(r.phase!=='setup'||!r.selection[0]||!r.selection[1]||r.resolving)return;r.resolving=true;stop(r);broadcast(r,{type:'notice',message:'Takımların ortak futbolcuları kontrol ediliyor...'});let q=null,failed=false;try{q=await resolvePair(...r.selection)}catch(e){failed=true;console.error('Wikidata lookup:',e.message)}finally{r.resolving=false}if(r.phase!=='setup')return;if(!q){broadcast(r,{type:'notice',message:failed?'Wikidata şu anda yanıt vermiyor. Aynı oyuncu sırası korunarak yeniden seçim yapılacak.':'Bu eşleşme için kayıtlı ortak futbolcu bulunamadı. Oyuncu sırası değişmeyecek; yeniden takım seçin.'});r.timer=setTimeout(()=>beginCustomSelection(r),2800);return}r.customTeams=[...r.selection];r.customQuestion=q;r.selectionDeadline=null;broadcast(r,{type:'notice',message:'Takımlar belirlendi: '+r.customTeams.join(' / ')+'. Cevap için 15 saniye!'});begin(r)}
-function reset(r){stop(r);r.players.forEach(p=>{p.score=0;p.attempted=false;p.suggestion=null;p.rematch=false});r.round=0;r.history=[];r.selectionMisses=[0,0];r.used.clear();r.quizOrder=[];r.customQuestion=null;r.board=Array(9).fill(null);r.boardNames=Array(9).fill(null);r.selection=null;r.selectionDeadline=null;r.turn=0;r.question=null;r.deadline=null;r.grid=null;r.phase='waiting';if(r.mode==='tictactoe'){r.grid=grids[Math.floor(Math.random()*grids.length)];r.phase='waiting'}if(r.solo||r.players.length===2){if(r.mode==='custom'){beginCustomSelection(r)}else begin(r)}else state(r)}
+function reset(r){stop(r);r.players.forEach(p=>{p.score=0;p.attempted=false;p.suggestion=null;p.rematch=false});r.round=0;r.botTurnCount=0;r.botLastTurnKey=null;r.history=[];r.selectionMisses=[0,0];r.used.clear();r.quizOrder=[];r.customQuestion=null;r.board=Array(9).fill(null);r.boardNames=Array(9).fill(null);r.selection=null;r.selectionDeadline=null;r.turn=0;r.question=null;r.deadline=null;r.grid=null;r.phase='waiting';if(r.mode==='tictactoe'){r.grid=grids[Math.floor(Math.random()*grids.length)];r.phase='waiting'}if(r.solo||r.players.length===2){if(r.mode==='custom'){beginCustomSelection(r)}else begin(r)}else state(r)}
 function join(ws,msg){let code=String(msg.code||'').toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6),r=rooms.get(code);if(!r)return send(ws,{type:'error',message:'Oda bulunamadı.'});if((r.solo&&r.players.length>=1)||r.players.length>=2)return send(ws,{type:'error',message:'Oda dolu.'});let p={id:crypto.randomUUID(),name:ws.username,score:0,ws};r.players.push(p);ws.room=r;ws.player=p;send(ws,{type:'joined',id:p.id,code});if(r.players.length===2)reset(r);else state(r);roomsUpdate()}
 const quizQuestions=require('./quiz.json');
 const server=http.createServer((req,res)=>{let pathname=new URL(req.url,'http://localhost').pathname;let file=pathname==='/'?'index.html':pathname.slice(1);let full=path.resolve(__dirname,'public',file);if(!full.startsWith(path.resolve(__dirname,'public')+path.sep)){res.writeHead(403);return res.end()}fs.readFile(full,(e,data)=>{if(e){res.writeHead(404);return res.end('Not found')}res.writeHead(200,{'Content-Type':full.endsWith('.html')?'text/html; charset=utf-8':'text/plain; charset=utf-8'});res.end(data)})});
@@ -127,7 +129,7 @@ if(m.type==='listRooms'){return send(ws,{type:'rooms',rooms:listRooms()})}
 if(m.type==='adminStats'){if(ws.username!==ADMIN_USERNAME)return send(ws,{type:'error',message:'Yönetici yetkisi gerekli.'});return send(ws,{type:'adminStats',activeRooms:rooms.size,openRooms:listRooms().length,connectedUsers:[...wss.clients].filter(c=>c.username&&c.readyState===1).length,rooms:[...rooms.values()].map(r=>({code:r.code,mode:r.mode,players:r.players.map(p=>p.name),phase:r.phase}))})}
 if(m.type==='adminCloseRoom'){if(ws.username!==ADMIN_USERNAME)return send(ws,{type:'error',message:'Yönetici yetkisi gerekli.'});let target=rooms.get(String(m.code||'').toUpperCase());if(!target)return send(ws,{type:'error',message:'Oda bulunamadı.'});stop(target);target.players.forEach(p=>{p.ws.room=null;p.ws.player=null;send(p.ws,{type:'leftRoom',message:'Oda yönetici tarafından kapatıldı.'})});rooms.delete(target.code);roomsUpdate();return send(ws,{type:'adminStats',activeRooms:rooms.size,openRooms:listRooms().length,connectedUsers:[...wss.clients].filter(c=>c.username&&c.readyState===1).length,rooms:[...rooms.values()].map(r=>({code:r.code,mode:r.mode,players:r.players.map(p=>p.name),phase:r.phase}))})}
 if(m.type==='leaveRoom'){let old=ws.room;if(!old)return send(ws,{type:'leftRoom'});stop(old);old.players=old.players.filter(p=>p.ws!==ws);ws.room=null;ws.player=null;send(ws,{type:'leftRoom'});if(!old.players.length||old.bot){clearTimeout(old.botTimer);rooms.delete(old.code)}else{old.phase='waiting';old.deadline=null;broadcast(old,{type:'notice',message:'Rakip odadan ayrıldı.'});state(old)}roomsUpdate();return}
-if(m.type==='create'){if(ws.room)return send(ws,{type:'error',message:'Önce mevcut odadan ayrıl.'});let mode=['classic','custom','tictactoe','quiz'].includes(m.mode)?m.mode:'classic',vsBot=m.opponent==='bot',solo=!vsBot&&!!m.solo&&mode!=='classic';let code;do{code=crypto.randomBytes(3).toString('hex').toUpperCase()}while(rooms.has(code));let r={code,mode,solo,players:[],phase:'waiting',round:0,used:new Set(),board:Array(9).fill(null),boardNames:Array(9).fill(null),turn:0,question:null,grid:null,deadline:null,timer:null,customTeams:null,selection:null,selectionDeadline:null};rooms.set(code,r);join(ws,{code,name:m.name});if(vsBot){r.bot={id:crypto.randomUUID(),name:'Futbol AI (Orta)',score:0,ws:null,attempted:false};r.players.push(r.bot);reset(r)}else if(solo)reset(r);roomsUpdate();return}if(m.type==='join'){if(!ws.player)join(ws,m);roomsUpdate();return}let r=ws.room,p=ws.player;if(!r||!p)return;
+if(m.type==='create'){if(ws.room)return send(ws,{type:'error',message:'Önce mevcut odadan ayrıl.'});let mode=['classic','custom','tictactoe','quiz'].includes(m.mode)?m.mode:'classic',vsBot=m.opponent==='bot',solo=!vsBot&&!!m.solo&&mode!=='classic';let code;do{code=crypto.randomBytes(3).toString('hex').toUpperCase()}while(rooms.has(code));let r={code,mode,solo,players:[],phase:'waiting',round:0,used:new Set(),board:Array(9).fill(null),boardNames:Array(9).fill(null),turn:0,question:null,grid:null,deadline:null,timer:null,customTeams:null,selection:null,selectionDeadline:null};rooms.set(code,r);join(ws,{code,name:m.name});if(vsBot){r.botDifficulty=['easy','medium','hard'].includes(m.difficulty)?m.difficulty:'medium';r.bot={id:crypto.randomUUID(),name:'Futbol AI (Orta)',score:0,ws:null,attempted:false};r.players.push(r.bot);reset(r)}else if(solo)reset(r);roomsUpdate();return}if(m.type==='join'){if(!ws.player)join(ws,m);roomsUpdate();return}let r=ws.room,p=ws.player;if(!r||!p)return;
 if(m.type==='teamResolve'){let result=resolve(m.name,teamNames,'team');send(ws,{type:'teamResolution',slot:m.slot,result});return}
 if(m.type==='selectTeam'&&r.mode==='custom'&&r.phase==='setup'&&Date.now()<=r.selectionDeadline){let slot=r.solo?0:r.players.indexOf(p);if(slot<0)return;let result=resolve(m.name,teamNames,'team');if(result.kind!=='correct'){let typed=String(m.name||'').trim();if(typed.length>=3&&typed.length<=80&&/^[\p{L}\p{N} .&'’()-]+$/u.test(typed))result={kind:'correct',name:typed};else return send(ws,{type:'teamSelectionResult',result})}r.selection[slot]=result.name;r.selectionMisses[slot]=0;send(ws,{type:'teamSelectionResult',result:{kind:'correct',name:result.name}});broadcast(r,{type:'notice',message:p.name+' kendi takımını seçti.'});state(r);if(r.solo||r.selection.every(Boolean))finalizeCustom(r);return}
 if(m.type==='quizAnswer'&&r.mode==='quiz'&&r.phase==='playing'&&Date.now()<=r.deadline&&!p.attempted){p.attempted=true;let correct=Number(m.index)===r.quizQuestion.correct;send(ws,{type:'attempt',correct});if(correct)quizEnd(r,p,p.name+' doğru bildi!');else if(r.players.every(x=>x.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');else send(ws,{type:'notice',message:'Yanlış cevap. Bu tur hakkın bitti.'});return}
