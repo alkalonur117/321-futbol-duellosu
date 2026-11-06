@@ -25,8 +25,10 @@ async function listUsers(){await dbReady;if(pg){const r=await pg.query('SELECT u
 async function resetUserPassword(username,password){await dbReady;const salt=crypto.randomBytes(16).toString('hex'),hash=hashPassword(password,salt);if(pg){const r=await pg.query('UPDATE game_users SET salt=$2,hash=$3 WHERE username=$1',[username,salt,hash]);if(!r.rowCount)return false}else{if(!accounts[username])return false;accounts[username]={username,salt,hash};fs.writeFileSync(accountPath,JSON.stringify(accounts))}for(const [token,v] of sessions)if(v.username===username)sessions.delete(token);for(const client of wss.clients)if(client.username===username){client.username=null;send(client,{type:'authError',message:'Şifreniz yönetici tarafından yenilendi. Tekrar giriş yapın.'});try{client.close()}catch{}}return true}
 function authSession(token){let v=sessions.get(token);if(!v||v.expires<Date.now())return null;return v.username}
 
-const norm=s=>String(s||'').toLocaleLowerCase('tr').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/ı/g,'i').replace(/[^a-z0-9]/g,'');
-const dist=(a,b)=>{let p=Array.from({length:b.length+1},(_,i)=>i);for(let i=1;i<=a.length;i++){let c=[i];for(let j=1;j<=b.length;j++)c[j]=Math.min(c[j-1]+1,p[j]+1,p[j-1]+(a[i-1]!==b[j-1]));p=c}return p[b.length]};
+const {normalize:norm,resolve}=require('./lib/name-match');
+const {createTransfermarktBeta}=require('./lib/transfermarkt-beta');
+const tmBeta=createTransfermarktBeta({enabled:process.env.TM_API_ENABLED==='1'});
+// Transfermarkt is a rate-limited opt-in beta fallback; local and Wikidata answers stay primary.
 // Expand verified club intersections using player memberships already present in curated questions.
 const playerClubs=new Map(),playerNames=new Map();
 for(const q of questions)for(const answer of q.answers||[]){
@@ -47,9 +49,6 @@ for(const [key,clubs] of playerClubs){
 }
 questions.push(...generatedPairs.values());
 const extraTeams=['Istanbul Basaksehir','Trabzonspor','Adana Demirspor','Samsunspor','Konyaspor','Antalyaspor','Kasimpasa','Goztepe','Besiktas','Galatasaray','Fenerbahce','Bursaspor','Celtic','Rangers','Feyenoord','PSV Eindhoven','Sporting CP','Braga','Napoli','Lazio','Fiorentina','Atalanta','Bologna','Torino','Villarreal','Real Betis','Real Sociedad','Athletic Bilbao','Valencia','Girona','Bayer Leverkusen','RB Leipzig','Eintracht Frankfurt','Stuttgart','Wolfsburg','Borussia Monchengladbach','Marseille','Lyon','Monaco','Lille','Nice','Lens','Newcastle United','Aston Villa','West Ham United','Everton','Brighton','Nottingham Forest','Leicester City','Leeds United','Wolverhampton Wanderers','Boca Juniors','River Plate','Flamengo','Palmeiras','Al Hilal','Al Nassr','Al Ittihad','Inter Miami'];const teamNames=[...new Set([...questions.flatMap(q=>q.teams),...extraTeams])].sort();
-const teamAlias={'gs':'Galatasaray','fb':'Fenerbahce','bjk':'Besiktas','manu':'Manchester United','manutd':'Manchester United','manunited':'Manchester United','mancity':'Manchester City','psg':'Paris Saint-Germain','paris':'Paris Saint-Germain','real':'Real Madrid','barca':'Barcelona','bayern':'Bayern Munich','bvb':'Borussia Dortmund','milan':'AC Milan','intermilan':'Inter','juve':'Juventus','basaksehir':'Istanbul Basaksehir','basak':'Istanbul Basaksehir','ibb':'Istanbul Basaksehir','galata':'Galatasaray','fener':'Fenerbahce','trabzon':'Trabzonspor','besik':'Besiktas','adana':'Adana Demirspor'};
-const playerAlias={'cr7':'Cristiano Ronaldo','ronaldo':'Cristiano Ronaldo','leo':'Lionel Messi','neymarjr':'Neymar','dimaria':'Angel Di Maria'};
-function resolve(raw,choices,type){let input=norm(raw);if(input.length<2)return {kind:'wrong'};let all=[];for(let name of [...new Set(choices)]){let parts=String(name).split(/\s+/).map(norm).filter(w=>w.length>=4);let vs=type==='player'?[norm(name),...parts]:[norm(name)];if(type==='team')for(let [alias,target] of Object.entries(teamAlias))if(target===name)vs.push(norm(alias));if(type==='player')for(let [alias,target] of Object.entries(playerAlias))if(norm(target)===norm(name))vs.push(norm(alias));for(let v of new Set(vs))all.push({name,v,d:dist(input,v)})}let exact=[...new Set(all.filter(x=>x.v===input).map(x=>x.name))];if(exact.length===1)return {kind:'correct',name:exact[0]};if(exact.length>1)return {kind:'ambiguous',options:exact};let ranked=all.sort((a,b)=>a.d-b.d);if(!ranked.length)return {kind:'wrong'};let best=ranked[0],ties=[...new Set(ranked.filter(x=>x.d===best.d).map(x=>x.name))];let similarity=1-best.d/Math.max(input.length,best.v.length);if(input.length>=4&&similarity>=.8&&ties.length===1)return {kind:'correct',name:best.name};if(input.length>=4&&best.d<=Math.max(5,Math.ceil(best.v.length*.5))&&ties.length===1&&similarity>=.45)return {kind:'suggest',name:best.name};return {kind:'wrong'}}
 const pair=(a,b)=>questions.find(q=>q.teams.includes(a)&&q.teams.includes(b));
 async function enrichPair(q){
  if(!q?.teams||q.teams.length!==2)return;
@@ -184,7 +183,7 @@ if(m.type==='selectTeam'&&r.mode==='custom'&&r.phase==='setup'&&Date.now()<=r.se
    const candidates=teamNames.map(name=>({name,key:norm(name)})).filter(x=>x.key.startsWith(input)&&input.length>=3);
    if(candidates.length===1)result={kind:'suggest',name:candidates[0].name};
  }
- if(result.kind==='correct'&&norm(typed)!==norm(result.name))result={kind:'suggest',name:result.name};
+ // Known abbreviations and unaccented club names are accepted immediately.
  if(result.kind!=='correct')return send(ws,{type:'teamSelectionResult',result});
  r.selection[slot]=result.name;r.selectionMisses[slot]=0;
  send(ws,{type:'teamSelectionResult',result:{kind:'correct',name:result.name}});
@@ -192,7 +191,38 @@ if(m.type==='selectTeam'&&r.mode==='custom'&&r.phase==='setup'&&Date.now()<=r.se
  state(r);if(r.solo||r.selection.every(Boolean))finalizeCustom(r);return
 }
 if(m.type==='quizAnswer'&&r.mode==='quiz'&&r.phase==='playing'&&Date.now()<=r.deadline&&!p.attempted){p.attempted=true;let correct=Number(m.index)===r.quizQuestion.correct;showAttempt(r,p,r.quizQuestion.options[Number(m.index)]||'Geçersiz seçenek',correct);send(ws,{type:'attempt',correct});if(correct)quizEnd(r,p,p.name+' doğru bildi!');else if(r.players.every(x=>x.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');else send(ws,{type:'notice',message:'Yanlış cevap. Bu tur hakkın bitti.'});return}
-if(m.type==='answer'&&r.phase==='playing'&&(r.mode==='classic'||r.mode==='custom')&&!p.attempted&&Date.now()<=r.deadline){let result=resolve(m.answer,r.question.answers,'player');if(result.kind==='suggest'){p.suggestion={name:result.name};send(ws,{type:'suggestion',name:result.name})}else if(result.kind==='ambiguous'){send(ws,{type:'notice',message:'Bu isim birden fazla oyuncuya ait. Tam adı yazın.'})}else{p.attempted=true;showAttempt(r,p,m.answer,result.kind==='correct');send(ws,{type:'attempt',correct:result.kind==='correct'});if(result.kind==='correct'){p.lastAnswer=result.name;endRound(r,p,p.name+' doğru cevap verdi!')}else{send(ws,{type:'notice',message:'Yanlış cevap. Bu turda hakkın bitti.'});if(r.players.every(x=>x.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.')}}return}
+if(m.type==='answer'&&r.phase==='playing'&&(r.mode==='classic'||r.mode==='custom')&&!p.attempted&&!p.verifying&&Date.now()<=r.deadline){
+ const text=String(m.answer||'').trim();
+ const answeredQuestion=r.question,answeredRound=r.round;
+ let result=resolve(text,answeredQuestion.answers,'player');
+ if(result.kind==='wrong'&&tmBeta.enabled&&norm(text).length>=4){
+  p.verifying=true;
+  send(ws,{type:'notice',message:'Oyuncu kayıtlı cevaplarda bulunamadı. Alternatif API ile kontrol ediliyor (beta)...'});
+  let remote=null;
+  try{remote=await tmBeta.verify(text,answeredQuestion.teams)}finally{p.verifying=false}
+  // Do not award a result from a different or already-finished round.
+  if(r.phase!=='playing'||r.question!==answeredQuestion||r.round!==answeredRound||p.attempted)return;
+  if(remote?.name){
+   if(!answeredQuestion.answers.some(a=>norm(a)===norm(remote.name)))answeredQuestion.answers.push(remote.name);
+   result=resolve(text,answeredQuestion.answers,'player');
+   if(result.kind==='wrong')result={kind:'suggest',name:remote.name};
+  }
+ }
+ if(result.kind==='suggest'){p.suggestion={name:result.name};send(ws,{type:'suggestion',name:result.name})}
+ else if(result.kind==='ambiguous'){send(ws,{type:'notice',message:'Bu isim birden fazla oyuncuya ait. Tam adı veya soyadını yaz.'});send(ws,{type:'suggestionDismissed'})}
+ else{
+  p.attempted=true;
+  showAttempt(r,p,text,result.kind==='correct');
+  send(ws,{type:'attempt',correct:result.kind==='correct'});
+  if(result.kind==='correct'){
+   p.lastAnswer=result.name;endRound(r,p,p.name+' doğru cevap verdi!');
+  }else{
+   send(ws,{type:'notice',message:'Yanlış cevap. Bu turda hakkın bitti.'});
+   if(r.players.every(x=>x.attempted))endRound(r,null,'İki oyuncu da yanlış cevap verdi.')
+  }
+ }
+ return
+}
 if(m.type==='gridAnswer'&&r.mode==='tictactoe'){gridSubmit(r,p,Number(m.idx),m.answer);return}
 if(m.type==='confirmSuggestion'&&r.phase==='playing'&&p.suggestion){let s=p.suggestion;p.suggestion=null;if(m.accept){if(r.mode==='classic'||r.mode==='custom'){if(Date.now()<=r.deadline&&!p.attempted){p.attempted=true;p.lastAnswer=s.name;showAttempt(r,p,s.name,true);endRound(r,p,p.name+' öneriyi onayladı!')}}else if(Date.now()<=r.deadline&&!r.board[s.idx]&&(r.solo||r.players[r.turn]===p)){showAttempt(r,p,s.name,true,{cell:s.idx});claim(r,p,s.idx,s.name)}}else send(ws,{type:'suggestionDismissed'});return}
 if(m.type==='rematch'&&r.phase==='finished'){p.rematch=true;if(r.solo||r.bot||r.players.every(x=>x.rematch))reset(r);else send(ws,{type:'notice',message:'Rakibin rövanş isteği bekleniyor.'})}
