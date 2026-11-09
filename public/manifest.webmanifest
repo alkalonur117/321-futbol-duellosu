@@ -1,0 +1,21 @@
+{
+  "name": "3-2-1 Futbol Oyunları",
+  "short_name": "3-2-1 Futbol",
+  "description": "Klasik 3-2-1, futbol bilgi yarışması ve futbol bulmacası. Arkadaşlarınla veya yapay zekâya karşı oyna.",
+  "id": "/",
+  "start_url": "/?app=1",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#071018",
+  "theme_color": "#071018",
+  "lang": "tr",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
