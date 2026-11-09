@@ -190,7 +190,7 @@ if(m.type==='selectTeam'&&r.mode==='custom'&&r.phase==='setup'&&Date.now()<=r.se
  broadcast(r,{type:'notice',message:p.name+' kendi takımını seçti.'});
  state(r);if(r.solo||r.selection.every(Boolean))finalizeCustom(r);return
 }
-if(m.type==='quizAnswer'&&r.mode==='quiz'&&r.phase==='playing'&&Date.now()<=r.deadline&&!p.attempted){p.attempted=true;let correct=Number(m.index)===r.quizQuestion.correct;showAttempt(r,p,r.quizQuestion.options[Number(m.index)]||'Geçersiz seçenek',correct);send(ws,{type:'attempt',correct});if(correct)quizEnd(r,p,p.name+' doğru bildi!');else if(r.players.every(x=>x.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');else send(ws,{type:'notice',message:'Yanlış cevap. Bu tur hakkın bitti.'});return}
+if(m.type==='quizAnswer'&&r.mode==='quiz'&&r.phase==='playing'&&Date.now()<=r.deadline&&!p.attempted){const index=Number(m.index);if(!Number.isInteger(index)||index<0||index>=r.quizQuestion.options.length)return;p.attempted=true;const correct=index===r.quizQuestion.correct;showAttempt(r,p,r.quizQuestion.options[index],correct);send(ws,{type:'quizAnswerFeedback',round:r.round,selectedIndex:index,correctIndex:r.quizQuestion.correct,correctAnswer:r.quizQuestion.options[r.quizQuestion.correct],isCorrect:correct});if(correct)quizEnd(r,p,p.name+' doğru bildi!');else if(r.players.every(x=>x.attempted))quizEnd(r,null,'Kimse doğru cevaplayamadı.');else send(ws,{type:'notice',message:'Yanlış cevap. Bu tur hakkın bitti.'});return}
 if(m.type==='answer'&&r.phase==='playing'&&(r.mode==='classic'||r.mode==='custom')&&!p.attempted&&!p.verifying&&Date.now()<=r.deadline){
  const text=String(m.answer||'').trim();
  const answeredQuestion=r.question,answeredRound=r.round;
