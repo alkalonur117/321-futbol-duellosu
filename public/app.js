@@ -321,6 +321,14 @@ document.addEventListener('keydown',e=>{
    e.preventDefault();$('answerForm').requestSubmit()
  }
 });
+const diceTeams=['Galatasaray','Fenerbahçe','Beşiktaş','Trabzonspor','Başakşehir','Real Madrid','Barcelona','Atlético Madrid','Manchester United','Manchester City','Liverpool','Arsenal','Chelsea','Tottenham','Bayern Munich','Borussia Dortmund','Juventus','Inter','AC Milan','Napoli','Roma','Paris Saint-Germain','Lille','Ajax','PSV','Benfica','Porto','Sporting CP','Sevilla','Valencia'];
+$('randomTeamDice').onclick=()=>{
+ if(mode!=='custom'||phase!=='setup'||$('customOwn').disabled)return;
+ const team=diceTeams[Math.floor(Math.random()*diceTeams.length)];
+ $('customOwn').value=team;
+ $('teamHint').textContent='🎲 Zar sonucu: '+team+' · Takım doğrulanıyor...';
+ send({type:'selectTeam',name:team});
+};
 $('submitOwn').onclick=()=>{let value=$('customOwn').value.trim();if(value)send({type:'selectTeam',name:value})};$('yes').onclick=()=>{hideSuggest();send({type:'confirmSuggestion',accept:true})};$('no').onclick=()=>{hideSuggest();send({type:'confirmSuggestion',accept:false})};$('rematch').onclick=()=>{send({type:'rematch'});notice('Yeni maç hazırlanıyor...')};
 
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));}
