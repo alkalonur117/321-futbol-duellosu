@@ -28,3 +28,18 @@ Kişisel Apple ID ile cihazda geliştirme testi yapılabilir; **TestFlight ve Ap
 - Şu anki sürüm, mevcut web oyununun native iOS kabuğudur. **App Store kabulü garanti değildir**; Apple'ın minimum işlevsellik, gizlilik ve kullanıcı deneyimi kuralları doğrultusunda daha fazla native ekran/özellik gerekebilir.
 - App Store yayını öncesi gizlilik politikası, veri kullanımı beyanları, uygulama ekran görüntüleri, mağaza açıklamaları ve fiziksel cihaz testleri tamamlanmalıdır.
 - Oyun servis URL'si `GameScreen.swift` içindeki `GameConfig` alanından değiştirilebilir.
+
+## Windows + iPhone: ücretsiz IPA derleme ve yükleme (deneysel)
+
+Bu repodaki `.github/workflows/ios-free-ipa.yml` GitHub Actions iş akışı, Mac sahibi olmadan **imzasız** bir iPhone `.ipa` dosyası derlemek için hazırlanmıştır. Repo herkese açık olduğundan GitHub'ın standart macOS runner'ı ücretsizdir. Derleme başarılı olursa:
+
+1. GitHub deposunda **Actions** sekmesini açın.
+2. **iOS - Free IPA Build (unsigned)** iş akışını seçin. Gerekirse **Run workflow** düğmesine basın.
+3. Başarılı çalıştırmanın **Artifacts** bölümünden `Three21Football-unsigned-IPA` dosyasını indirin ve ZIP arşivinden `.ipa` dosyasını çıkarın.
+4. Windows'ta yalnızca güvenilir resmi kaynaktan **AltStore Classic / AltServer** kurun: https://faq.altstore.io/altstore-classic/how-to-install-altstore-windows
+5. iPhone'u bilgisayara bağlayın, AltStore Classic'i kurun, iPhone'da **Ayarlar → Gizlilik ve Güvenlik → Geliştirici Modu**nu açın (iOS 16+).
+6. AltStore'da **My Apps** üzerinden `.ipa` dosyasını seçip kendi Apple hesabınızla imzalayarak yüklemeyi deneyin.
+
+**Not:** Derleme veya yükleme başarısı henüz fiziksel iPhone üzerinde doğrulanmadı. İmzasız `.ipa` doğrudan telefona yüklenemez. AltStore gibi üçüncü taraf uygulamalar Apple tarafından sunulmaz; Apple hesabınızı sadece güvendiğiniz yazılımlarda kullanın, şifrenizi GitHub veya ChatGPT'ye göndermeyin. Ücretsiz hesapla uygulama imzası **7 günde** yenilenmelidir; **3 aktif uygulama** sınırı vardır. Bu yöntem yalnızca kendi telefonunuzda deneme içindir. TestFlight ve App Store dağıtımı için Apple Developer Program üyeliği gerekir.
+
+GitHub Actions derlemesi hata verirse ilgili **Actions → iş çalıştırması → Build iPhone app on macOS** günlüğünü inceleyin. Xcode imza/derleme hatalarını birbirinden ayırın.
