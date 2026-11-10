@@ -172,7 +172,11 @@ def audit_case(api, case, transfer_cache):
                 if pid in inspected:
                     continue
                 inspected.add(pid)
-                clubs = get_clubs(api, pid)
+                try:
+                    clubs = get_clubs(api, pid)
+                except ApiProblem as exc:
+                    result["notes"].append(f"Career lookup failed for candidate {pid}: {exc}")
+                    clubs = []
                 names = [c["name"] for c in clubs]
                 matched = [expected for expected in case["expected_clubs"]
                            if any(club_match(expected, name) for name in names)]
@@ -245,7 +249,7 @@ def main():
         result = audit_case(api, case, cache)
         results.append(result)
         print(f"{result['name']}: {result['status']} | ID: {result['id'] or '—'} | calls: {api.calls}")
-        if result["status"] == "api_error" and any("budget" in x.lower() or "quota" in x.lower() for x in result["notes"]):
+        if result["status"] == "api_error" and any("Request budget reached" in x or "API daily quota nearly exhausted" in x for x in result["notes"]):
             break
     report = {"generated_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
               "calls": api.calls, "daily_remaining": api.remaining,
