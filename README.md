@@ -28,3 +28,9 @@
 - Yönetici panelinde aktif odalar, bağlı kullanıcı sayısı ve oda kapatma.
 
 **Not:** Kullanıcı hesaplarının kalıcı olması için `DATABASE_URL` ile PostgreSQL bağlanması gerekir. Render ücretsiz diskine yazılan `accounts.json` kalıcı değildir. Oturumlar sunucu belleğinde tutulduğu için yeniden dağıtımda oturum açmak gerekebilir.
+
+## V24 — iPhone'dan bilgisayarsız deneme ve oyun içi onay penceresi
+- Oyun odasından ayrılma ve yönetici onayları artık tarayıcının beyaz `confirm()` penceresi yerine futbol/stadyum temalı, mobil uyumlu bir onay penceresinde gösterilir. Vazgeçme ve onaylama ayrı düğmelerdir; yanlışlıkla odadan çıkmayı önler.
+- iPhone/iPad Safari'de, oyun ana ekrana eklenmemişse giriş sonrası lobide kısa kurulum açıklaması gösterilir.
+- **Bilgisayar veya kablo gerekmez:** iPhone'da Safari ile `https://three21-futbol-duellosu.onrender.com/?v=24` adresini açın → Paylaş → Ana Ekrana Ekle → Ekle. Bu yöntem PWA olarak çalışır, imzalı App Store uygulaması değildir.
+- iOS native Xcode projesi `ios/` klasöründedir; gerçek `.ipa` kurulumu ayrıca imzalama/dağıtım gerektirir.
