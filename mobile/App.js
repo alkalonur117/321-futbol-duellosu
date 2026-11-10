@@ -116,6 +116,8 @@ function LobbyScreen({ client }) {
   const [mode, setMode] = useState('classic');
   const [opponent, setOpponent] = useState('human');
   const [joinCode, setJoinCode] = useState('');
+  const [deleteOpen, setDeleteOpen] = useState(false);
+  const [deletePassword, setDeletePassword] = useState('');
   return (
     <View>
       <Panel>
@@ -172,6 +174,30 @@ function LobbyScreen({ client }) {
         <Button label="KODLA KATIL" secondary
           onPress={() => client.send({ type: 'join', code: joinCode.trim().toUpperCase() })} />
       </Panel>
+      {!client.isAdmin ? (
+        <Panel>
+          <Text style={styles.sectionTitle}>HESAP AYARLARI</Text>
+          {!deleteOpen ? (
+            <Button label="HESABIMI KALICI OLARAK SİL" danger
+              onPress={() => setDeleteOpen(true)} />
+          ) : (
+            <>
+              <Text style={styles.description}>Hesabın ve giriş bilgilerin kalıcı olarak silinir. İşlem geri alınamaz.</Text>
+              <Field label="ŞİFRENLE DOĞRULA" value={deletePassword}
+                onChangeText={setDeletePassword} secureTextEntry
+                autoCapitalize="none" placeholder="Mevcut şifren" />
+              <Button label="HESABI SİL" danger disabled={!deletePassword}
+                onPress={() => Alert.alert('Hesap silinsin mi?', 'Bu işlem geri alınamaz.', [
+                  { text: 'Vazgeç', style: 'cancel' },
+                  { text: 'Kalıcı olarak sil', style: 'destructive',
+                    onPress: () => client.send({ type: 'deleteAccount', password: deletePassword }) }
+                ])} />
+              <Button label="VAZGEÇ" secondary
+                onPress={() => { setDeleteOpen(false); setDeletePassword(''); }} />
+            </>
+          )}
+        </Panel>
+      ) : null}
     </View>
   );
 }
