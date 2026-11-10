@@ -71,7 +71,7 @@ class FootballApi:
         if self.remaining is not None and self.remaining <= 1:
             raise ApiProblem("API daily quota nearly exhausted")
         url = BASE + "/" + endpoint + "?" + urlencode(params)
-        request = Request(url, headers={"x-apisports-key": self.key, "Accept": "application/json"})
+        request = Request(url, headers={"x-apisports-key": self.key})
         self.calls += 1
         try:
             with urlopen(request, timeout=22) as response:
