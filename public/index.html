@@ -15,7 +15,14 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
 #customHistory{backdrop-filter:blur(12px)}
 #teamHint button{background:linear-gradient(120deg,#146a54,#178d75);color:white;font-weight:700}
 @media(max-width:550px){body{padding:12px 7px}.panel{border-radius:13px}#customHistory{max-width:100%!important}}
-</style><link rel="stylesheet" href="/v20.css?v=20"><link rel="stylesheet" href="/mobile-v23.css?v=23"><link rel="stylesheet" href="/dialog-v24.css?v=24"><link rel="stylesheet" href="/match-hud-v25.css?v=25"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/icon.svg"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="3-2-1 Futbol"><meta name="theme-color" content="#071018"></head><body><div id="goalFx" aria-hidden="true"><div class="ball">⚽</div><div class="goalText">GOOOL!</div></div><main class="wrap">
+</style><link rel="stylesheet" href="/v20.css?v=20"><link rel="stylesheet" href="/mobile-v23.css?v=23"><link rel="stylesheet" href="/dialog-v24.css?v=24"><link rel="stylesheet" href="/match-hud-v25.css?v=25"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/icon.svg"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="3-2-1 Futbol"><meta name="theme-color" content="#071018"><style id="ad-slot-style">
+/* Reserved banner space only; no ad network or tracking is loaded. */
+#bottomAdSlot{display:none;position:sticky;bottom:0;z-index:15;margin:14px auto 0;max-width:780px;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(5,24,30,.96);border:1px solid rgba(123,221,194,.22);border-radius:12px;text-align:center;box-shadow:0 -5px 24px #0005}
+body:has(#lobby:not(.hidden)) #bottomAdSlot,body:has(#game:not(.hidden)) #bottomAdSlot{display:block}
+#bottomAdSlot .ad-placeholder{display:flex;align-items:center;justify-content:center;min-height:50px;max-width:728px;margin:auto;border:1px dashed rgba(170,213,200,.35);border-radius:7px;color:#a9cbbd;font:600 11px system-ui,Arial;letter-spacing:.07em}
+@media(min-width:800px){#bottomAdSlot .ad-placeholder{min-height:90px}}
+@media(max-width:500px){#bottomAdSlot{margin:8px 7px 0;padding:6px 8px calc(6px + env(safe-area-inset-bottom))}}
+</style></head><body><div id="goalFx" aria-hidden="true"><div class="ball">⚽</div><div class="goalText">GOOOL!</div></div><main class="wrap">
 <header class="site-header">
   <div class="topbar">
     <div class="brand-mini"><span class="brand-emblem" aria-hidden="true">⚽</span><div>3-2-1 FUTBOL<span class="edition">MATCHDAY EDITION · V20</span></div></div>
@@ -121,6 +128,7 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
   <div class="panel"><div id="suggestion" class="suggest hidden"><div id="suggestionText"></div><div class="row"><button id="yes" type="button">EVET</button><button class="alt" id="no" type="button">HAYIR</button></div></div><div class="notice" id="notice" role="status">Rakip bekleniyor...</div><button id="rematch" class="alt hidden copy" type="button">↻ YENİ MAÇ / RÖVANŞ</button></div>
 </section>
 </main>
+<aside id="bottomAdSlot" aria-label="Reklam alanı"><div class="ad-placeholder" aria-label="Reklam yerleşimi, henüz reklam yayınlanmıyor">REKLAM ALANI</div></aside>
 <div id="gameConfirm" class="game-confirm hidden" role="presentation" aria-hidden="true">
  <div class="game-confirm-card" role="dialog" aria-modal="true" aria-labelledby="gameConfirmTitle" aria-describedby="gameConfirmMessage">
   <div class="game-confirm-icon" aria-hidden="true">⚽</div>
