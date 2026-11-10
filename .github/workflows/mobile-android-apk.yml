@@ -1,0 +1,44 @@
+name: Native Android test APK
+
+on:
+  pull_request:
+    paths:
+      - "mobile/**"
+      - ".github/workflows/mobile-android-apk.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  android-apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Install Expo dependencies
+        working-directory: mobile
+        run: npm install --no-audit --no-fund
+      - name: Generate native Android project
+        working-directory: mobile
+        run: npx expo prebuild --platform android --non-interactive --no-install
+      - name: Compile native debug APK
+        working-directory: mobile/android
+        run: |
+          chmod +x gradlew
+          ./gradlew :app:assembleDebug --no-daemon
+      - name: Upload native APK for testing
+        uses: actions/upload-artifact@v4
+        with:
+          name: Futbol-Duellosu-Native-Android-APK
+          path: mobile/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 14

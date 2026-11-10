@@ -1,0 +1,28 @@
+{
+  "expo": {
+    "name": "Futbol Düellosu Test",
+    "slug": "football-duel-native",
+    "scheme": "footballduel",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "ios": {
+      "bundleIdentifier": "com.alkalonur.footballgame",
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.alkalonur.footballgame",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#071018"
+      }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ],
+    "extra": {
+      "apiBaseUrl": "https://three21-futbol-duellosu.onrender.com"
+    }
+  }
+}

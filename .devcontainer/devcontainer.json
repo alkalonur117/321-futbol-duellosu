@@ -1,0 +1,17 @@
+{
+  "name": "Futbol Düellosu - iPhone Expo Go Test",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "forwardPorts": [
+    8081
+  ],
+  "portsAttributes": {
+    "8081": {
+      "label": "Expo Metro",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "cd mobile && npm install --no-audit --no-fund && npm install --no-save --no-audit --no-fund '@expo/ngrok@^4.1.0'",
+  "remoteEnv": {
+    "EXPO_NO_TELEMETRY": "1"
+  }
+}
