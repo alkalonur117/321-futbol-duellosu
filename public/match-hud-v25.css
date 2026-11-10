@@ -1,0 +1,78 @@
+/* V25 — compact always-visible room code and clear home/away scoreboard */
+#matchHud{display:none}
+body.focus-mode #matchHud{
+  position:absolute;top:calc(env(safe-area-inset-top) + 51px);
+  left:0;right:0;z-index:8;display:flex;flex-direction:column;gap:7px;
+  width:100%;max-width:900px;margin:0 auto;min-width:0
+}
+.match-hud-roomline{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:30px;padding:0 2px}
+.match-hud-room{display:flex;align-items:center;gap:9px;min-width:0}
+.match-hud-room-label{font-size:10px;letter-spacing:1.1px;font-weight:900;color:#a4c1cd;white-space:nowrap}
+#hudRoomCode{font-family:'Barlow Condensed',Impact,sans-serif;font-size:22px;letter-spacing:2px;color:#fff;line-height:1;font-variant-numeric:tabular-nums}
+#copyRoomCode{flex:0 0 auto;min-height:28px;padding:5px 9px!important;border:1px solid rgba(181,245,122,.42)!important;border-radius:8px!important;background:rgba(126,195,81,.14)!important;color:#dcffb5!important;font-size:10px;font-weight:900;letter-spacing:.6px}
+.match-hud-mode{font-size:10px;font-weight:800;color:#a4c1cd;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:45%;text-align:right}
+.match-hud-board{display:grid;grid-template-columns:minmax(0,1fr) 32px minmax(0,1fr);gap:6px;align-items:stretch;min-width:0}
+.match-hud-side{position:relative;min-width:0;min-height:75px;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:9px 12px;border-radius:13px;border:1px solid rgba(255,255,255,.19);box-shadow:0 4px 15px rgba(0,0,0,.22);overflow:hidden}
+.match-hud-home{border-left:4px solid #b9fa70;background:linear-gradient(110deg,rgba(38,99,61,.96),rgba(13,45,44,.97))}
+.match-hud-away{border-right:4px solid #7dbfff;background:linear-gradient(250deg,rgba(36,81,128,.96),rgba(15,38,64,.97))}
+.match-hud-side-label{display:block;font-size:10px;letter-spacing:1px;font-weight:900;line-height:1.2;color:#d0e8dc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.match-hud-away .match-hud-side-label{color:#c5e3ff}
+.match-hud-side-main{display:flex;align-items:center;justify-content:space-between;gap:8px;min-width:0}
+.match-hud-name{font-size:clamp(12px,1.9vw,17px);font-weight:900;line-height:1.2;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.match-hud-points{font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(29px,4.4vw,39px);font-weight:900;line-height:1;color:#caff80;flex:0 0 auto;font-variant-numeric:tabular-nums}
+.match-hud-away .match-hud-points{color:#93cfff}
+.match-hud-vs{display:grid;place-items:center;color:#d5e6ed;font-family:'Barlow Condensed',Impact,sans-serif;font-size:20px;font-weight:900;letter-spacing:.4px}
+.match-hud-side.is-me{outline:2px solid rgba(255,255,255,.75);outline-offset:-3px}
+.match-hud-side.is-active{box-shadow:0 0 0 2px rgba(255,255,255,.3),0 0 22px rgba(184,245,112,.2)}
+body.focus-mode #game{padding-top:calc(env(safe-area-inset-top) + 170px)!important}
+body.focus-mode #game>#quizPanel,
+body.focus-mode #game>#duelPanel,
+body.focus-mode #game>#customPanel,
+body.focus-mode #game>#gridPanel{
+  max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 342px)
+}
+@media(max-width:620px){
+  body.focus-mode #matchHud{top:calc(env(safe-area-inset-top) + 47px);gap:5px}
+  .match-hud-roomline{min-height:25px;gap:5px}
+  .match-hud-room{gap:6px}
+  .match-hud-room-label{font-size:9px;letter-spacing:.5px}
+  #hudRoomCode{font-size:19px;letter-spacing:1.5px}
+  #copyRoomCode{min-height:25px;padding:4px 7px!important;font-size:9px}
+  .match-hud-mode{font-size:9px;max-width:32%}
+  .match-hud-board{grid-template-columns:minmax(0,1fr) 24px minmax(0,1fr);gap:4px}
+  .match-hud-side{min-height:66px;padding:7px 8px;gap:3px;border-radius:11px}
+  .match-hud-side-label{font-size:9px;letter-spacing:.5px}
+  .match-hud-name{font-size:12px}
+  .match-hud-points{font-size:32px}
+  .match-hud-vs{font-size:16px}
+  body.focus-mode #game{padding-top:calc(env(safe-area-inset-top) + 148px)!important;padding-bottom:calc(env(safe-area-inset-bottom) + 137px)}
+  body.focus-mode #game>#quizPanel,
+  body.focus-mode #game>#duelPanel,
+  body.focus-mode #game>#customPanel,
+  body.focus-mode #game>#gridPanel{
+    max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 285px)
+  }
+  body.focus-mode #attemptsPanel{height:88px;bottom:calc(env(safe-area-inset-bottom) + 42px)}
+}
+@media(max-width:360px){
+  .match-hud-room-label{font-size:8px}
+  .match-hud-mode{max-width:27%}
+  .match-hud-side{padding:6px}
+  .match-hud-side-label{font-size:8px;letter-spacing:0}
+  .match-hud-name{font-size:11px}
+  .match-hud-points{font-size:29px}
+}
+@media(max-height:650px){
+  body.focus-mode #matchHud{top:calc(env(safe-area-inset-top) + 44px);gap:4px}
+  .match-hud-roomline{min-height:22px}
+  .match-hud-side{min-height:59px;padding-top:5px;padding-bottom:5px}
+  .match-hud-points{font-size:28px}
+  body.focus-mode #game{padding-top:calc(env(safe-area-inset-top) + 137px)!important;padding-bottom:calc(env(safe-area-inset-bottom) + 107px)}
+  body.focus-mode #game>#quizPanel,
+  body.focus-mode #game>#duelPanel,
+  body.focus-mode #game>#customPanel,
+  body.focus-mode #game>#gridPanel{
+    max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 244px)
+  }
+  body.focus-mode #attemptsPanel{height:63px;bottom:calc(env(safe-area-inset-bottom) + 38px)}
+}

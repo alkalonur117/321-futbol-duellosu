@@ -15,7 +15,7 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
 #customHistory{backdrop-filter:blur(12px)}
 #teamHint button{background:linear-gradient(120deg,#146a54,#178d75);color:white;font-weight:700}
 @media(max-width:550px){body{padding:12px 7px}.panel{border-radius:13px}#customHistory{max-width:100%!important}}
-</style><link rel="stylesheet" href="/v20.css?v=20"><link rel="stylesheet" href="/mobile-v23.css?v=23"><link rel="stylesheet" href="/dialog-v24.css?v=24"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/icon.svg"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="3-2-1 Futbol"><meta name="theme-color" content="#071018"></head><body><div id="goalFx" aria-hidden="true"><div class="ball">⚽</div><div class="goalText">GOOOL!</div></div><main class="wrap">
+</style><link rel="stylesheet" href="/v20.css?v=20"><link rel="stylesheet" href="/mobile-v23.css?v=23"><link rel="stylesheet" href="/dialog-v24.css?v=24"><link rel="stylesheet" href="/match-hud-v25.css?v=25"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/icon.svg"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="3-2-1 Futbol"><meta name="theme-color" content="#071018"></head><body><div id="goalFx" aria-hidden="true"><div class="ball">⚽</div><div class="goalText">GOOOL!</div></div><main class="wrap">
 <header class="site-header">
   <div class="topbar">
     <div class="brand-mini"><span class="brand-emblem" aria-hidden="true">⚽</span><div>3-2-1 FUTBOL<span class="edition">MATCHDAY EDITION · V20</span></div></div>
@@ -67,7 +67,28 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
   </div>
 </section>
 <section id="game" class="hidden">
-  <button id="backLobby" class="alt" type="button">← ODA LİSTESİNE DÖN</button><div id="focusScore" aria-label="Maç skoru">0 : 0</div>
+  <button id="backLobby" class="alt" type="button">← ODA LİSTESİNE DÖN</button>
+  <div id="matchHud" class="match-hud" aria-label="Maç bilgileri ve skor tabelası">
+    <div class="match-hud-roomline">
+      <div class="match-hud-room">
+        <span class="match-hud-room-label">ODA KODU</span>
+        <strong id="hudRoomCode">------</strong>
+        <button id="copyRoomCode" class="match-hud-copy" type="button" aria-label="Oda kodunu kopyala">KOPYALA</button>
+      </div>
+      <span class="match-hud-mode" id="hudMode">Klasik 3-2-1</span>
+    </div>
+    <div class="match-hud-board" aria-label="Oyuncu skorları">
+      <div class="match-hud-side match-hud-home" id="hudHome">
+        <span class="match-hud-side-label" id="hudHomeLabel">SEN · EV SAHİBİ</span>
+        <div class="match-hud-side-main"><span class="match-hud-name" id="hudP1">Oyuncu 1</span><strong class="match-hud-points" id="hudS1">0</strong></div>
+      </div>
+      <span class="match-hud-vs" aria-hidden="true">VS</span>
+      <div class="match-hud-side match-hud-away" id="hudAway">
+        <span class="match-hud-side-label" id="hudAwayLabel">RAKİP · MİSAFİR</span>
+        <div class="match-hud-side-main"><span class="match-hud-name" id="hudP2">Rakip bekleniyor</span><strong class="match-hud-points" id="hudS2">0</strong></div>
+      </div>
+    </div>
+  </div>
   <div class="panel game-meta">
     <div class="room-block"><div class="room-icon" aria-hidden="true">🏟️</div><div><div class="room-label">MAÇ ODASI</div><h2 id="roomCode">------</h2></div></div>
     <div class="room-actions"><div class="badge" id="modeLabel">Klasik 3-2-1</div><button id="copy" class="alt copy" type="button">🔗 DAVET LİNKİNİ KOPYALA</button></div>
@@ -112,4 +133,4 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
   </div>
  </div>
 </div>
-<script src="/app.js?v=24" defer></script></body></html>
+<script src="/app.js?v=25" defer></script></body></html>
