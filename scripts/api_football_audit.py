@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -62,35 +63,56 @@ class FootballApi:
     def __init__(self, key, max_calls):
         self.key, self.max_calls, self.calls = key, max_calls, 0
         self.remaining = None
+        self.last_call_at = None
+        # Free API-Sports plans allow 10 calls/minute; start conservatively.
+        self.min_interval = 7.0
 
     def get(self, endpoint, **params):
         if endpoint not in {"players/profiles", "players/teams", "transfers", "teams"}:
             raise ApiProblem("Unexpected endpoint")
-        if self.calls >= self.max_calls:
-            raise ApiProblem("Request budget reached")
-        if self.remaining is not None and self.remaining <= 1:
-            raise ApiProblem("API daily quota nearly exhausted")
         url = BASE + "/" + endpoint + "?" + urlencode(params)
         request = Request(url, headers={"x-apisports-key": self.key})
-        self.calls += 1
-        try:
-            with urlopen(request, timeout=22) as response:
-                raw = response.read(6_000_000)
-                remaining = response.headers.get("x-ratelimit-requests-remaining")
-                if remaining is not None and remaining.isdigit():
-                    self.remaining = int(remaining)
-        except HTTPError as exc:
-            raise ApiProblem(f"HTTP {exc.code} at {endpoint}") from None
-        except (URLError, TimeoutError, OSError):
-            raise ApiProblem(f"Connection error at {endpoint}") from None
-        try:
-            data = json.loads(raw)
-        except (ValueError, UnicodeError):
-            raise ApiProblem(f"Invalid JSON at {endpoint}") from None
-        if data.get("errors"):
-            # Avoid logging provider error payloads or request headers.
-            raise ApiProblem(f"API returned an error at {endpoint} (check plan, key and quota)")
-        return data.get("response") or [], data.get("paging") or {}
+        for attempt in range(2):
+            if self.calls >= self.max_calls:
+                raise ApiProblem("Request budget reached")
+            if self.remaining is not None and self.remaining <= 1:
+                raise ApiProblem("API daily quota nearly exhausted")
+            if self.last_call_at is not None:
+                wait = self.min_interval - (time.monotonic() - self.last_call_at)
+                if wait > 0:
+                    time.sleep(wait)
+            self.calls += 1
+            self.last_call_at = time.monotonic()
+            try:
+                with urlopen(request, timeout=22) as response:
+                    raw = response.read(6_000_000)
+                    headers = response.headers
+                    remaining = headers.get("x-ratelimit-requests-remaining")
+                    if remaining is not None and remaining.isdigit():
+                        self.remaining = int(remaining)
+                    minute_limit = headers.get("X-RateLimit-Limit")
+                    if minute_limit is not None and minute_limit.isdigit():
+                        self.min_interval = 7.0 if int(minute_limit) <= 10 else 0.35
+            except HTTPError as exc:
+                if exc.code == 429 and attempt == 0:
+                    time.sleep(70)
+                    continue
+                raise ApiProblem(f"HTTP {exc.code} at {endpoint}") from None
+            except (URLError, TimeoutError, OSError):
+                raise ApiProblem(f"Connection error at {endpoint}") from None
+            try:
+                data = json.loads(raw)
+            except (ValueError, UnicodeError):
+                raise ApiProblem(f"Invalid JSON at {endpoint}") from None
+            errors = data.get("errors")
+            if errors:
+                if isinstance(errors, dict) and "rateLimit" in errors and attempt == 0:
+                    time.sleep(70)
+                    continue
+                safe_keys = ", ".join(str(k)[:40] for k in errors.keys()) if isinstance(errors, dict) else "provider"
+                raise ApiProblem(f"API returned an error at {endpoint} [{safe_keys}]")
+            return data.get("response") or [], data.get("paging") or {}
+        raise ApiProblem(f"Rate limit at {endpoint}")
 
 
 def profiles_from_search(api, term):
