@@ -1,0 +1,44 @@
+name: Native mobile checks
+
+on:
+  pull_request:
+    paths:
+      - "mobile/**"
+      - "server.js"
+      - ".github/workflows/mobile-ci.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mobile-bundle:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install native dependencies
+        run: npm install --no-audit --no-fund
+      - name: Bundle native iOS JavaScript
+        run: npx expo export --platform ios --output-dir dist-ios
+      - name: Bundle native Android JavaScript
+        run: npx expo export --platform android --output-dir dist-android
+
+  server-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install server dependencies
+        run: npm install --no-audit --no-fund
+      - name: Check server syntax
+        run: node --check server.js
+      - name: Run existing tests
+        run: npm test
