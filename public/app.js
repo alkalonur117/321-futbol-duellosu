@@ -1,6 +1,59 @@
 
 const $=id=>document.getElementById(id);let ws,myId,phase='waiting',mode='classic',solo=false,deadline=null,selected=-1,locked=false,turn=0,board=[],players=[],rows=[],cols=[],boardNames=[],ticker,selection=[],selectionDeadline=null,authToken=sessionStorage.getItem('gameToken')||'',authUser='',quizLocked=false,admin=false;
 const send=o=>ws?.readyState===1&&ws.send(JSON.stringify(o));const notice=s=>$('notice').textContent=s;const hideSuggest=()=>$('suggestion').classList.add('hidden');const modeNames={classic:'Klasik 3-2-1',custom:'Takımları Sen Seç',tictactoe:'Tic Tac Toe',quiz:'Futbol Bilgi Yarışması'};
+
+/* Stadium-themed confirmation dialog: no browser-native white popup. */
+const gameConfirm=$('gameConfirm');
+let pendingConfirmAction=null,previousConfirmFocus=null;
+function closeGameConfirm(){
+ if(gameConfirm.classList.contains('hidden'))return;
+ pendingConfirmAction=null;
+ gameConfirm.classList.add('hidden');
+ gameConfirm.setAttribute('aria-hidden','true');
+ document.body.classList.remove('game-dialog-open');
+ const focus=previousConfirmFocus;previousConfirmFocus=null;
+ if(focus?.isConnected)focus.focus({preventScroll:true});
+}
+function openGameConfirm({eyebrow='MAÇ BİLDİRİMİ',title='Emin misin?',message='',confirmLabel='ONAYLA',cancelLabel='VAZGEÇ',danger=false,onConfirm}){
+ if(!gameConfirm.classList.contains('hidden'))closeGameConfirm();
+ previousConfirmFocus=document.activeElement;
+ pendingConfirmAction=onConfirm;
+ $('gameConfirmEyebrow').textContent=eyebrow;
+ $('gameConfirmTitle').textContent=title;
+ $('gameConfirmMessage').textContent=message;
+ $('gameConfirmAccept').textContent=confirmLabel;
+ $('gameConfirmCancel').textContent=cancelLabel;
+ $('gameConfirmAccept').classList.toggle('danger',danger);
+ gameConfirm.classList.remove('hidden');
+ gameConfirm.setAttribute('aria-hidden','false');
+ document.body.classList.add('game-dialog-open');
+ $('gameConfirmCancel').focus({preventScroll:true});
+}
+$('gameConfirmCancel').addEventListener('click',closeGameConfirm);
+$('gameConfirmAccept').addEventListener('click',()=>{
+ const action=pendingConfirmAction;
+ closeGameConfirm();
+ if(typeof action==='function')action();
+});
+gameConfirm.addEventListener('pointerdown',e=>{if(e.target===gameConfirm)closeGameConfirm()});
+document.addEventListener('keydown',e=>{
+ if(gameConfirm.classList.contains('hidden'))return;
+ if(e.key==='Escape'){e.preventDefault();e.stopImmediatePropagation();closeGameConfirm();return}
+ if(e.key==='Tab'){
+  const buttons=[$('gameConfirmCancel'),$('gameConfirmAccept')];
+  const current=buttons.indexOf(document.activeElement);
+  if(e.shiftKey&&current<=0){e.preventDefault();buttons[buttons.length-1].focus()}
+  else if(!e.shiftKey&&current===buttons.length-1){e.preventDefault();buttons[0].focus()}
+ }
+ e.stopImmediatePropagation();
+},true);
+/* iPhone users can install the existing PWA directly from Safari. */
+const iosDevice=/iPad|iPhone|iPod/.test(navigator.userAgent)||
+ (navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+const isStandalone=window.matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+if(iosDevice&&!isStandalone)$('iosInstallTip').classList.remove('hidden');
+$('iosInstallDismiss').addEventListener('click',()=>$('iosInstallTip').classList.add('hidden'));
+
 document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('active',x===b));$('players').disabled=false});
 const codeFromUrl=new URLSearchParams(location.search).get('room');if(codeFromUrl)$('codeInput').value=codeFromUrl.toUpperCase();
 let soundContext=null,soundEnabled=false,fxTimeout=null,lastFxTime=0;
@@ -145,7 +198,7 @@ socket();let authWait=null;function submitAuth(action){const username=$('usernam
 function selectAdminTab(tab){const users=tab==='users';$('adminUsersPanel').classList.toggle('hidden',!users);$('adminOverviewPanel').classList.toggle('hidden',users);$('adminUsersToggle').classList.toggle('active',users);$('adminOverviewToggle').classList.toggle('active',!users);$('adminUsersToggle').setAttribute('aria-selected',String(users));$('adminOverviewToggle').setAttribute('aria-selected',String(!users));send({type:users?'adminUsers':'adminStats'})}
 $('adminOverviewToggle').onclick=()=>selectAdminTab('overview');$('adminUsersToggle').onclick=()=>selectAdminTab('users');
 $('adminUsersRefresh').onclick=()=>send({type:'adminUsers'});
-function renderAdminUsers(m){const root=$('adminUsersList');root.replaceChildren();const info=document.createElement('p');info.textContent='Toplam kayıtlı kullanıcı: '+m.total+(m.persistent?' · Veritabanı bağlı':' · Dikkat: kalıcı veritabanı bağlı değil');root.append(info);if(!m.users.length){const empty=document.createElement('p');empty.textContent='Henüz kayıtlı kullanıcı bulunmuyor.';root.append(empty)}for(const username of m.users){const line=document.createElement('div');line.className='row';line.style.cssText='display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px;border-bottom:1px solid rgba(255,255,255,.12)';const name=document.createElement('strong');name.textContent=username;const reset=document.createElement('button');reset.type='button';reset.className='alt';reset.textContent='Şifre sıfırla';reset.onclick=()=>{const password=prompt(username+' için yeni şifre belirle (en az 8 karakter):');if(password===null)return;if(password.length<8||password.length>128)return alert('Şifre 8–128 karakter olmalı.');if(confirm(username+' hesabının şifresi değiştirilsin mi? Aktif oturumları kapatılacak.'))send({type:'adminResetPassword',username,password})};line.append(name,reset);root.append(line)}}
+function renderAdminUsers(m){const root=$('adminUsersList');root.replaceChildren();const info=document.createElement('p');info.textContent='Toplam kayıtlı kullanıcı: '+m.total+(m.persistent?' · Veritabanı bağlı':' · Dikkat: kalıcı veritabanı bağlı değil');root.append(info);if(!m.users.length){const empty=document.createElement('p');empty.textContent='Henüz kayıtlı kullanıcı bulunmuyor.';root.append(empty)}for(const username of m.users){const line=document.createElement('div');line.className='row';line.style.cssText='display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px;border-bottom:1px solid rgba(255,255,255,.12)';const name=document.createElement('strong');name.textContent=username;const reset=document.createElement('button');reset.type='button';reset.className='alt';reset.textContent='Şifre sıfırla';reset.onclick=()=>{const password=prompt(username+' için yeni şifre belirle (en az 8 karakter):');if(password===null)return;if(password.length<8||password.length>128)return alert('Şifre 8–128 karakter olmalı.');openGameConfirm({eyebrow:'YÖNETİCİ ONAYI',title:'Şifre değiştirilsin mi?',message:username+' hesabının şifresi değiştirilecek. Aktif oturumları kapatılacak.',confirmLabel:'ŞİFREYİ DEĞİŞTİR',cancelLabel:'VAZGEÇ',danger:true,onConfirm:()=>send({type:'adminResetPassword',username,password})})};line.append(name,reset);root.append(line)}}
 
 let lastQuizKey='',currentQuizRound=0,quizSelectedIndex=null;
 function renderQuizState(m){
@@ -199,7 +252,7 @@ if(m.type==='authError'){$('authMsg').textContent=m.message;return}
 if(m.type==='authenticated'){authToken=m.token;authUser=m.username;admin=!!m.isAdmin;$('adminPanel').classList.toggle('hidden',!admin);if(admin)send({type:'adminStats'});sessionStorage.setItem('gameToken',authToken);document.body.classList.remove('is-playing','focus-mode');$('who').textContent='👤 '+authUser;$('auth').classList.add('hidden');$('lobby').classList.remove('hidden');send({type:'listRooms'});return}
 if(m.type==='adminUsers'){renderAdminUsers(m);return}
 if(m.type==='adminPasswordReset'){alert(m.username+' kullanıcısının şifresi yenilendi.');send({type:'adminUsers'});return}
-if(m.type==='adminStats'){$('adminStats').replaceChildren();let summary=document.createElement('p');summary.textContent='Aktif oda: '+m.activeRooms+' · Açık oda: '+m.openRooms+' · Bağlı kullanıcı: '+m.connectedUsers;$('adminStats').append(summary);m.rooms.forEach(r=>{let line=document.createElement('div');line.className='row';let label=document.createElement('span');label.textContent=r.code+' · '+r.mode+' · '+r.phase+' · '+r.players.join(', ');let close=document.createElement('button');close.className='alt';close.textContent='Odayı kapat';close.onclick=()=>{if(confirm(r.code+' odası kapatılsın mı?'))send({type:'adminCloseRoom',code:r.code})};line.append(label,close);$('adminStats').append(line)});return}
+if(m.type==='adminStats'){$('adminStats').replaceChildren();let summary=document.createElement('p');summary.textContent='Aktif oda: '+m.activeRooms+' · Açık oda: '+m.openRooms+' · Bağlı kullanıcı: '+m.connectedUsers;$('adminStats').append(summary);m.rooms.forEach(r=>{let line=document.createElement('div');line.className='row';let label=document.createElement('span');label.textContent=r.code+' · '+r.mode+' · '+r.phase+' · '+r.players.join(', ');let close=document.createElement('button');close.className='alt';close.textContent='Odayı kapat';close.onclick=()=>{openGameConfirm({eyebrow:'YÖNETİCİ ONAYI',title:'Oda kapatılsın mı?',message:r.code+' kodlu oda kapatılacak ve oyuncuların maçı sonlandırılacak.',confirmLabel:'ODAYI KAPAT',cancelLabel:'VAZGEÇ',danger:true,onConfirm:()=>send({type:'adminCloseRoom',code:r.code})})};line.append(label,close);$('adminStats').append(line)});return}
 if(m.type==='leftRoom'){document.body.classList.remove('is-playing','focus-mode');attemptRoom='';clearAttempts();lastQuizKey='';quizLocked=false;myId=null;phase='waiting';clearInterval(ticker);$('game').classList.add('hidden');$('lobby').classList.remove('hidden');history.replaceState(null,'',location.pathname);send({type:'listRooms'});if(m.message)alert(m.message);return}
 if(m.type==='rooms'){let target=$('roomsList');target.replaceChildren();if(!m.rooms.length)target.textContent='Şu anda katılabileceğin açık oda yok.';else m.rooms.forEach(room=>{let line=document.createElement('div');line.className='row';let title=document.createElement('span');title.textContent=room.host+' · '+(modeNames[room.mode]||room.mode)+' · '+room.players+'/'+room.maxPlayers;let btn=document.createElement('button');btn.textContent='Katıl';btn.onclick=()=>send({type:'join',code:room.code});line.append(title,btn);target.append(line)});return}
 if(m.type==='error'){alert(m.message);return}
@@ -231,7 +284,7 @@ function tick(){
  };
  update();ticker=setInterval(update,200)
 }
-$('adminRefresh').onclick=()=>send({type:'adminStats'});$('backLobby').onclick=()=>{if(confirm('Odadan ayrılıp oda listesine dönmek istiyor musun?'))send({type:'leaveRoom'})};$('refreshRooms').onclick=()=>send({type:'listRooms'});$('create').onclick=()=>connect('create');$('join').onclick=()=>connect('join');$('copy').onclick=async()=>{let link=location.origin+'/?room='+$('roomCode').textContent;try{await navigator.clipboard.writeText(link);notice('Davet bağlantısı kopyalandı!')}catch{prompt('Bu linki kopyala:',link)}};
+$('adminRefresh').onclick=()=>send({type:'adminStats'});$('backLobby').onclick=()=>openGameConfirm({eyebrow:'MAÇTAN AYRIL',title:'Sahadan çıkıyor musun?',message:'Odadan ayrılırsan mevcut maçtan çıkacak ve oda listesine döneceksin.',confirmLabel:'ODADAN AYRIL',cancelLabel:'MAÇA DEVAM ET',danger:true,onConfirm:()=>send({type:'leaveRoom'})});$('refreshRooms').onclick=()=>send({type:'listRooms'});$('create').onclick=()=>connect('create');$('join').onclick=()=>connect('join');$('copy').onclick=async()=>{let link=location.origin+'/?room='+$('roomCode').textContent;try{await navigator.clipboard.writeText(link);notice('Davet bağlantısı kopyalandı!')}catch{prompt('Bu linki kopyala:',link)}};
 $('answerForm').onsubmit=e=>{e.preventDefault();let a=$('answer').value.trim();if(a&&!locked){locked=true;$('send').disabled=true;send({type:'answer',answer:a})}};$('gridForm').onsubmit=e=>{e.preventDefault();let a=$('gridAnswer').value.trim();if(a&&selected>=0){send({type:'gridAnswer',idx:selected,answer:a});$('gridForm').classList.add('hidden');selected=-1}};
 document.addEventListener('keydown',e=>{
  if(!e.isComposing&&!e.repeat&&!e.defaultPrevented&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&

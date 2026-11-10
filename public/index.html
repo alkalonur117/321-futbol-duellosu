@@ -15,7 +15,7 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
 #customHistory{backdrop-filter:blur(12px)}
 #teamHint button{background:linear-gradient(120deg,#146a54,#178d75);color:white;font-weight:700}
 @media(max-width:550px){body{padding:12px 7px}.panel{border-radius:13px}#customHistory{max-width:100%!important}}
-</style><link rel="stylesheet" href="/v20.css?v=20"><link rel="stylesheet" href="/mobile-v23.css?v=23"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/icon.svg"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="3-2-1 Futbol"><meta name="theme-color" content="#071018"></head><body><div id="goalFx" aria-hidden="true"><div class="ball">⚽</div><div class="goalText">GOOOL!</div></div><main class="wrap">
+</style><link rel="stylesheet" href="/v20.css?v=20"><link rel="stylesheet" href="/mobile-v23.css?v=23"><link rel="stylesheet" href="/dialog-v24.css?v=24"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" type="image/svg+xml" href="/icon.svg"><link rel="apple-touch-icon" href="/icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="3-2-1 Futbol"><meta name="theme-color" content="#071018"></head><body><div id="goalFx" aria-hidden="true"><div class="ball">⚽</div><div class="goalText">GOOOL!</div></div><main class="wrap">
 <header class="site-header">
   <div class="topbar">
     <div class="brand-mini"><span class="brand-emblem" aria-hidden="true">⚽</span><div>3-2-1 FUTBOL<span class="edition">MATCHDAY EDITION · V20</span></div></div>
@@ -55,7 +55,12 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
     <button class="mode" data-mode="tictactoe" type="button"><span class="mode-icon" aria-hidden="true">❎</span><span class="mode-copy"><strong>Tic Tac Toe</strong><small>9 kare. Doğru isim. Üçlü sıra.</small></span></button>
     <button class="mode" data-mode="quiz" type="button"><span class="mode-icon" aria-hidden="true">🏆</span><span class="mode-copy"><strong>Bilgi Yarışması</strong><small>4 seçenek, hızlı cevap, büyük rekabet.</small></span></button>
   </div>
-  <div class="lobby-start"><div><label for="players">RAKİBİNİ BELİRLE</label><select id="players"><option value="multi">Arkadaşla Oyna · 1V1</option><option value="solo">Tek Kişilik · Antrenman</option></select></div><button id="create">⚽ MAÇA BAŞLA / ODA OLUŞTUR</button></div>
+  <div id="iosInstallTip" class="ios-install-tip hidden" role="note">
+ <span class="ios-install-icon" aria-hidden="true">📱</span>
+ <div><strong>iPhone'da uygulama gibi oyna!</strong><span>Safari'de <b>Paylaş</b> → <b>Ana Ekrana Ekle</b> seç. Bilgisayar veya kablo gerekmez.</span></div>
+ <button type="button" id="iosInstallDismiss" class="ios-install-dismiss" aria-label="Bilgiyi kapat">×</button>
+</div>
+<div class="lobby-start"><div><label for="players">RAKİBİNİ BELİRLE</label><select id="players"><option value="multi">Arkadaşla Oyna · 1V1</option><option value="solo">Tek Kişilik · Antrenman</option></select></div><button id="create">⚽ MAÇA BAŞLA / ODA OLUŞTUR</button></div>
   <div class="lobby-bottom">
     <section class="lobby-box"><h3>AÇIK ODALAR <span>ÇEVRİMİÇİ</span></h3><button id="refreshRooms" class="alt" type="button">↻ Odaları Yenile</button><div id="roomsList" class="stack muted">Açık odalar yükleniyor...</div></section>
     <section class="lobby-box"><h3>ARKADAŞINA KATIL <span>DAVET KODU</span></h3><label for="codeInput">ODA KODUNU GİR</label><input id="codeInput" maxlength="6" placeholder="Örn. AB12CD" autocomplete="off"><button id="join" class="alt" type="button">KODLA ODAYA KATIL</button></section>
@@ -95,4 +100,16 @@ input:focus,select:focus{outline:2px solid rgba(40,210,147,.55);outline-offset:1
   <div class="panel"><div id="suggestion" class="suggest hidden"><div id="suggestionText"></div><div class="row"><button id="yes" type="button">EVET</button><button class="alt" id="no" type="button">HAYIR</button></div></div><div class="notice" id="notice" role="status">Rakip bekleniyor...</div><button id="rematch" class="alt hidden copy" type="button">↻ YENİ MAÇ / RÖVANŞ</button></div>
 </section>
 </main>
-<script src="/app.js?v=23" defer></script></body></html>
+<div id="gameConfirm" class="game-confirm hidden" role="presentation" aria-hidden="true">
+ <div class="game-confirm-card" role="dialog" aria-modal="true" aria-labelledby="gameConfirmTitle" aria-describedby="gameConfirmMessage">
+  <div class="game-confirm-icon" aria-hidden="true">⚽</div>
+  <div id="gameConfirmEyebrow" class="game-confirm-eyebrow">MAÇ BİLDİRİMİ</div>
+  <h2 id="gameConfirmTitle" class="game-confirm-title">Sahadan çıkıyor musun?</h2>
+  <p id="gameConfirmMessage" class="game-confirm-message">Odadan ayrılmak istediğine emin misin?</p>
+  <div class="game-confirm-actions">
+   <button type="button" id="gameConfirmCancel" class="game-confirm-cancel">MAÇA DEVAM ET</button>
+   <button type="button" id="gameConfirmAccept" class="game-confirm-accept danger">ODADAN AYRIL</button>
+  </div>
+ </div>
+</div>
+<script src="/app.js?v=24" defer></script></body></html>
