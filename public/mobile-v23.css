@@ -1,0 +1,200 @@
+/* V22: immersive no-page-scroll gameplay and responsive quiz feedback */
+#focusScore{display:none}
+.quiz-feedback{min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;gap:7px;padding:8px 12px;border-radius:13px;font-size:clamp(13px,2.6vw,17px);font-weight:900;line-height:1.35}
+.quiz-feedback:empty{visibility:hidden}
+.quiz-feedback.wrong{color:#ffb5bc;background:rgba(220,67,89,.14);border:1px solid rgba(255,108,125,.4)}
+.quiz-feedback.correct{color:#b8ffce;background:rgba(44,187,111,.13);border:1px solid rgba(71,234,143,.3)}
+.quiz-feedback.reveal{color:#e9ffc1;background:rgba(183,239,109,.1);border:1px solid rgba(183,239,109,.25)}
+.quiz-option:disabled{opacity:1!important;filter:none!important}
+.quiz-option.answer-correct{border-color:#55f0a6!important;box-shadow:inset 0 0 0 2px rgba(85,240,166,.35)!important}
+.quiz-option.answer-wrong{border-color:#ff6576!important;box-shadow:inset 0 0 0 2px rgba(255,101,118,.26)!important}
+body.is-playing.focus-mode{padding:0 12px!important;margin:0;min-height:100dvh;height:100dvh;overflow:hidden}
+body.focus-mode .site-header{display:none!important}
+body.focus-mode .wrap{max-width:970px!important;height:100dvh;min-height:100dvh;overflow:hidden}
+body.focus-mode #game{position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100dvh;height:100dvh;padding:calc(env(safe-area-inset-top) + 55px) 0 calc(env(safe-area-inset-bottom) + 52px);overflow:hidden}
+body.focus-mode #game>.game-meta,
+body.focus-mode #game>.scoreboard,
+body.focus-mode #attemptsPanel,
+body.focus-mode #customHistory{display:none!important}
+body.focus-mode #backLobby{position:absolute;top:calc(env(safe-area-inset-top) + 10px);left:0;z-index:9;margin:0!important;min-height:36px!important;padding:7px 12px!important;font-size:11px;max-width:65%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+body.focus-mode #focusScore{position:absolute;display:block;top:calc(env(safe-area-inset-top) + 12px);right:2px;z-index:8;padding:6px 12px;border:1px solid rgba(183,246,106,.3);border-radius:12px;background:rgba(10,36,41,.86);font-family:'Barlow Condensed',Impact,sans-serif;font-size:21px;font-weight:900;line-height:1.1;color:var(--lime);font-variant-numeric:tabular-nums}
+body.focus-mode #game>#quizPanel,
+body.focus-mode #game>#duelPanel,
+body.focus-mode #game>#customPanel,
+body.focus-mode #game>#gridPanel{width:100%;max-width:900px;max-height:100%;min-height:min(555px,calc(100dvh - 125px));margin:0!important;display:flex;flex-direction:column;justify-content:center;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(184,246,106,.25) transparent}
+body.focus-mode #game>.hidden{display:none!important}
+body.focus-mode #game>.panel:last-child{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 4px);left:0;right:0;z-index:7;width:100%;max-width:900px;margin:0 auto!important;padding:0!important;background:none!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important}
+body.focus-mode #notice{min-height:26px;max-height:44px;overflow:hidden;font-size:11px;line-height:1.3;padding:3px 8px}
+body.focus-mode #rematch{max-width:380px;min-height:38px;margin:0 auto}
+body.focus-mode #suggestion{position:absolute;bottom:46px;left:50%;transform:translateX(-50%);z-index:11;width:min(96%,500px);margin:0;background:#132d36;box-shadow:0 18px 60px #000b}
+body.focus-mode #quizRound,
+body.focus-mode #roundLabel{margin-bottom:12px}
+body.focus-mode #quizQuestion{font-size:clamp(20px,3.6vw,32px);line-height:1.32;margin:0 auto 18px;max-width:780px}
+body.focus-mode #quizOptions{width:100%;gap:10px}
+body.focus-mode .quiz-option{min-height:68px}
+body.focus-mode #quizPanel .clock-wrap{width:100%;margin:13px auto 0}
+body.focus-mode #quizPanel .clock{font-size:clamp(48px,8vh,70px)}
+body.focus-mode #duelPanel .clock-wrap{margin:20px auto 16px}
+body.focus-mode #customPanel .clock-wrap{margin:14px auto}
+body.focus-mode #gridPanel .clock-wrap{margin:12px auto}
+body.focus-mode #gridPanel .gridboard{margin:10px 0}
+@media(max-width:620px){
+ body.is-playing.focus-mode{padding:0 8px!important}
+ body.focus-mode #game{padding:calc(env(safe-area-inset-top) + 52px) 0 calc(env(safe-area-inset-bottom) + 43px)}
+ body.focus-mode #game>#quizPanel,
+ body.focus-mode #game>#duelPanel,
+ body.focus-mode #game>#customPanel,
+ body.focus-mode #game>#gridPanel{min-height:min(535px,calc(100dvh - 110px));padding:14px 13px!important;border-radius:18px!important}
+ body.focus-mode #quizRound,
+ body.focus-mode #roundLabel{margin-bottom:8px}
+ body.focus-mode #quizQuestion{font-size:clamp(17px,4.8vw,22px);line-height:1.28;margin:0 auto 11px}
+ body.focus-mode #quizOptions{grid-template-columns:1fr;gap:7px}
+ body.focus-mode .quiz-option{min-height:51px;padding:7px 10px!important;gap:10px;border-radius:11px}
+ body.focus-mode .option-letter{width:29px;height:29px;font-size:19px;border-radius:8px}
+ body.focus-mode .option-text{font-size:12px;line-height:1.3}
+ body.focus-mode #quizPanel .clock-wrap{margin:7px auto 0}
+ body.focus-mode #quizPanel .clock{font-size:50px}
+ body.focus-mode .clock-caption{font-size:9px}
+ body.focus-mode .quiz-feedback{min-height:39px;padding:5px 7px;font-size:12px}
+ body.focus-mode #game>.panel:last-child{bottom:calc(env(safe-area-inset-bottom) + 2px)}
+ body.focus-mode #notice{font-size:10px;max-height:36px}
+ body.focus-mode #backLobby{font-size:10px;padding:7px 9px!important;min-height:32px!important}
+ body.focus-mode #focusScore{font-size:18px}
+ body.focus-mode #gridPanel .gridboard{gap:4px}
+ body.focus-mode #gridPanel .head{min-height:43px}
+ body.focus-mode #gridPanel .cell{min-height:52px}
+}
+@media(max-height:680px){
+ body.focus-mode #game>#quizPanel,
+ body.focus-mode #game>#duelPanel,
+ body.focus-mode #game>#customPanel,
+ body.focus-mode #game>#gridPanel{min-height:0}
+ body.focus-mode #quizRound{margin-bottom:5px}
+ body.focus-mode #quizQuestion{margin-bottom:8px}
+ body.focus-mode .quiz-option{min-height:43px}
+ body.focus-mode #quizPanel .clock-wrap{margin-top:5px}
+ body.focus-mode #quizPanel .clock{font-size:43px}
+ body.focus-mode .quiz-feedback{min-height:31px;padding:3px 6px}
+ body.focus-mode #duelPanel .clock-wrap{margin:10px auto}
+ body.focus-mode #gridPanel .clock-wrap{margin:5px auto}
+}
+@media(max-height:530px) and (orientation:landscape){
+ body.focus-mode #quizOptions{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+ body.focus-mode #quizQuestion{font-size:17px}
+ body.focus-mode .quiz-option{min-height:40px}
+ body.focus-mode #quizPanel .clock{font-size:34px}
+ body.focus-mode #quizPanel .clock-wrap{margin-top:2px}
+ body.focus-mode #game>#quizPanel{padding:8px 15px!important}
+}
+
+/* V23: keep the answer history visible without scrolling the whole game page */
+body.focus-mode #game{
+ padding-bottom:calc(env(safe-area-inset-bottom) + 172px);
+}
+body.focus-mode #game>#quizPanel,
+body.focus-mode #game>#duelPanel,
+body.focus-mode #game>#customPanel,
+body.focus-mode #game>#gridPanel{
+ min-height:0;
+ max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 232px);
+}
+body.focus-mode #attemptsPanel{
+ display:flex!important;
+ flex-direction:column;
+ position:absolute;
+ left:0;right:0;
+ bottom:calc(env(safe-area-inset-bottom) + 47px);
+ z-index:5;
+ width:100%;
+ max-width:900px;
+ height:116px;
+ min-height:0;
+ margin:0 auto!important;
+ padding:9px 12px!important;
+ border-radius:14px!important;
+ overflow:hidden;
+}
+body.focus-mode #attemptsPanel .feed-heading{
+ font-size:14px;
+ line-height:1.1;
+ margin:0 0 5px;
+ flex:none;
+}
+body.focus-mode #attemptsPanel .feed-heading::after{content:none}
+body.focus-mode #attemptsPanel .feed-list{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ align-content:start;
+ gap:5px;
+ overflow-y:auto;
+ overscroll-behavior:contain;
+ scrollbar-width:thin;
+ scrollbar-color:rgba(185,246,106,.45) transparent;
+ min-height:0;
+ flex:1;
+}
+body.focus-mode #attemptsPanel .feed-item{
+ font-size:11px;
+ line-height:1.2;
+ padding:6px 8px;
+ border-radius:8px;
+ animation:none;
+}
+body.focus-mode #attemptsPanel .feed-context{
+ display:block;
+ color:#91aeb8;
+ font-size:9px;
+ margin-bottom:3px;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+}
+body.focus-mode #attemptsPanel .feed-result,
+body.focus-mode #attemptsPanel .feed-correction{
+ display:block;
+ font-size:9px;
+ margin-top:3px;
+ font-weight:800;
+}
+body.focus-mode #attemptsPanel .feed-correction{color:#b7ffa6}
+body.focus-mode #attemptsPanel .feed-empty{
+ color:#8ea9b3;
+ font-size:11px;
+ margin:4px 0;
+}
+body.focus-mode #attemptsPanel .feed-empty[hidden]{display:none}
+@media(max-width:620px){
+ body.focus-mode #game{
+  padding-bottom:calc(env(safe-area-inset-bottom) + 154px);
+ }
+ body.focus-mode #game>#quizPanel,
+ body.focus-mode #game>#duelPanel,
+ body.focus-mode #game>#customPanel,
+ body.focus-mode #game>#gridPanel{
+  max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 211px);
+ }
+ body.focus-mode #attemptsPanel{
+  height:101px;
+  bottom:calc(env(safe-area-inset-bottom) + 42px);
+  padding:7px 9px!important;
+ }
+ body.focus-mode #attemptsPanel .feed-heading{font-size:13px;margin-bottom:4px}
+ body.focus-mode #attemptsPanel .feed-list{grid-template-columns:1fr;gap:4px}
+ body.focus-mode #attemptsPanel .feed-item{font-size:10px;padding:5px 8px}
+ body.focus-mode #attemptsPanel .feed-context{font-size:9px}
+}
+@media(max-height:650px){
+ body.focus-mode #game{padding-bottom:calc(env(safe-area-inset-bottom) + 117px)}
+ body.focus-mode #game>#quizPanel,
+ body.focus-mode #game>#duelPanel,
+ body.focus-mode #game>#customPanel,
+ body.focus-mode #game>#gridPanel{
+  max-height:calc(100dvh - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 170px);
+ }
+ body.focus-mode #attemptsPanel{
+  height:71px;
+  bottom:calc(env(safe-area-inset-bottom) + 39px);
+ }
+ body.focus-mode #attemptsPanel .feed-heading{font-size:11px;margin-bottom:3px}
+ body.focus-mode #attemptsPanel .feed-item{padding:4px 7px}
+}
