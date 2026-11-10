@@ -1,0 +1,68 @@
+name: iOS - Free IPA Build (unsigned)
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "ios/**"
+      - ".github/workflows/ios-free-ipa.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  build-ios:
+    name: Build iPhone app on macOS
+    runs-on: macos-15
+    timeout-minutes: 35
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        working-directory: ios
+        run: xcodegen generate
+
+      - name: Compile unsigned iPhone app
+        working-directory: ios
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project Three21Football.xcodeproj \
+            -scheme Three21Football \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            build
+
+      - name: Package unsigned IPA for personal sideloading
+        working-directory: ios
+        run: |
+          set -euo pipefail
+          APP="build/Build/Products/Release-iphoneos/Three21Football.app"
+          test -d "$APP"
+          mkdir -p dist/Payload
+          cp -R "$APP" dist/Payload/
+          cd dist
+          zip -q -r Three21Football-unsigned.ipa Payload
+          test -s Three21Football-unsigned.ipa
+          echo "Unsigned IPA prepared. It cannot be installed until signed for your own iPhone."
+
+      - name: Upload unsigned IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: Three21Football-unsigned-IPA
+          path: ios/dist/Three21Football-unsigned.ipa
+          retention-days: 7
+          if-no-files-found: error
