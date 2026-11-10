@@ -1,6 +1,12 @@
 name: API-Football 5-player audit
 
 'on':
+  pull_request:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/api-football-audit.yml'
+      - 'scripts/api_football_audit.py'
   workflow_dispatch:
     inputs:
       include_burak:
@@ -40,8 +46,8 @@ jobs:
       - name: Audit API-Football players
         env:
           APISPORTS_KEY: ${{ secrets.APISPORTS_KEY }}
-          INCLUDE_BURAK: ${{ inputs.include_burak }}
-          MAX_CALLS: ${{ inputs.max_calls }}
+          INCLUDE_BURAK: ${{ inputs.include_burak || 'false' }}
+          MAX_CALLS: ${{ inputs.max_calls || 50 }}
         run: |
           args=()
           if [ "$INCLUDE_BURAK" = 'true' ]; then args+=(--include-burak); fi
