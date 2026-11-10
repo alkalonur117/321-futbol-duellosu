@@ -1,5 +1,5 @@
-const CACHE='321-futbol-mobile-v24';
-const ASSETS=['/','/app.js?v=24','/v20.css?v=20','/mobile-v23.css?v=23','/dialog-v24.css?v=24','/icon.svg','/manifest.webmanifest'];
+const CACHE='321-futbol-mobile-v25';
+const ASSETS=['/','/app.js?v=25','/v20.css?v=20','/mobile-v23.css?v=23','/dialog-v24.css?v=24','/match-hud-v25.css?v=25','/icon.svg','/manifest.webmanifest'];
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key.startsWith('321-futbol-mobile-')&&key!==CACHE).map(key=>caches.delete(key)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',event=>{
@@ -15,7 +15,7 @@ self.addEventListener('fetch',event=>{
   return;
  }
  event.respondWith(fetch(request).then(response=>{
-  if(response.ok&&['/app.js','/v20.css','/mobile-v23.css','/dialog-v24.css','/icon.svg','/manifest.webmanifest'].includes(url.pathname)){
+  if(response.ok&&['/app.js','/v20.css','/mobile-v23.css','/dialog-v24.css','/match-hud-v25.css','/icon.svg','/manifest.webmanifest'].includes(url.pathname)){
    const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(request,copy)).catch(()=>{});
   }
   return response;
