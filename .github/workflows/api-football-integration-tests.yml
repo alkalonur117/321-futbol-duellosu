@@ -1,0 +1,21 @@
+name: API-Football integration tests
+on:
+  push:
+    branches:
+      - api-football-integration
+  pull_request:
+    paths:
+      - 'lib/api-football-beta.js'
+      - 'tests/api-football-beta.test.js'
+      - 'server.js'
+      - '.github/workflows/api-football-integration-tests.yml'
+jobs:
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm install --no-audit --no-fund
+      - run: npm test
