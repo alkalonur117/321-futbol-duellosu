@@ -67,6 +67,17 @@ export function useGameSocket() {
             ws.send(JSON.stringify({ type: 'listRooms' }));
             setNotice('');
             break;
+          case 'accountDeleted':
+            SecureStore.deleteItemAsync(TOKEN_KEY).catch(() => {});
+            setUsername(null);
+            setIsAdmin(false);
+            setGame(null);
+            setRoomCode(null);
+            setMyId(null);
+            myIdRef.current = null;
+            setNotice('Hesabın kalıcı olarak silindi.');
+            setRetry(v => v + 1);
+            break;
           case 'authError':
             setNotice(m.message || 'Oturum açılamadı.');
             setUsername(null);
@@ -84,7 +95,7 @@ export function useGameSocket() {
             break;
           case 'state': {
             const key = String(m.code) + ':' + String(m.matchSeq) + ':' +
-              String(m.round) + ':' + String(m.deadline);
+              String(m.round);
             if (roundKeyRef.current !== key) {
               roundKeyRef.current = key;
               setLocked(false);
@@ -92,7 +103,7 @@ export function useGameSocket() {
               setQuizFeedback(null);
               setTeamSuggestion(null);
             }
-            setGame(m);
+            setGame({ ...m, receivedAt: Date.now() });
             setRoomCode(m.code);
             break;
           }
