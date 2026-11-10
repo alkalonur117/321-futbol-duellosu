@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Pascal Nouma",
+    "birth_year": 1972,
+    "searches": ["Nouma"],
+    "aliases": ["Pascal Nouma", "Pascal Olivier Nouma", "P. Nouma"],
+    "expected_clubs": ["Beşiktaş", "Paris Saint-Germain"],
+    "transfer_anchor": "Besiktas"
+  },
+  {
+    "name": "Bobô",
+    "birth_year": 1985,
+    "searches": ["Bobo"],
+    "aliases": ["Bobo", "Bobô", "Deyvison Rogerio da Silva"],
+    "expected_clubs": ["Beşiktaş", "Sydney FC"],
+    "transfer_anchor": "Besiktas"
+  },
+  {
+    "name": "Rodrigo Tello",
+    "birth_year": 1979,
+    "searches": ["Tello"],
+    "aliases": ["Rodrigo Tello", "Rodrigo Alvaro Tello Valenzuela", "R. Tello"],
+    "expected_clubs": ["Beşiktaş", "Sporting CP"],
+    "transfer_anchor": "Besiktas"
+  },
+  {
+    "name": "Jaja Coelho",
+    "birth_year": 1986,
+    "searches": ["Coelho"],
+    "aliases": ["Jaja", "Jajá", "Jaja Coelho", "Jakson Avelino Coelho"],
+    "expected_clubs": ["Trabzonspor", "Metalist Kharkiv"],
+    "transfer_anchor": "Trabzonspor"
+  },
+  {
+    "name": "Emmanuel Emenike",
+    "birth_year": 1987,
+    "searches": ["Emenike"],
+    "aliases": ["Emmanuel Emenike", "Emmanuel Chinenye Emenike", "E. Emenike"],
+    "expected_clubs": ["Karabükspor", "Fenerbahçe", "Spartak Moscow"],
+    "transfer_anchor": "Karabukspor"
+  }
+]
