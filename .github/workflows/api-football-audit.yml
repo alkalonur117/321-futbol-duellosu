@@ -1,0 +1,62 @@
+name: API-Football 5-player audit
+
+'on':
+  workflow_dispatch:
+    inputs:
+      include_burak:
+        description: 'Include Burak Yilmaz (ID 2006) as sixth control'
+        type: boolean
+        required: false
+        default: false
+      max_calls:
+        description: 'Maximum API calls (1-60)'
+        type: number
+        required: false
+        default: 30
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    name: Historical player identity audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Offline audit tests
+        run: python -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Check secret exists
+        env:
+          APISPORTS_KEY: ${{ secrets.APISPORTS_KEY }}
+        run: |
+          if [ -z "$APISPORTS_KEY" ]; then
+            echo '::error::Add APISPORTS_KEY in Settings > Secrets and variables > Actions.'
+            exit 1
+          fi
+      - name: Audit API-Football players
+        env:
+          APISPORTS_KEY: ${{ secrets.APISPORTS_KEY }}
+          INCLUDE_BURAK: ${{ inputs.include_burak }}
+          MAX_CALLS: ${{ inputs.max_calls }}
+        run: |
+          args=()
+          if [ "$INCLUDE_BURAK" = 'true' ]; then args+=(--include-burak); fi
+          python scripts/api_football_audit.py --max-calls "$MAX_CALLS" --out api-football-audit "${args[@]}"
+      - name: Display summary
+        if: always()
+        run: |
+          if [ -f api-football-audit/report.md ]; then
+            cat api-football-audit/report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Save short-lived report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: api-football-audit-report
+          path: api-football-audit/
+          if-no-files-found: ignore
+          retention-days: 1
